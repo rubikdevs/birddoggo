@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+
+    <title>BirdDogGo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+
+<body class="reverse-background">
+	<div class="">
+		<embed src="resources/img/batch_app_store.svg" type="image/svg+xml" />
+	</div>
+
+	
+	<h1 class="title">BirdDogGo</h1>
+	
+	<div class="searcharea">
+		<div class="navback">
+			<ul class="search_field">
+				<li class="color_trans clickable active">Business</li>
+				<li class="color_trans clickable">People</li>
+				<li class="color_trans clickable">Reverse Lookup</li>
+				<li class="color_trans clickable">Movies</li>
+				<li class="color_trans clickable">Weather</li>
+			</ul>
+		</div>
+		
+		<div class="transparent-white order">
+			<div class="searchfields">
+				<div class="peopleinput">
+					<input type="text" placeholder="First Name" id="firstname" />
+					<input type="text" placeholder="Last Name" id="lastname" />
+					<span>near</span>
+					<input type="text" placeholder="City, State, Zip Code" id="" />
+				</div>
+				<div class="businessinput">
+					<input type="text" placeholder="First Name" id="firstname" />
+					<input type="text" placeholder="Last Name" id="lastname" />
+					<span>near</span>
+					<input type="text" placeholder="City, State, Zip Code" id="" />
+				</div>
+				<div class="movieinput">
+					<input type="text" placeholder="First Name" id="firstname" />
+					<input type="text" placeholder="Last Name" id="lastname" />
+					<span>near</span>
+					<input type="text" placeholder="City, State, Zip Code" id="" />
+				</div>
+				<div class="weather">
+					<input type="text" placeholder="City, State, Zip Code" id="" />
+				</div>
+				<div class="reverselookup">
+					<input type="text" placeholder="telephone" id="" />
+				</div>
+			</div>
+			<img class="searchbutton" src="resources/img/button_search.png" alt="" />
+		</div>
+	</div>
+	
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/holder.js"></script>
+    <script>
+   
+    var $body = $('body'),
+    	$searchAreaInput = $('.searcharea input'),
+    	$searchArea = $('.searcharea'),
+    	bodyBackgroundsClasses = [
+    		'business_background',
+    		'people_background',
+    		'reverse_background'
+    	],
+    	placeHolderArray = [
+    		'Business name...',
+    		'Person name...',
+    		'Phone number...'
+    	];
+     
+    $body[0].className = bodyBackgroundsClasses[0];
+	$('.search_field li').on('click', function(){
+	    var $el = $(this);
+		if ($el.hasClass('active')) {
+			return ;
+		}
+		$('.search_field li.active').removeClass('active');
+		$el.addClass('active');
+		$body[0].className = bodyBackgroundsClasses[$el.index()];
+		
+	})
+	
+	 $(window).on('scroll', function() {
+		var style;
+	 	if ($body.scrollTop() > 150) {
+	 	    style = {
+		 	    position: 'fixed',
+		 	    left: '50%',
+		 	    top: '-30px',
+		 	    'margin-left': -$searchArea.width()/2 + 'px'
+	 	    }
+	 	} else {
+	 		style = {
+	 			top: '0px',
+			 	position: 'static',
+			 	'margin-left': 'auto',
+			 	left: ''
+			 }
+	 	}
+		$searchArea.css(style);
+    });
+	</script>
+
+</body></html>
