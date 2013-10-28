@@ -1,15 +1,14 @@
 
 ( function(birddoggo) {
 
-	var URL = 'http://www.moviefone.com/search/the%20social%20network%2011209';
+	var URL = 'services/movie-service.php';
 	birddoggo.findMovie = function(params) {
 		$.ajax({
-			url: URL, //+ window.encodeURIComponent(params),
+			url: URL,
 			data: {
-				format: 'xml',
+				param: params,
 			},
-			crossDomain:true,
-			dataType : "XML",
+			dataType : "json",
 			type: 'GET',
 
 
