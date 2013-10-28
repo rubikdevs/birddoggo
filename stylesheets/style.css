@@ -418,3 +418,56 @@ div.businessinput{
 input[type=text].singleinput{
 	width: 520px;
 }
+.movieresult{
+	width: 810px;
+	background-color: #2b2c2c;
+}
+.movieheader{
+	color:white;
+	background-color: #129be2;
+	height: 70px;
+	position: relative;
+	-webkit-box-shadow: 1px 1px 2px black;
+	-moz-box-shadow: 1px 1px 2px black;
+	box-shadow:1px 1px 2px black;
+}
+.movielocation{
+	font-family: latolight;
+	font-size: 30px;
+	text-align: center;
+	padding-top: 25px;
+
+	
+}
+.movielocation span{
+	font-family: latobold;
+}
+
+.locationoptions{
+	position: absolute;
+	right: 10px;
+	width: 170px;
+	bottom: 5px;
+	font-size: 14px;
+	
+}
+
+.locationoptions div{
+	float: left;
+	cursor: pointer;
+}
+.distanceoptions{
+	margin-left: 10px;
+}
+.flechita{
+	font-size: 30px;
+	position: relative;
+	top: -9px;
+	margin-left: 8px;
+}
+.moviebody{
+	
+}
+.theatreresult{
+	height: 110px;
+}
