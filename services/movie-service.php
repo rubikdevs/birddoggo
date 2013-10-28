@@ -1,18 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-	if (isset($_GET['param'])){
-		$parameter = $_GET['param'];
-		$ch = curl_init('http://www.moviefone.com/search/'.$parameter.'?format=xml');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_HEADER, false);
-		
-		$result = curl_exec($ch);
-		$result  = simplexml_load_string($result);
-		echo json_encode(xmlToArray($result));
-		//var_dump($result);
-	}
-=======
 
 function encodeURIComponent($str)
 {
@@ -131,5 +118,4 @@ if (isset($_GET['param'])) {
     echo json_encode(xmlToArray($result));
     //var_dump($result);
 }
->>>>>>> e1727b5b3c23a44dfce03769f4f2481df1291de0
 ?>
