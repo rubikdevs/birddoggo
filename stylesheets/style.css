@@ -471,3 +471,7 @@ input[type=text].singleinput{
 .theatreresult{
 	height: 110px;
 }
+.theatrename{
+	font-family: latobold;
+	color:white;
+}
