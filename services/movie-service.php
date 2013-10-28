@@ -84,7 +84,6 @@
 		
 		$result = curl_exec($ch);
 		$result  = simplexml_load_string($result);
-		
 		echo json_encode(xmlToArray($result));
 		//var_dump($result);
 	}

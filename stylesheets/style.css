@@ -468,10 +468,91 @@ input[type=text].singleinput{
 .moviebody{
 	
 }
-.theatreresult{
+.theatredata{
 	height: 110px;
+	margin-left: 45px;
+	position: relative;
 }
 .theatrename{
 	font-family: latobold;
 	color:white;
+	margin-top: 20px;
+	margin-bottom: 14px;
 }
+.theatreinfo{
+	color: #b4b1ac;
+	margin-bottom: 10px;
+}
+
+.getdirectionsbutton{
+	border: solid 1px black;
+	background: url('../resources/img/tile_moviebutton.png') repeat-x;
+	width: 100px;
+	height: 27px;
+	color: white;
+	text-align: center;
+	font-size: 12px;
+	padding-top: 6px;
+	cursor: pointer;
+}
+.theatredistance{
+	position: absolute;
+	color: white;
+	font-family:latobold;
+	right: 20px;
+	top:15px;
+	font-size: 13px;
+	
+}
+
+.moviereslt{
+	height: 130px;
+	margin:1px 5px;
+	background-color: #262527;
+	color:white;
+}
+.movieposter{
+	height: 110px;
+	width: auto;
+	margin: 10px;
+	float: left;
+}
+.moviebutton{
+	border: solid 1px black;
+	background: url('../resources/img/tile_moviebutton.png') repeat-x;
+	height: 27px;
+	color: white;
+	text-align: center;
+	font-size: 12px;
+	padding-top: 6px;
+	cursor: pointer;
+	width: 120px;
+	float: left;
+	margin-right: 5px;
+	vertical-align: bottom;
+	margin-top: 51px;
+}
+
+.movietitle{
+	position: relative;
+	top:10px;
+	font-family: latobold;
+	
+}
+.movieinfo{
+	position: relative;
+	top: 25px;
+	font-size: 10px;
+}
+.moviefunctions{
+	position: relative;
+	top:40px;
+	font-family: latobold;
+}
+.movierate{
+	border: 2px solid white;
+	padding: 2px;
+	margin-right: 5px;
+}
+
+
