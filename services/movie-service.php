@@ -83,7 +83,7 @@
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		
 		$result = curl_exec($ch);
-		$result  = simplexml_load_string($result)
+		$result  = simplexml_load_string($result);
 		
 		echo json_encode(xmlToArray($result));
 		//var_dump($result);
