@@ -113,53 +113,10 @@
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/holder.js"></script>
-    <script>
-   
-    var $body = $('body'),
-    	$searchAreaInput = $('.searcharea input'),
-    	$searchArea = $('.searcharea'),
-    	bodyBackgroundsClasses = [
-    		'business_background',
-    		'people_background',
-    		'reverse_background'
-    	],
-    	placeHolderArray = [
-    		'Business name...',
-    		'Person name...',
-    		'Phone number...'
-    	];
-     
-    $body[0].className = bodyBackgroundsClasses[0];
-	$('.search_field li').on('click', function(){
-	    var $el = $(this);
-		if ($el.hasClass('active')) {
-			return ;
-		}
-		$('.search_field li.active').removeClass('active');
-		$el.addClass('active');
-		$body[0].className = bodyBackgroundsClasses[$el.index()];
-		
-	})
-	/*
-	 $(window).on('scroll', function() {
-		var style;
-	 	if ($body.scrollTop() > 150) {
-	 	    style = {
-		 	    position: 'fixed',
-		 	    left: '50%',
-		 	    top: '-30px',
-		 	    'margin-left': -$searchArea.width()/2 + 'px'
-	 	    }
-	 	} else {
-	 		style = {
-	 			top: '0px',
-			 	position: 'static',
-			 	'margin-left': 'auto',
-			 	left: ''
-			 }
-	 	}
-		$searchArea.css(style);
-    });*/
-	</script>
+	<script> window.birddoggo={}</script>
+    <script src="js/functions.js"></script>
+    <script src="js/find.movie.js"></script>
+ 
+</body>
 
-</body></html>
+</html>
