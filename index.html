@@ -48,13 +48,33 @@
 					<input type="text" placeholder="City, State, Zip Code" class="place"  />
 				</div>
 				<div class="weather">
-					<input type="text" placeholder="City, State, Zip Code" class="place" />
+					<input type="text" class="singleinput" placeholder="City, State, Zip Code" class="place" />
 				</div>
 				<div class="reverselookup">
-					<input type="text" placeholder="Telephone" id="telephone" />
+					<input type="text" class="singleinput" placeholder="Telephone" id="telephone" />
 				</div>
 			</div>
 			<img class="searchbutton" src="resources/img/button_search.png" alt="" />
+		</div>
+		
+	</div>
+	<div class="resultarea">
+		<span class="searchtip">Showing results for Nicolas ...</span>
+		<div class="peopleresult">
+				<div class="peopleelement">
+					<span class="resultname">Nicolas Nistal</span>
+					<span class="resultcontact twolineresult rightresult">
+						<div class="resultphone">(223) 633-6812</div>
+						<div class="resultmail">nistal.nicolas@gmail.com</div>
+					</span>
+					<span class="resultaddress twolineresult centerresult">
+						<div class="resultstreet">551 Montiel st.</div>
+						<div class="resultcity">Tandil,Buenos Aires, Argentina</div>
+					</span>
+					
+				</div>
+				<div class="peopleelement"></div>
+				<div class="peopleelement"></div>
 		</div>
 	</div>
 	
@@ -93,7 +113,7 @@
 		$body[0].className = bodyBackgroundsClasses[$el.index()];
 		
 	})
-	
+	/*
 	 $(window).on('scroll', function() {
 		var style;
 	 	if ($body.scrollTop() > 150) {
@@ -112,7 +132,7 @@
 			 }
 	 	}
 		$searchArea.css(style);
-    });
+    });*/
 	</script>
 
 </body></html>

@@ -253,13 +253,13 @@ transition: border linear 0.2s, box-shadow linear 0.2s;
 .searcharea{
 	margin: 0 auto;
 	width: 600px;
-	height: 150px;
 	margin-top: 75px;
 	-webkit-transition: top 100ms ease;
 	-moz-transition: top 100s ease ;
 	-ms-transition:  top 100s ease;
 	-o-transition: top 100s ease ;
 	transition: top 100s ease ;
+	margin-bottom: 70px;
 }
 
 .clickable {
@@ -361,4 +361,60 @@ transition: border linear 0.2s, box-shadow linear 0.2s;
 	position: relative;
 	top:3px;
 	
+}
+
+.searchfields div {
+	display: none;
+}
+
+div.businessinput{
+	display: block;
+}
+
+#bkeywords , #mkeywords{
+	width: 313px;
+}
+
+.resultarea{
+	width: 810px;	
+	margin: 0 auto;
+}
+
+.peopleresult{
+	height: 300px;
+	background: url('../resources/img/background_search.png');
+	width: 100%;
+	margin-top: 5px;
+}
+.searchtip{
+	color: white;
+}
+.peopleelement{
+	margin-left: 40px;
+	margin-right: 40px;
+	border-bottom: 1px solid #494949; 
+	height: 75px;
+	color:#494949;
+	font-family: latolight;
+	font-size: 18px;
+}
+
+.resultname{
+	font-size: 30px;
+	margin-top: 30px;
+	float:left;
+}
+
+.twolineresult{
+	margin-top:25px;
+	font-size: 15px;
+	text-align: center;
+	float:right;
+}
+.centerresult{
+	margin-right: 60px;
+}
+
+input[type=text].singleinput{
+	width: 520px;
 }
