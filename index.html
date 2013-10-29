@@ -58,24 +58,16 @@
 		</div>
 		
 	</div>
-	<div class="resultarea">
+	<div style="top:0;background-color:rgba(230,230,230,.9);"class="resultarea">
 		<span class="searchtip">Showing results for Nicolas ...</span>
-		<div class="peopleresult">
-				<div class="peopleelement">
-					<span class="resultname">Nicolas Nistal</span>
-					<span class="resultcontact twolineresult rightresult">
-						<div class="resultphone">(223) 633-6812</div>
-						<div class="resultmail">nistal.nicolas@gmail.com</div>
-					</span>
-					<span class="resultaddress twolineresult centerresult">
-						<div class="resultstreet">551 Montiel st.</div>
-						<div class="resultcity">Tandil,Buenos Aires, Argentina</div>
-					</span>
-					
-				</div>
-				<div class="peopleelement"></div>
-				<div class="peopleelement"></div>
-		</div>
+		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603"> </iframe>
+	</div>
+
+	<!-- templates -->
+	<!-- ================================================== -->
+
+	<script type="text/html" id="theater_tpl">
+		
 		<div class="movieresult">
 			<div class="movieheader">
 				<div class="movielocation">
@@ -89,79 +81,89 @@
 						<span class="distancesearch">25 miles</span><span class="flechita"> &#812;</span>
 					</div>
 				</div>
-				
 			</div>
+			<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>
+          	
+        	
 			<div class="moviebody">
 				<div class="theatreresult">
 					<div class="theatredata">
-						<div class="theatrename">Stowe Cinema 3 Plex</div>
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<%= 'collapse' + i%>">
+							<div class="theatrename"><%= theater.tname %></div>
+						</a>
+
 						<div class="theatreinfo">
-							<span class="theatreaddress">Route 108 Mountain Road, Stowe, VT 05672</span>
+							<span class="theatreaddress"><%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %></span>
 							<span>|</span>
-							<span class="theatretelephone">(802) 253-4678</span>
+							<span class="theatretelephone"><%= theater.phone || ''%></span>
 						</div>
 						<div class="getdirectionsbutton">
 							Get Directions
 						</div>
-						<div class="theatredistance">0.2 mi.</div>
-					</div>
-					
-					<div class="theatremovies">
-						<div class="moviereslt">
-							<img class="movieposter" src="http://o.aolcdn.com/os/movies/movie_posters/1413499_p_m" alt="" />
-							<div class="movietitle">The Social Network</div>
-							<div class="movieinfo">
-								<span class="movierate">PG-13</span>
-								<span class="movieduration"> 134 min</span>
-							</div>
-							<div class="moviefunctions">
-								<span class="moviefunc">7:00pm</span>
-							</div>
-							<div class="watchtrailerbutton moviebutton">
-								Watch Trailer
-							</div>
-							<div class="getreviewsbutton moviebutton">
-								Get Reviews
-							</div>
-							<div class="textshowtimebutton moviebutton">
-								Text Showtime
-							</div>
-						</div>
-						<div class="moviereslt">
-							<img class="movieposter" src="http://o.aolcdn.com/os/movies/movie_posters/1413499_p_m" alt="" />
-							<div class="movietitle">The Social Network</div>
-							<div class="movieinfo">
-								<span class="movierate">PG-13</span>
-								<span class="movieduration"> 134 min</span>
-							</div>
-							<div class="moviefunctions">
-								<span class="moviefunc">7:00pm</span>
-							</div>
-							<div class="watchtrailerbutton moviebutton">
-								Watch Trailer
-							</div>
-							<div class="getreviewsbutton moviebutton">
-								Get Reviews
-							</div>
-							<div class="textshowtimebutton moviebutton">
-								Text Showtime
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
+			<div id="<%= 'collapse' + i %>"class="panel-collapse collapse">
+      			<div class="panel-body">
+      				<%= theater.moviesList %>
+		      	</div>
+		    </div>
+			<% } %>
 		</div>
-	</div>
-	
-
+	</script>
+	<script type="text/html" id="movie_tpl">
+		<div class="theatremovies">
+		<% for ( var i = 0; i < movies.length; i++ ) { %>
+			<div class="moviereslt">
+				<img class="movieposter" src="<%= movies[i].posterUrl %>" alt="" />
+				<div class="movietitle"><%= movies[i].mtitle %></div>
+				<div class="movieinfo">
+					<span class="movierate"><%= movies[i].rating %></span>
+					<span class="movieduration"> <%= movies[i].duration %> min</span>
+				</div>
+				<div class="moviefunctions">
+					<span class="moviefunc"><%= movies[i].duration %> </span>
+				</div>
+				<div class="watchtrailerbutton moviebutton">
+					Watch Trailer
+				</div>
+				<div class="getreviewsbutton moviebutton">
+					Get Reviews
+				</div>
+				<div class="textshowtimebutton moviebutton">
+					Text Showtime
+				</div>
+			</div>
+		<% } %>
+		</div>
+	</script>
+	<script type="text/html" id="people_tpl">
+		<div class="peopleresult">
+			<div class="peopleelement">
+				<span class="resultname">Nicolas Nistal</span>
+				<span class="resultcontact twolineresult rightresult">
+					<div class="resultphone">(223) 633-6812</div>
+					<div class="resultmail">nistal.nicolas@gmail.com</div>
+				</span>
+				<span class="resultaddress twolineresult centerresult">
+					<div class="resultstreet">551 Montiel st.</div>
+					<div class="resultcity">Tandil,Buenos Aires, Argentina</div>
+				</span>		
+			</div>
+			<div class="peopleelement"></div>
+			<div class="peopleelement"></div>
+		</div>
+	</script>
+	<!-- end templates -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="bootstrap/js/jquery.js"></script>
+    <script src="js/underscore.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/holder.js"></script>
-	<script> window.birddoggo={}</script>
+	<script> window.birddoggo={cache:{}}</script>
     <script src="js/functions.js"></script>
     <script src="js/find.movie.js"></script>
  
