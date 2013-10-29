@@ -378,7 +378,15 @@ div.businessinput{
 .resultarea{
 	width: 810px;	
 	margin: 0 auto;
+	position: relative;
+	top: 300px;
+	-webkit-transition: top 400ms ease ;
+	-moz-transition: top 400ms ease ;
+	-ms-transition: top 400ms ease ;
+	-o-transition: top 400ms ease ;
+	transition: top 400ms ease ;
 }
+
 
 .peopleresult{
 	height: 300px;

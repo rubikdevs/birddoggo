@@ -26,7 +26,7 @@
             dom.async = false;
         }
         return dom;
-    }   
+    };
     
     $body[0].className = bodyBackgroundsClasses[0];
 	$('.search_field li').on('click', function(){
