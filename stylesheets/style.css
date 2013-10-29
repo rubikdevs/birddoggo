@@ -139,6 +139,16 @@ input, button, select, textarea{
   background-color: rgb(112,31,118);
 }
 
+.movies_background{
+	background: url('../resources/img/background4.jpg')no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(112,31,118);
+}
+
+
 body {
 	-webkit-transition:background 500ms ease;
 	-moz-transition: background 500ms ease ;
