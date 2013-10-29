@@ -148,6 +148,14 @@ input, button, select, textarea{
   background-color: rgb(112,31,118);
 }
 
+.weather_background{
+	background: url('../resources/img/background5.jpg')no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(112,31,118);
+}
 
 body {
 	-webkit-transition:background 500ms ease;
@@ -574,3 +582,60 @@ input[type=text].singleinput{
 }
 
 
+header{
+	background: url('../resources/img/background_header.png') repeat-x;
+	width: 100%;
+	height: 73px;
+	min-width: 1150px;
+	position: fixed;
+	top:0px;
+	z-index: 99999999999;
+}
+
+.headercontent{
+	width: 650px;
+	margin:0 auto;
+	height: 100%;
+	background: url('../resources/img/background_headermiddle.png') repeat-x;
+	position: relative;
+}
+
+.headerlogo{
+	color: white;
+	font-family: latolight;
+	font-size: 35px;
+	float: left;
+	margin-top: 13px;
+	margin-left: 18px;
+}
+
+.menuselection{
+	cursor: pointer;
+	float: left;
+	font-size: 35px;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+header input[type=text]{
+	height: 35px;
+	outline: 0;
+}
+
+header .searchfields div{
+	position: relative;
+	top:15px;
+}
+
+header .searchbutton{
+	top:15px;
+	right: 15px;
+}
+
+header .searchfields span {
+margin-left: 2px;
+top: -3px;
+}
+header .searchfields{
+	margin-left: 55px;
+}

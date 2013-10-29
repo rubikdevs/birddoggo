@@ -11,10 +11,42 @@
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
 
 <body class="reverse-background">
 
 
+	<header>
+		<span class="headerlogo">Birddoggo</span>
+		<div class="headercontent">
+			<span class="menuselection">
+				<i class="fa fa-user"></i>
+			</span>
+			<div class="searchfields">
+				<div class="peopleinput">
+					<input type="text" placeholder="First Name" id="firstname" />
+					<input type="text" placeholder="Last Name" id="lastname" />
+					<span>near</span>
+					<input type="text" placeholder="City, State or ZIP" class="place" />
+				</div>
+				<div class="businessinput">
+					<input type="text" placeholder="Category or name" id="bkeywords" />
+					<span>near</span>
+					<input type="text" placeholder="City, State or ZIP" class="place" />
+				</div>
+				<div class="movieinput">
+					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
+				</div>
+				<div class="weather">
+					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place" />
+				</div>
+				<div class="reverselookup">
+					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
+				</div>
+				<img class="searchbutton" src="resources/img/button_search.png" alt="">
+			</div>
+		</div>
+	</header>
 	
 	<h1 class="title">Birddoggo</h1>
 	
@@ -35,23 +67,21 @@
 					<input type="text" placeholder="First Name" id="firstname" />
 					<input type="text" placeholder="Last Name" id="lastname" />
 					<span>near</span>
-					<input type="text" placeholder="City, State, Zip Code" class="place" />
+					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
 				<div class="businessinput">
-					<input type="text" placeholder="What are you looking for ?" id="bkeywords" />
+					<input type="text" placeholder="Category or name" id="bkeywords" />
 					<span>near</span>
-					<input type="text" placeholder="City, State, Zip Code" class="place" />
+					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
 				<div class="movieinput">
-					<input type="text" placeholder="What are you looking for ?" id="mkeywords" />
-					<span>near</span>
-					<input type="text" placeholder="City, State, Zip Code" class="place"  />
+					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
 				</div>
 				<div class="weather">
-					<input type="text" class="singleinput" placeholder="City, State, Zip Code" class="place" />
+					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place" />
 				</div>
 				<div class="reverselookup">
-					<input type="text" class="singleinput" placeholder="Telephone" id="telephone" />
+					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
 				</div>
 			</div>
 			<img class="searchbutton" src="resources/img/button_search.png" alt="" />

@@ -7,7 +7,9 @@
     	bodyBackgroundsClasses = [
     		'business_background',
     		'people_background',
-    		'reverse_background'
+    		'reverse_background',
+    		'movies_background',
+    		'weather_background'
     	],
     	placeHolderArray = [
     		'Business name...',
