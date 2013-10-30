@@ -272,11 +272,11 @@ transition: border linear 0.2s, box-shadow linear 0.2s;
 	margin: 0 auto;
 	width: 600px;
 	margin-top: 75px;
-	-webkit-transition: top 100ms ease;
-	-moz-transition: top 100s ease ;
-	-ms-transition:  top 100s ease;
-	-o-transition: top 100s ease ;
-	transition: top 100s ease ;
+	-webkit-transition: visibility 250ms ease;
+	-moz-transition: visibility 250ms ease ;
+	-ms-transition:  visibility 250ms ease;
+	-o-transition: visibility 250ms ease ;
+	transition: visibility 250ms ease ;
 	margin-bottom: 70px;
 }
 
@@ -588,7 +588,12 @@ header{
 	height: 73px;
 	min-width: 1150px;
 	position: fixed;
-	top:0px;
+	top:-70px;
+	-webkit-transition: top 250ms ease-in;
+	-moz-transition: top 250ms ease-in;
+	-ms-transition: top 250ms ease-in;
+	-o-transition: top 250ms ease-in;
+	transition: top 250ms ease-in;
 	z-index: 99999999999;
 }
 
