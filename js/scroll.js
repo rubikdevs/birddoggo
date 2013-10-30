@@ -3,12 +3,12 @@
     var updatePosition = function() {
         var top = document.body.scrollTop,
             style = {};
-        if (top > 164 ) {
+        if (top > 245 ) {
             style.top = 0;
-            $('.searcharea').css('visibility','hidden');
+            $('.searcharea').css('opacity','0');
         } else {
             style.top = '-70px';
-            $('.searcharea').css('visibility','visible');
+            $('.searcharea').css('opacity','1');
         }
         $('header').css(style);
     }
