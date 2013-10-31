@@ -1,7 +1,7 @@
 
 (function() {
     var updatePosition = function() {
-        var top = document.body.scrollTop,
+        var top = document.body.scrollTop||document.documentElement.scrollTop,
             style = {};
         if (top > 245 ) {
             style.top = 0;
