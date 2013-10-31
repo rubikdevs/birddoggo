@@ -19,20 +19,26 @@
 	<header>
 		<span class="headerlogo">Birddoggo</span>
 		<div class="headercontent">
-			<span class="menuselection">
+			<span class="menuselection dropdown-toggle"  data-toggle="dropdown">
 				<i class="fa fa-user"></i>
 			</span>
+			<div class="dropdown-menu" role="menu">
+			    MARIAN
+			</div>
 			<div class="searchfields">
+				<div class="businessinput">
+					<input type="text" placeholder="Category or name" id="bkeywords" />
+					<span>near</span>
+					<input type="text" placeholder="City, State or ZIP" class="place" />
+				</div>
 				<div class="peopleinput">
 					<input type="text" placeholder="First Name" id="firstname" />
 					<input type="text" placeholder="Last Name" id="lastname" />
 					<span>near</span>
 					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
-				<div class="businessinput">
-					<input type="text" placeholder="Category or name" id="bkeywords" />
-					<span>near</span>
-					<input type="text" placeholder="City, State or ZIP" class="place" />
+				<div class="reverselookup">
+					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
 				</div>
 				<div class="movieinput">
 					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
@@ -40,9 +46,7 @@
 				<div class="weather">
 					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place" />
 				</div>
-				<div class="reverselookup">
-					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
-				</div>
+				
 				<img class="searchbutton" src="resources/img/button_search.png" alt="">
 			</div>
 		</div>
@@ -63,14 +67,14 @@
 		
 		<div class="transparent-white order">
 			<div class="searchfields">
-				<div class="peopleinput">
-					<input type="text" placeholder="First Name" id="firstname" />
-					<input type="text" placeholder="Last Name" id="lastname" />
+				<div class="businessinput active">
+					<input type="text" placeholder="Category or name" id="bkeywords" />
 					<span>near</span>
 					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
-				<div class="businessinput">
-					<input type="text" placeholder="Category or name" id="bkeywords" />
+				<div class="peopleinput">
+					<input type="text" placeholder="First Name" id="firstname" />
+					<input type="text" placeholder="Last Name" id="lastname" />
 					<span>near</span>
 					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
@@ -78,7 +82,7 @@
 					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
 				</div>
 				<div class="weather">
-					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place" />
+					<input type="text" class="singleinput" placeholder="City, State, Country" class="place" />
 				</div>
 				<div class="reverselookup">
 					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
@@ -88,14 +92,15 @@
 		</div>
 		
 	</div>
-	<div style="height:1000px;top:0;background-color:rgba(230,230,230,.9);"class="resultarea">
-		<span class="searchtip">Showing results for Nicolas ...</span>
-		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603"> </iframe>
+	<div style="background-color:rgba(230,230,230,.9);"class="resultarea">
+		
 	</div>
 
 	<!-- templates -->
 	<!-- ================================================== -->
-
+	<script type="text/html" id="weather_tpl">
+		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> </iframe>
+	</script>
 	<script type="text/html" id="theater_tpl">
 		
 		<div class="movieresult">
@@ -191,12 +196,17 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="bootstrap/js/jquery.js"></script>
     <script src="js/underscore.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNQHzUh6u92HRnNkAQTrfZrT2PlXVedU&sensor=false">
+    </script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/holder.js"></script>
 	<script> window.birddoggo={cache:{}}</script>
-    <script src="js/functions.js"></script>
+    <script src="js/find.weather.js"></script>
     <script src="js/find.movie.js"></script>
     <script src="js/scroll.js"></script>
+    <script src="js/functions.js"></script>
+
  
 </body>
 

@@ -290,8 +290,9 @@ transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 h1.title{
 	text-align: center;
-	font-size: 40px;
 	font-weight: bold;
+	letter-spacing:-3px;
+	font-size: 90px;
 	margin-top: 50px;
 	font-family: latolight;
 	color: white;

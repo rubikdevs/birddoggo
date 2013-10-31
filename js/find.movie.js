@@ -71,7 +71,7 @@
 		}
 		templateCache['theater_tpl'] = templateCache['theater_tpl'] || $('#theater_tpl').html();
 		var theatherHTML = _.template(templateCache['theater_tpl'], {theatersData: theatersData});
-		$resultArea.append(theatherHTML);
+		$resultArea.html(theatherHTML);
 		$resultArea.css('top','0');
 
 	};
