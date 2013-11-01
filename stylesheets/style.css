@@ -321,7 +321,7 @@ h1.title{
 	width: 100%;
 	box-shadow: 1px 1px 1px rgba(135,135,135,0.8);
 	position: fixed;
-	top:0px;
+	top:0px !important;
 	
 }
 
@@ -590,7 +590,6 @@ header{
 	height: 73px;
 	min-width: 1150px;
 	position: fixed;
-	top:-70px;
 	-webkit-transition: top 100ms ease-in;
 	-moz-transition: top 100ms ease-in;
 	-ms-transition: top 100ms ease-in;
@@ -619,8 +618,8 @@ header{
 .menuselection{
 	cursor: pointer;
 	float: left;
-	font-size: 35px;
-	margin-top: 15px;
+	font-size: 30px;
+	margin-top: 18px;
 	margin-left: 15px;
 }
 
@@ -645,4 +644,52 @@ top: -3px;
 }
 header .searchfields{
 	margin-left: 55px;
+}
+
+.bdg-dropdown{
+	width: 209px;
+	border:2px solid #212121;
+	background: #2a2926;
+	padding: 0px;
+	-webkit-box-shadow: 2px 2px 10px black;
+	-moz-box-shadow: 2px 2px 10px black;
+	box-shadow: 2px 2px 10px black
+}
+.triangulito{
+	background: url('../resources/img/dropdown_triangle.png') no-repeat;
+	width: 30px;
+	height: 13px;
+	top: -13px;
+	left: 13px;
+	position: absolute;
+	
+}
+.dropdown-menu{
+	margin: 10px 0 0 !important;
+}
+.dropicon{
+	color: white;
+	font-size: 30px;
+}
+.dropoption span{
+	float: left;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+.dropoption{
+	clear:left;
+	height: 52px;
+	background: url('../resources/img/background_dropoption.png') no-repeat;
+	width: 205px;
+	cursor: pointer;
+}
+.droptitle{
+	font-family:latobold;
+	font-size: 16px;
+	color: white;
+}
+span.dropinfo div.dropdescription{
+	font-family: latobold;
+	font-size: 14px;
+	color: gray
 }
