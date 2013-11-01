@@ -78,6 +78,7 @@
             case 'peopleinput':
                   break;  
             case 'reverselookup':
+                  Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
             case 'movieinput':
                   Birddoggo.findMovie($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
@@ -93,4 +94,6 @@
             Birddoggo.search();
         }
     });
+
+    $body.addClass('business_background');
 }(window.birddoggo));

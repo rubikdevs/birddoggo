@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" charset="UTF-8"><head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
 	<script>
 	//<![CDATA[
-		for(var i=1;i<6;++i) {var a=new Image;a.src='resources/img/background'+i+'.jpg';}	//]]>
+		for(var i=1;i<6;++i) {var a=new Image;a.src='resources/img/background'+i+'.jpg';}
+	//]]>
 	</script>
-<body class="reverse-background">
+<body>
 
 
 	<header>
@@ -41,16 +42,16 @@
 					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
 				<div class="reverselookup">
-					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
+					<input type="text" class="singleinput" placeholder="Phone number" id="telephone"/>
 				</div>
 				<div class="movieinput">
-					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
+					<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
 				</div>
 				<div class="weather">
-					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place" />
+					<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
 				</div>
 				
-				<img width="50px" height="35px" class="searchbutton" src="resources/img/button_search.png" alt="">
+				<img width="50" height="35" class="searchbutton" src="resources/img/button_search.png" alt="">
 			</div>
 		</div>
 	</header>
@@ -91,7 +92,7 @@
 					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
 				</div>
 			</div>
-			<img width="50px" height="35px" class="searchbutton" src="resources/img/button_search.png" alt="" />
+			<img width="50" height="35" class="searchbutton" src="resources/img/button_search.png" alt="" />
 		</div>
 		
 	</div>
@@ -178,18 +179,15 @@
 	<script type="text/html" id="people_tpl">
 		<div class="peopleresult">
 			<div class="peopleelement">
-				<span class="resultname">Nicolas Nistal</span>
+				<span class="resultname"><%= person.pname %></span>
 				<span class="resultcontact twolineresult rightresult">
-					<div class="resultphone">(223) 633-6812</div>
-					<div class="resultmail">nistal.nicolas@gmail.com</div>
+					<div class="resultphone"><%= person.phone %></div>
 				</span>
 				<span class="resultaddress twolineresult centerresult">
-					<div class="resultstreet">551 Montiel st.</div>
-					<div class="resultcity">Tandil,Buenos Aires, Argentina</div>
+					<div class="resultstreet"><%= person.address.fullstreet %></div>
+					<div class="resultcity"><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></div>
 				</span>		
 			</div>
-			<div class="peopleelement"></div>
-			<div class="peopleelement"></div>
 		</div>
 	</script>
 	<!-- end templates -->
@@ -200,13 +198,17 @@
     <script src="bootstrap/js/jquery.js"></script>
     <script src="js/underscore.js"></script>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNQHzUh6u92HRnNkAQTrfZrT2PlXVedU&sensor=false">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNQHzUh6u92HRnNkAQTrfZrT2PlXVedU&amp;sensor=false">
     </script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/holder.js"></script>
-	<script> window.birddoggo={cache:{}}</script>
+	<script>//<![CDATA[
+ 		window.birddoggo={cache:{}}
+ 		//]]>
+ 	</script>
     <script src="js/find.weather.js"></script>
     <script src="js/find.movie.js"></script>
+    <script src="js/lookup.phone.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/functions.js"></script>
 

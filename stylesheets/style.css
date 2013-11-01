@@ -590,7 +590,7 @@ header{
 	height: 73px;
 	min-width: 1150px;
 	position: fixed;
-	top:0px;
+	top:-70px;
 	-webkit-transition: top 100ms ease-in;
 	-moz-transition: top 100ms ease-in;
 	-ms-transition: top 100ms ease-in;
