@@ -5,8 +5,6 @@
 	Birddoggo.cache.weatherTPL = Birddoggo.cache.weatherTPL || $('#weather_tpl').html();
 
  	Birddoggo.findWeather = function(field) {	
-
- 		debugger;
  		var weatherHTML,
  			$resultArea = Birddoggo.cache.resultArea;
 	 	Birddoggo.geocoder.geocode( { 'address':field}, function(results, status) {

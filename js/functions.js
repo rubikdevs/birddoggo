@@ -30,15 +30,43 @@
 
     //XML Parser
 
-    /*birddoggo.showPosition = function (position) {
-        birddoggo.coords = { 
+    Birddoggo.getAddress = function () {
+
+        var latlng = new google.maps.LatLng( birddoggo.coords.lat, birddoggo.coords.lon),
+            placeInputValue = '';
+        Birddoggo.address = {
+        };
+        Birddoggo.geocoder.geocode({ 'latLng': latlng, 'region': 'US' }, function (results, status) {
+            $.map( results[0].address_components, function(item) {
+                $.map(item.types, function(type) {
+                    Birddoggo.address[type] = item.short_name;
+                    return false;
+                });
+                if (Birddoggo.address.postal_code) {
+                    placeInputValue = Birddoggo.address.postal_code;
+                } else if (Birddoggo.address.locality) {
+                    placeInputValue = Birddoggo.address.locality + ', ' +
+                                        Birddoggo.address.administrative_area_level_1 ; 
+                } 
+
+                $('input.place').each(function(){
+                    $(this).val(placeInputValue);
+                });
+
+            });
+        });
+    };
+   
+
+    Birddoggo.showPosition = function (position) {
+        Birddoggo.coords = { 
             lat: position.coords.latitude,
             lon: position.coords.longitude
         };
-        console.log(birddoggo.coords);
+         Birddoggo.getAddress(); 
     };
 
-    birddoggo.getLocation = function () {
+    Birddoggo.getLocation = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(birddoggo.showPosition);
         }
@@ -47,7 +75,7 @@
         }
     };
         
-    birddoggo.getLocation();*/
+    Birddoggo.getLocation();
     Birddoggo.geocoder = new google.maps.Geocoder();
 
    
