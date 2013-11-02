@@ -24,24 +24,24 @@
 		<span class="headerlogo">Birddoggo</span>
 		<div class="headercontent">
 			<span class="menuselection dropdown-toggle"  data-toggle="dropdown">
-				<i class="fa fa-user"></i>
+				<i class="fa fa-building businessinput active"></i>
 			</span>
 			
 			<div class="dropdown-menu bdg-dropdown" role="menu">
 			    <div class="triangulito"></div>
-			    <ul class="dropoptions">
+			    <ul class="dropoptions search_field">
+			    	<li class="dropoption">
+					    <span class="dropicon"><i class="fa fa-building"></i></span>
+					    <span class="dropinfo">
+					    	<div class="droptitle">Business</div>
+					    	<div class="dropdescription">Category or Name</div>
+					    </span>
+				    </li>
 				    <li class="dropoption">
 					    <span class="dropicon"><i class="fa fa-user"></i></span>
 					    <span class="dropinfo">
 					    	<div class="droptitle">People</div>
 					    	<div class="dropdescription">First & Last Name</div>
-					    </span>
-				    </li>
-				    <li class="dropoption">
-					    <span class="dropicon"><i class="fa fa-building"></i></span>
-					    <span class="dropinfo">
-					    	<div class="droptitle">Business</div>
-					    	<div class="dropdescription">Category or Name</div>
 					    </span>
 				    </li>
 				    <li class="dropoption">
@@ -90,8 +90,10 @@
 					<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
 				</div>
 				
-				<img width="50" height="35" class="searchbutton" src="resources/img/button_search.png" alt="">
+				
+				
 			</div>
+			<div class="searchbutton"><i class="fa fa-search"></i></div>
 		</div>
 	</header>
 	
@@ -100,11 +102,25 @@
 	<div class="searcharea">
 		<div class="navback">
 			<ul class="search_field">
-				<li class="color_trans clickable active">Business</li>
-				<li class="color_trans clickable">People</li>
-				<li class="color_trans clickable">Reverse Lookup</li>
-				<li class="color_trans clickable">Movies</li>
-				<li class="color_trans clickable">Weather</li>
+				
+				
+				
+				
+				<li class="color_trans clickable active">
+					<i class="fa fa-building businessinput"></i>&nbsp;Business
+				</li>
+				<li class="color_trans clickable">
+					<i class="fa fa-user peopleinput"></i>&nbsp;People
+				</li>
+				<li class="color_trans clickable">
+					<i class="fa fa-phone reverselookup"></i>&nbsp;Reverse Lookup
+				</li>
+				<li class="color_trans clickable">
+					<i class="fa fa-film movieinput"></i>&nbsp;Movies
+				</li>
+				<li class="color_trans clickable">
+					<i class="fa fa-sun-o weather"></i>&nbsp;Weather
+				</li>
 			</ul>
 		</div>
 		
@@ -131,7 +147,7 @@
 					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
 				</div>
 			</div>
-			<img width="50" height="35" class="searchbutton" src="resources/img/button_search.png" alt="" />
+			<div class="searchbutton"><i class="fa fa-search"></i></div>
 		</div>
 		
 	</div>

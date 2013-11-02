@@ -19,6 +19,13 @@
             '.weather'
             
     	],
+		icons = [
+			'<i class="fa fa-building  active "></i>',
+			'<i class="fa fa-user active"></i>',
+			'<i class="fa fa-phone active"></i>',
+			'<i class="fa fa-film active"></i>',
+			'<i class="fa fa-sun-o  active"></i>'
+		],
         parser =  new DOMParser();
 
     //XML Parser
@@ -57,17 +64,18 @@
     
     $body[0].className = bodyBackgroundsClasses[0];
 	$('.search_field li').on('click', function(){
-	    var $el = $(this);
-		if ($el.hasClass('active')) {
-			return ;
-		}
+         var $el = $(this);
+         if ($el.hasClass('active')) {
+              return ;
+         }
 
-		$('.search_field li.active').removeClass('active');
-		$el.addClass('active');
-		$body[0].className = bodyBackgroundsClasses[$el.index()];
+        $('.search_field li.active').removeClass('active');
+        $('.navback .search_field li').eq($el.index()).addClass('active');
+        $body[0].className = bodyBackgroundsClasses[$el.index()];
         $('.searchfields > div').css('display','none').removeClass('active');
-        $(searchFields[$el.index()]).css('display','block').addClass('active');
-		
+        $(searchFields[$el.index()]).css('display','inline').addClass('active');
+        $('.menuselection').html(icons[$el.index()]);      
+			
 	});
 
     Birddoggo.search = function() {

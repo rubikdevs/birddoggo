@@ -117,7 +117,7 @@ input, button, select, textarea{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(112,31,118);
+   background-color: #1e1e1e;
 }
 
 .people_background{
@@ -127,7 +127,8 @@ input, button, select, textarea{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(112,31,118);
+  background-color: #1e1e1e;
+
 }
 
 .reverse_background{
@@ -137,7 +138,8 @@ input, button, select, textarea{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(112,31,118);
+   background-color: #1e1e1e;
+
 }
 
 .movies_background{
@@ -146,7 +148,8 @@ input, button, select, textarea{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(112,31,118);
+  background-color: #1e1e1e;
+
 }
 
 .weather_background{
@@ -155,7 +158,8 @@ input, button, select, textarea{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(112,31,118);
+  background-color: #1e1e1e;
+
 }
 
 body {
@@ -196,11 +200,18 @@ position: relative;
 	right: 11px;
 	top: 11px;
 	cursor: pointer;
+	background: #333333;
+	width: 50px;
+	height: 35px;
+	color: white;
+	padding-left: 13px;
+	padding-top: 5px;
+	font-size: 25px;
 }
 
 .navback{
 	background: url('../resources/img/background_options.png') repeat-x;
-	width: 450px;
+	width: 500px;
 	height: 36px;
 	position: relative;
 	-webkit-box-shadow: 1px 1px 2px #555;
@@ -321,7 +332,6 @@ h1.title{
 	width: 100%;
 	box-shadow: 1px 1px 1px rgba(135,135,135,0.8);
 	position: fixed;
-	top:0px !important;
 	
 }
 
@@ -589,6 +599,7 @@ header{
 	width: 100%;
 	height: 73px;
 	min-width: 1150px;
+	top: -70px;
 	position: fixed;
 	-webkit-transition: top 100ms ease-in;
 	-moz-transition: top 100ms ease-in;
@@ -692,4 +703,13 @@ span.dropinfo div.dropdescription{
 	font-family: latobold;
 	font-size: 14px;
 	color: gray
+}
+span.menuselection i{
+	display: none;
+}
+span.menuselection i.active{
+	display: block;
+}
+div.searchbutton:hover{
+	background: #3c3c3c;
 }
