@@ -153,10 +153,11 @@
 		</div>
 		
 	</div>
-	<div style="background-color:rgba(230,230,230,.9);"class="resultarea">
-	<div class="noresults">
-			<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
-		</div>
+	<div style="background-color:rgba(230,230,230,.9);"class="resultarea"></div>
+
+	<!-- templates -->
+	<!-- ================================================== -->
+	<script type="text/html" id="loading_tpl">
 		<div class="loading">
 			<span class="loading_title">Searching</span>
 			<span class="l-1"></span>
@@ -166,13 +167,12 @@
 			<span class="l-5"></span>
 			<span class="l-6"></span>
 		</div>
-		
-		
-		
-	</div>
-
-	<!-- templates -->
-	<!-- ================================================== -->
+	</script>
+	<script type="text/html" id="noresults_tpl">
+		<div class="noresults">
+				<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
+		</div>
+	</script>
 	<script type="text/html" id="weather_tpl">
 		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> </iframe>
 	</script>

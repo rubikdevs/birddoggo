@@ -107,6 +107,7 @@
 	});
 
     Birddoggo.search = function() {
+        
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
@@ -124,12 +125,14 @@
                   break;  
         }
     } ;
+    $('.searchbutton').click(Birddoggo.search);
     $('.searchfields input').on('keyup', function(ev){
         var key = ev.keyCode || ev.which;
         if (key === 13) {
             Birddoggo.search();
         }
     });
+
 
     $body.addClass('business_background');
 }(window.birddoggo));

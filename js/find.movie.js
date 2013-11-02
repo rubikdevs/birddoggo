@@ -1,12 +1,15 @@
 
-( function(birddoggo) {
+( function(Birddoggo) {
 
 	var URL = 'services/movie-service.php';
 
 	var templateCache = [];
 
 	
-	birddoggo.cache.resultArea = birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.resultArea = birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
+
 	var $resultArea = birddoggo.cache.resultArea;
 	
 
@@ -32,7 +35,9 @@
 		
 
 		if (!resultArray) {
+			$resultArea.html(Birddoggo.cache.noresultsHTML);
 			return 'No results';
+
 		}
 
 		templateCache['movie_tpl'] = templateCache['movie_tpl'] || $('#movie_tpl').html();
@@ -75,7 +80,9 @@
 		$resultArea.css('top','0');
 
 	};
-	birddoggo.findMovie = function(params) {
+	Birddoggo.findMovie = function(params) {
+		$resultArea.css('top','0');
+		$resultArea.html(Birddoggo.cache.loadingHTML);
 		$.ajax({
 			url: URL,
 			data: {
