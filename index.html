@@ -240,7 +240,7 @@
 		<div class="theatremovies">
 		<% for ( var i = 0; i < movies.length; i++ ) { %>
 			<div class="moviereslt">
-				<img class="movieposter" src="<%= movies[i].posterUrl %>" alt="" />
+				<img class="movieposter poster<%= movies[i].movieId %>"/>
 				<div class="movietitle"><%= movies[i].mtitle %></div>
 				<div class="movieinfo">
 					<span class="movierate"><%= movies[i].rating %></span>

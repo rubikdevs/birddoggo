@@ -18,6 +18,21 @@
 		moviesshow.mtitle = currentShowing.movieTitle;
 		moviesshow.rating = currentShowing.movieRating;
 		moviesshow.duration = currentShowing.runtime;
+		moviesshow.movieId = currentShowing.movieId;
+		var movieImg ;
+		$.ajax({
+			async:true,
+			url:'services/image-service.php',
+			dataType: 'text',
+			data: {
+				id: currentShowing.movieId,
+			},
+			success: function(resp) {
+				$('.poster'+currentShowing.movieId).attr('src',resp);
+
+			}
+		});
+		
 		showingsData.push(moviesshow);		
 	};
 
