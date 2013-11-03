@@ -25,20 +25,44 @@
 			'<i class="fa fa-phone active"></i>',
 			'<i class="fa fa-film active"></i>',
 			'<i class="fa fa-sun-o  active"></i>'
-		],
-        parser =  new DOMParser();
+		];
+    Birddoggo.getAddress = function () {
 
-    //XML Parser
+        var latlng = new google.maps.LatLng( birddoggo.coords.lat, birddoggo.coords.lon),
+            placeInputValue = '';
+        Birddoggo.address = {
+        };
+        Birddoggo.geocoder.geocode({ 'latLng': latlng, 'region': 'US' }, function (results, status) {
+            $.map( results[0].address_components, function(item) {
+                $.map(item.types, function(type) {
+                    Birddoggo.address[type] = item.short_name;
+                    return false;
+                });
+                if (Birddoggo.address.postal_code) {
+                    placeInputValue = Birddoggo.address.postal_code;
+                } else if (Birddoggo.address.locality) {
+                    placeInputValue = Birddoggo.address.locality + ', ' +
+                                        Birddoggo.address.administrative_area_level_1 ; 
+                } 
 
-    /*birddoggo.showPosition = function (position) {
-        birddoggo.coords = { 
+                $('input.place').each(function(){
+                    $(this).val(placeInputValue);
+                });
+
+            });
+        });
+    };
+   
+
+    Birddoggo.showPosition = function (position) {
+        Birddoggo.coords = { 
             lat: position.coords.latitude,
             lon: position.coords.longitude
         };
-        console.log(birddoggo.coords);
+         Birddoggo.getAddress(); 
     };
 
-    birddoggo.getLocation = function () {
+    Birddoggo.getLocation = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(birddoggo.showPosition);
         }
@@ -47,20 +71,8 @@
         }
     };
         
-    birddoggo.getLocation();*/
+    Birddoggo.getLocation();
     Birddoggo.geocoder = new google.maps.Geocoder();
-
-   
-    Birddoggo.parseXml = function (xml) {
-        var dom = null;
-        if (window.DOMParser) {
-            dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
-        } else if (window.ActiveXObject) {
-            dom = new ActiveXObject('Microsoft.XMLDOM');
-            dom.async = false;
-        }
-        return dom;
-    };
     
     $body[0].className = bodyBackgroundsClasses[0];
 	$('.search_field li').on('click', function(){
@@ -79,11 +91,13 @@
 	});
 
     Birddoggo.search = function() {
+
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
                   break;  
             case 'peopleinput':
+                  Birddoggo.findPeople($('header .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'reverselookup':
                   Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
@@ -96,12 +110,14 @@
                   break;  
         }
     } ;
+    $('.searchbutton').click(Birddoggo.search);
     $('.searchfields input').on('keyup', function(ev){
         var key = ev.keyCode || ev.which;
         if (key === 13) {
             Birddoggo.search();
         }
     });
+
 
     $body.addClass('business_background');
 }(window.birddoggo));

@@ -3,24 +3,34 @@
 (function(Birddoggo) {
 	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
 	Birddoggo.cache.weatherTPL = Birddoggo.cache.weatherTPL || $('#weather_tpl').html();
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 
- 	Birddoggo.findWeather = function(field) {	
 
- 		debugger;
- 		var weatherHTML,
- 			$resultArea = Birddoggo.cache.resultArea;
-	 	Birddoggo.geocoder.geocode( { 'address':field}, function(results, status) {
-	        if (status == google.maps.GeocoderStatus.OK) {
-	            Birddoggo.coords = { 
-	                lat: results[0].geometry.location.lb,
-	                lon: results[0].geometry.location.mb
-	            };
-	           	weatherHTML = Birddoggo.cache.weatherTPL
+ 	Birddoggo.findWeather = function(field) {
+ 		$resultArea = Birddoggo.cache.resultArea;
+ 		$resultArea.css('top','0');
+		$resultArea.html(Birddoggo.cache.loadingHTML);
+		
+	 	Birddoggo.geocoder.geocode({ 'address':field}, function(results, status) {
+			try {	
+					var weatherHTML;
+	        	if (status == google.maps.GeocoderStatus.OK) {
+	            	Birddoggo.coords = { 
+	                	lat: results[0].geometry.location.lb,
+	                	lon: results[0].geometry.location.mb
+	            	};
+	           		weatherHTML = Birddoggo.cache.weatherTPL
 	           					.replace('{lat}', results[0].geometry.location.lb)
 	           					.replace('{lon}', results[0].geometry.location.mb);
-	            $resultArea.html(weatherHTML);
-				$resultArea.css('top','0');
-	        }	        
-	    });
+	            	$resultArea.html(weatherHTML);
+					$resultArea.css('top','0');
+	 			} else {
+	 				$resultArea.html(Birddoggo.cache.noresultsHTML);
+	 			}
+	 		} catch(e) {
+	 			$resultArea.html(Birddoggo.cache.noresultsHTML);
+	 		}	
+	 	});
 	};
 }(window.birddoggo));

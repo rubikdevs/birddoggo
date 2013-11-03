@@ -12,6 +12,8 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/style.css" />
     <link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="stylesheets/loading.css" />
+    
 	<script>
 	//<![CDATA[
 		for(var i=1;i<6;++i) {var a=new Image;a.src='resources/img/background'+i+'.jpg';}
@@ -68,7 +70,7 @@
 			    </ul>
 			    
 			</div>
-			<div class="searchfields">
+			<div class="headerfields searchfields">
 				<div class="businessinput">
 					<input type="text" placeholder="Category or name" id="bkeywords" />
 					<span>near</span>
@@ -97,7 +99,30 @@
 		</div>
 	</header>
 	
-	<h1 class="title"><img src="resources/img/bdg_logo.png" alt="bdg_logo" width="400px" height="auto"></h1>
+	<h1 class="title"><img src="resources/img/bdg_logo.png" alt="bdg_logo" width="500px" height="auto"></h1>
+	
+	
+	<div class="gettheapps">
+		<h3>Available on</h3>
+		<div>
+			<span>
+				<span>
+					<a href="https://itunes.apple.com/us/app/whitepages-yellowpages-birddoggo/id695162804?mt=8">
+						<span class="appstoreb"></span>
+					</a>
+					
+				</span>
+				<span>
+					<a href="https://play.google.com/store/apps/details?id=com.choicedirectory.android.cdls">
+						<img alt="Android app on Google Play" style="height:47px;"
+							 src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+					</a>
+				</span>
+			</span>
+			
+		</div>
+	</div>
+	
 	
 	<div class="searcharea">
 		<div class="navback">
@@ -125,7 +150,7 @@
 		</div>
 		
 		<div class="transparent-white order">
-			<div class="searchfields">
+			<div class="bodyfields searchfields">
 				<div class="businessinput active">
 					<input type="text" placeholder="Category or name" id="bkeywords" />
 					<span>near</span>
@@ -137,26 +162,40 @@
 					<span>near</span>
 					<input type="text" placeholder="City, State or ZIP" class="place" />
 				</div>
-				<div class="movieinput">
-					<input type="text" class="singleinput" placeholder="City, State or ZIP" class="place"  />
-				</div>
-				<div class="weather">
-					<input type="text" class="singleinput" placeholder="City, State, Country" class="place" />
-				</div>
 				<div class="reverselookup">
 					<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
+				</div>
+				<div class="movieinput">
+					<input type="text" class="singleinput place" placeholder="City, State or ZIP"  />
+				</div>
+				<div class="weather">
+					<input type="text" class="singleinput place" placeholder="City, State, Country" />
 				</div>
 			</div>
 			<div class="searchbutton"><i class="fa fa-search"></i></div>
 		</div>
 		
 	</div>
-	<div style="background-color:rgba(230,230,230,.9);"class="resultarea">
-		
-	</div>
+	<div class="resultarea"></div>
 
 	<!-- templates -->
 	<!-- ================================================== -->
+	<script type="text/html" id="loading_tpl">
+		<div class="loading">
+			<span class="loading_title">Searching</span>
+			<span class="l-1"></span>
+			<span class="l-2"></span>
+			<span class="l-3"></span>
+			<span class="l-4"></span>
+			<span class="l-5"></span>
+			<span class="l-6"></span>
+		</div>
+	</script>
+	<script type="text/html" id="noresults_tpl">
+		<div class="noresults">
+				<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
+		</div>
+	</script>
 	<script type="text/html" id="weather_tpl">
 		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> </iframe>
 	</script>
@@ -165,15 +204,7 @@
 		<div class="movieresult">
 			<div class="movieheader">
 				<div class="movielocation">
-					Showtimes in <span>Stowe, VT</span>
-				</div>
-				<div class="locationoptions">
-					<div class="theatreoptions">
-						<span class="theatresearch">All theatres</span><span class="flechita"> &#812;</span>
-					</div>
-					<div class="distanceoptions">
-						<span class="distancesearch">25 miles</span><span class="flechita"> &#812;</span>
-					</div>
+					Showtimes in <span> <%= theatersData[0].city %>, <%= theatersData[0].state %></span>
 				</div>
 			</div>
 			<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>
@@ -192,7 +223,7 @@
 							<span class="theatretelephone"><%= theater.phone || ''%></span>
 						</div>
 						<div class="getdirectionsbutton">
-							Get Directions
+							<a href="https://maps.google.co.uk/maps?q=<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>" target="_blank"> Get Directions</a>
 						</div>
 					</div>
 				</div>
@@ -209,7 +240,7 @@
 		<div class="theatremovies">
 		<% for ( var i = 0; i < movies.length; i++ ) { %>
 			<div class="moviereslt">
-				<img class="movieposter" src="<%= movies[i].posterUrl %>" alt="" />
+				<img class="movieposter poster<%= movies[i].movieId %>"/>
 				<div class="movietitle"><%= movies[i].mtitle %></div>
 				<div class="movieinfo">
 					<span class="movierate"><%= movies[i].rating %></span>
@@ -232,7 +263,8 @@
 		</div>
 	</script>
 	<script type="text/html" id="people_tpl">
-		<div class="peopleresult">
+			<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
+
 			<div class="peopleelement">
 				<span class="resultname"><%= person.pname %></span>
 				<span class="resultcontact twolineresult rightresult">
@@ -243,7 +275,8 @@
 					<div class="resultcity"><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></div>
 				</span>		
 			</div>
-		</div>
+		<% } %>
+
 	</script>
 	<!-- end templates -->
 
@@ -264,6 +297,7 @@
     <script src="js/find.weather.js"></script>
     <script src="js/find.movie.js"></script>
     <script src="js/lookup.phone.js"></script>
+    <script src="js/find.people.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/functions.js"></script>
 
