@@ -263,7 +263,8 @@
 		</div>
 	</script>
 	<script type="text/html" id="people_tpl">
-		<div class="peopleresult">
+			<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
+
 			<div class="peopleelement">
 				<span class="resultname"><%= person.pname %></span>
 				<span class="resultcontact twolineresult rightresult">
@@ -274,7 +275,8 @@
 					<div class="resultcity"><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></div>
 				</span>		
 			</div>
-		</div>
+		<% } %>
+
 	</script>
 	<!-- end templates -->
 
@@ -295,6 +297,7 @@
     <script src="js/find.weather.js"></script>
     <script src="js/find.movie.js"></script>
     <script src="js/lookup.phone.js"></script>
+    <script src="js/find.people.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/functions.js"></script>
 

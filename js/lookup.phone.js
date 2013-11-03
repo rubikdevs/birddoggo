@@ -16,20 +16,23 @@
 		$resultArea.html(Birddoggo.cache.noresultsHTML);
 	});
 
-	var renderPerson = function(response) {
+	Birddoggo.renderPerson = function(response) {
 		try {
-			var person = {};  
-			var listings = JSON.parse(response).listings;
+			var listings = JSON.parse(response).listings,
+				persons = [];
 			if ( listings && listings[0] && listings[0].displayname ) {
-				person.address = listings[0].address;
-				person.pname = listings[0].displayname;
-				person.phone =  $('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val();
-		         
+				for( var i = 0; i < listings.length; ++i ) { 
+					var person = {};  
+						person.address = listings[i].address;
+						person.pname = listings[i].displayname;
+						person.phone =  $('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val();
+				        persons.push(person);
+				}
 			} else if(JSON.parse(response).errors.length) {
 				$resultArea.html(Birddoggo.cache.noresultsHTML);
 				return;
 			}
-			var resulthtml = _.template(Birddoggo.cache.personTPL, {person:person});
+			var resulthtml = _.template(Birddoggo.cache.personTPL, {persons:persons});
 			$resultArea.html(resulthtml || Birddoggo.cache.noresultsHTML);
 			$resultArea.css('top','0');
 		} catch(e) {
@@ -47,7 +50,7 @@
 			dataType : 'JSON',
 			type: 'GET',
 
-			success: renderPerson,
+			success: Birddoggo.renderPerson,
 			error: function(err,msg) {
 				console.log(err.url);
 				console.log(msg)
