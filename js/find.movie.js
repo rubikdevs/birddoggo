@@ -39,7 +39,7 @@
 			return 'No results';
 
 		}
-
+		try {
 		templateCache['movie_tpl'] = templateCache['movie_tpl'] || $('#movie_tpl').html();
 		resultCount = resultArray.length;
 		for( ; resultIndex < resultCount; ++resultIndex ) {
@@ -78,6 +78,10 @@
 		var theatherHTML = _.template(templateCache['theater_tpl'], {theatersData: theatersData});
 		$resultArea.html(theatherHTML);
 		$resultArea.css('top','0');
+
+		} catch(e) {
+			$resultArea.html(Birddoggo.cache.noresultsHTML);
+		}
 
 	};
 	Birddoggo.findMovie = function(params) {

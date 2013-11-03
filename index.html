@@ -181,15 +181,7 @@
 		<div class="movieresult">
 			<div class="movieheader">
 				<div class="movielocation">
-					Showtimes in <span>Stowe, VT</span>
-				</div>
-				<div class="locationoptions">
-					<div class="theatreoptions">
-						<span class="theatresearch">All theatres</span><span class="flechita"> &#812;</span>
-					</div>
-					<div class="distanceoptions">
-						<span class="distancesearch">25 miles</span><span class="flechita"> &#812;</span>
-					</div>
+					Showtimes in <span> <%= theatersData[0].city %>, <%= theatersData[0].state %></span>
 				</div>
 			</div>
 			<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>

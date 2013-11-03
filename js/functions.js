@@ -25,11 +25,7 @@
 			'<i class="fa fa-phone active"></i>',
 			'<i class="fa fa-film active"></i>',
 			'<i class="fa fa-sun-o  active"></i>'
-		],
-        parser =  new DOMParser();
-
-    //XML Parser
-
+		];
     Birddoggo.getAddress = function () {
 
         var latlng = new google.maps.LatLng( birddoggo.coords.lat, birddoggo.coords.lon),
@@ -77,18 +73,6 @@
         
     Birddoggo.getLocation();
     Birddoggo.geocoder = new google.maps.Geocoder();
-
-   
-    Birddoggo.parseXml = function (xml) {
-        var dom = null;
-        if (window.DOMParser) {
-            dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
-        } else if (window.ActiveXObject) {
-            dom = new ActiveXObject('Microsoft.XMLDOM');
-            dom.async = false;
-        }
-        return dom;
-    };
     
     $body[0].className = bodyBackgroundsClasses[0];
 	$('.search_field li').on('click', function(){
@@ -107,7 +91,7 @@
 	});
 
     Birddoggo.search = function() {
-        
+
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
