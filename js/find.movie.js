@@ -18,6 +18,21 @@
 		moviesshow.mtitle = currentShowing.movieTitle;
 		moviesshow.rating = currentShowing.movieRating;
 		moviesshow.duration = currentShowing.runtime;
+		moviesshow.movieId = currentShowing.movieId;
+		var movieImg ;
+		$.ajax({
+			async:true,
+			url:'services/image-service.php',
+			dataType: 'text',
+			data: {
+				id: currentShowing.movieId,
+			},
+			success: function(resp) {
+				$('.poster'+currentShowing.movieId).attr('src',resp);
+
+			}
+		});
+		
 		showingsData.push(moviesshow);		
 	};
 
@@ -51,6 +66,7 @@
  		theatersArray = theatersArray || resultArray.theater;
 		theatersCount = theatersArray.length;
 		for(theaterIndex = 0; theaterIndex < theatersCount; ++theaterIndex) {
+			showingsData = [];
 			var theaterRespObj = theatersArray[theaterIndex],
 				showingIndex = 0, 
 				showingCount = theaterRespObj.showings.showing && theaterRespObj.showings.showing.length;

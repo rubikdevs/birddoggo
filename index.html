@@ -223,7 +223,7 @@
 							<span class="theatretelephone"><%= theater.phone || ''%></span>
 						</div>
 						<div class="getdirectionsbutton">
-							Get Directions
+							<a href="https://maps.google.co.uk/maps?q=<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>" target="_blank"> Get Directions</a>
 						</div>
 					</div>
 				</div>
@@ -240,7 +240,7 @@
 		<div class="theatremovies">
 		<% for ( var i = 0; i < movies.length; i++ ) { %>
 			<div class="moviereslt">
-				<img class="movieposter" src="<%= movies[i].posterUrl %>" alt="" />
+				<img class="movieposter poster<%= movies[i].movieId %>"/>
 				<div class="movietitle"><%= movies[i].mtitle %></div>
 				<div class="movieinfo">
 					<span class="movierate"><%= movies[i].rating %></span>
