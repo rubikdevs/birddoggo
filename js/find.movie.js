@@ -66,6 +66,7 @@
  		theatersArray = theatersArray || resultArray.theater;
 		theatersCount = theatersArray.length;
 		for(theaterIndex = 0; theaterIndex < theatersCount; ++theaterIndex) {
+			showingsData = [];
 			var theaterRespObj = theatersArray[theaterIndex],
 				showingIndex = 0, 
 				showingCount = theaterRespObj.showings.showing && theaterRespObj.showings.showing.length;
