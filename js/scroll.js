@@ -6,14 +6,17 @@ function copy_inputs(from,to){
 (function() {
     var updatePosition = function() {
         var top = document.body.scrollTop||document.documentElement.scrollTop,
-            style = {};
+            style = {},getstyle = {};
         if (top > 245 ) {
             style.top = 0;
+            getstyle.top = '50px';
             
         } else {
             style.top = '-70px';
+            getstyle.top = 0;
         }
         $('header').css(style);
+        $('.gettheapps').css(getstyle);
     }
     var throttled = _.throttle(updatePosition, 100);
     $(window).scroll(throttled);
