@@ -1,0 +1,8 @@
+.keyword{
+	background: #FFC6C6;
+	border: #FF8484 1px solid;
+	border-radius: 5px;
+	display: inline;
+	margin: 0 10px 0 0;
+	padding: 2px 5px 2px 5px;
+}

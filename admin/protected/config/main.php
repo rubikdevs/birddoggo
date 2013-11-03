@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured her
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Advertisers Panel',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -23,9 +23,9 @@ return array(
 		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'astrofield',
+			'password'=>'none',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('190.247.227.138','*'),
+			'ipFilters'=>array('localhost','*'),
 		),
 	
 	),
@@ -56,10 +56,10 @@ return array(
             //These variable values come from your hosting account.
            
 		'db'=>array(
-			'connectionString' => 'mysql:host=bdgadmin.db.10874828.hostedresource.com;dbname=bdgadmin',
+			'connectionString' => 'mysql:host=localhost;dbname=bdadmin',
 			'emulatePrepare' => true,
-			'username' => 'bdgadmin',
-			'password' => 'Stevenpjobs1!',
+			'username' => 'root',
+			'password' => 'brychantoda',
 			'charset' => 'utf8',
 		),
 	

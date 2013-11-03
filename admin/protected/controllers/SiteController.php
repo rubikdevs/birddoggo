@@ -20,7 +20,6 @@ class SiteController extends Controller
 			),
 		);
 	}
-
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -51,25 +50,7 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
+	
 	}
 
 	/**
@@ -96,6 +77,149 @@ class SiteController extends Controller
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
+	}
+
+	public function actionGetAdvertiser($location=null,$keywords=null){
+		// OPTIONS
+		$delimiter = ' '; 			// Keywords delimiter 
+		$refineByKeywords = 2;  	// Quantity of Keyword Matches to pass the filter
+		$noKeywordsGiven = 2;		// If $keywords=null, will disable the filter
+		$similarity = 85.0;			// Minimun similarity for matching
+
+		// DECODE $location
+		$zipcode=null;
+		$address=null;
+		if (is_numeric($location))
+			$zipcode=$location;
+		else
+			$address=$location;
+
+		// CODE
+		$results = array();
+		if (!$zipcode==null) // IF ZIPCODE, IGNORE ADDRESS
+		{
+			// LOAD ALL ADVERTISERS BY ZIP CODE
+			$advZipCode = Advertiser::model()->findAll('zip_code='.$zipcode);
+			
+			foreach($advZipCode as $advertiser)
+			{
+				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
+				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
+				$match = 0;
+
+				if (!$keywords==null)
+				{
+					$arrKWs = explode($delimiter, $keywords);
+					foreach($advKeys as $natKeyword)
+					{
+						// LOAD THE KEYWORD AND COMPARE IT
+						$keywordName = Keyword::model()->findAll('id='.$natKeyword->keyword_id);
+						foreach($arrKWs as $kw)
+						{
+							$percent = 0;
+							similar_text($keywordName[0]->name, $kw, $percent);
+							if ( $percent > $similarity)
+								$match++;
+						}
+					}
+							
+				} else
+					// IF NO MATCHES, DISABLE FILTER
+					$match = $noKeywordsGiven;
+
+				// FILTER
+				if ($match >= $refineByKeywords)
+					$results[] = array(
+						'name'=>$advertiser->name,
+						'address'=>$advertiser->address,
+						'city'=>$advertiser->city,
+						'state'=>$advertiser->state,
+						'zip_code'=>$advertiser->zip_code,
+						'phone'=>$advertiser->phone,
+						'website'=>$advertiser->website,
+						'lat'=>$advertiser->lat,
+						'lng'=>$advertiser->long,
+						'description'=>$advertiser->description,	
+						);
+			}
+		} elseif (!$address==null) // IF ZIP CODE IS NULL, USE ADDRESS
+		{
+			// DECODE $address String Using GEOCODE GOOGLE API
+			$jsonurl = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false";
+			$json = file_get_contents($jsonurl,0,null,null);
+			$json_output = json_decode($json);
+
+			if ('locality'!=$json_output->results[0]->address_components[0]->types[0])						// IF SEARCH IS STATE ONLY
+				$city = null;																				// USE ONLY STATE
+			else
+				$city = $json_output->results[0]->address_components[0]->long_name;
+
+
+			if (('administrative_area_level_2'==$json_output->results[0]->address_components[1]->types[0])) // IF SEARCH HAS COUNTY
+				$state = $json_output->results[0]->address_components[2]->long_name;
+			elseif ($city==null)																			// IF SEARCH IS STATE ONLY
+				$state = $json_output->results[0]->address_components[0]->long_name;	
+			else																		
+				$state = $json_output->results[0]->address_components[1]->long_name;
+
+			// LOAD ALL ADVERTISERS BY CITY AND STATE
+			$criteria = new CDbCriteria;
+			if (!$city==null)
+				$criteria->condition = 'city="'.$city.'" AND state ="'.$state.'"';
+			else
+				$criteria->condition = 'state ="'.$state.'"';
+
+			$advCity = Advertiser::model()->findAll($criteria);
+
+			foreach($advCity as $advertiser)
+			{
+				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
+				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
+				$match = 0;
+
+				if (!$keywords==null)
+				{
+					$arrKWs = explode($delimiter, $keywords);
+					foreach($advKeys as $natKeyword)
+					{
+						// LOAD THE KEYWORD AND COMPARE IT
+						$keywordName = Keyword::model()->findAll('id='.$natKeyword->keyword_id);
+
+						foreach($arrKWs as $kw)
+						{
+							$percent = 0;
+							similar_text($keywordName[0]->name, $kw, $percent);
+							if ( $percent > $similarity)
+								$match++;
+						}
+					}
+							
+				} else
+					// IF NO MATCHES, DISABLE FILTER
+					$match = $noKeywordsGiven;
+
+				// FILTER
+				if ($match >= $refineByKeywords)
+					$results[] = array(
+						'name'=>$advertiser->name,
+						'address'=>$advertiser->address,
+						'city'=>$advertiser->city,
+						'state'=>$advertiser->state,
+						'zip_code'=>$advertiser->zip_code,
+						'phone'=>$advertiser->phone,
+						'website'=>$advertiser->website,
+						'lat'=>$advertiser->lat,
+						'lng'=>$advertiser->long,
+						'description'=>$advertiser->description,	
+						);
+			}
+
+
+		}
+
+		else
+			$results = array();
+		echo json_encode($results, JSON_PRETTY_PRINT);
 	}
 
 	/**
