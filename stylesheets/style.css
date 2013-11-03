@@ -202,10 +202,10 @@ position: relative;
 	cursor: pointer;
 	background: #333333;
 	width: 50px;
-	height: 35px;
+	height: 32px;
 	color: white;
 	padding-left: 13px;
-	padding-top: 5px;
+	padding-top: 4px;
 	font-size: 25px;
 }
 
@@ -415,6 +415,7 @@ div.businessinput{
 	-ms-transition: top 400ms ease ;
 	-o-transition: top 400ms ease ;
 	transition: top 400ms ease ;
+	background-color:rgba(230,230,230,.9);
 }
 
 
@@ -720,4 +721,28 @@ div.searchbutton:hover{
 	padding-top: 40px;
 	height: 100px;
 	text-align: center;
+}
+.gettheapps{
+	height: 100px;
+	width: 200px;
+	padding: 30px;
+	position: fixed;
+	top:0px;
+	left:0px;
+	text-align: center;
+	-webkit-transition: top 100ms ease-in;
+	-moz-transition: top 100ms ease-in;
+	-ms-transition: top 100ms ease-in;
+	-o-transition: top 100ms ease-in;
+	transition: top 100ms ease-in;
+}
+.gettheapps h3{
+	color:white;
+	font-family: latobold;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+.gettheapps span{
+	display: block;
+	margin-bottom: 10px;
 }
