@@ -12,7 +12,7 @@ function copy_inputs(from,to){
             getstyle.top = '50px';
             
         } else {
-            style.top = '-70px';
+            style.top = '-73px';
             getstyle.top = 0;
             $('.headercontent').removeClass('open');
         }
