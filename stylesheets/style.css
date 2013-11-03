@@ -747,3 +747,9 @@ div.searchbutton:hover{
 	display: block;
 	margin-bottom: 10px;
 }
+.appstoreb{
+	background: url('../resources/img/badge_appstore.svg') no-repeat;
+	height: 40px;
+	width: 135px;
+	margin-left: 3px;
+}

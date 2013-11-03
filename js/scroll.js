@@ -14,6 +14,7 @@ function copy_inputs(from,to){
         } else {
             style.top = '-70px';
             getstyle.top = 0;
+            $('.headercontent').removeClass('open');
         }
         $('header').css(style);
         $('.gettheapps').css(getstyle);
@@ -29,4 +30,3 @@ function copy_inputs(from,to){
 		copy_inputs($headerfields,$bodyfields);
 	});
 }(window.birddoggo));
-
