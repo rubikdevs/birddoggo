@@ -8227,3 +8227,41 @@ Stack trace:
 REQUEST_URI=/birddoggo/admin/index.php?r=advertiser/deleteImage&id=27
 in /Users/brychantoda/Sites/birddoggo/admin/protected/controllers/AdvertiserController.php (43)
 in /Users/brychantoda/Sites/birddoggo/admin/index.php (13)
+2013/11/04 02:16:03 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php:336
+Stack trace:
+#0 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(282): CController->run('getadvertiser')
+#4 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getadverti...')
+#5 /Users/Marian/Sites/birddoggo/admin/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Users/Marian/Sites/birddoggo/admin/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/birddoggo/admin/index.php?r=site/getadvertiser&location%5Blocality%5D=Stowe&location%5Bpolitical%5D=United+States&location%5Badministrative_area_level_2%5D=Lamoille&location%5Badministrative_area_level_1%5D=Vermont&location%5Bcountry%5D=United+States
+HTTP_REFERER=http://localhost/birddoggo/
+---
+2013/11/04 02:16:06 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php:336
+Stack trace:
+#0 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(282): CController->run('getadvertiser')
+#4 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getadverti...')
+#5 /Users/Marian/Sites/birddoggo/admin/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Users/Marian/Sites/birddoggo/admin/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/birddoggo/admin/index.php?r=site/getadvertiser&location%5Bstreet_number%5D=900-998&location%5Broute%5D=Alberdi&location%5Blocality%5D=Tandil&location%5Bpolitical%5D=Argentina&location%5Badministrative_area_level_2%5D=Tandil+Partido&location%5Badministrative_area_level_1%5D=Buenos+Aires+Province&location%5Bcountry%5D=Argentina
+HTTP_REFERER=http://localhost/birddoggo/
+---
+2013/11/04 02:16:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php:336
+Stack trace:
+#0 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /Users/Marian/Sites/birddoggo/admin/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(282): CController->run('getadvertiser')
+#4 /Users/Marian/Sites/birddoggo/admin/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getadverti...')
+#5 /Users/Marian/Sites/birddoggo/admin/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Users/Marian/Sites/birddoggo/admin/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/birddoggo/admin/index.php?r=site/getadvertiser&location%5Blocality%5D=Stowe&location%5Bpolitical%5D=United+States&location%5Badministrative_area_level_2%5D=Lamoille&location%5Badministrative_area_level_1%5D=Vermont&location%5Bcountry%5D=United+States
+---

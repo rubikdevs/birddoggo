@@ -13,10 +13,13 @@
 		Birddoggo.geocodeCallback = function() {
 			$.ajax({
 				url: URL_FEATURED,
+				type: 'GET',
 				data: {
-					'location': Birddoggo.address
+					'location': JSON.stringify(Birddoggo.address)
 				},
-				success: console.log
+				success: function(response) {
+					console.log(response);
+				}
 			});
 		}
 		Birddoggo.getAddress({address:params[1]});

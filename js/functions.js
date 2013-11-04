@@ -32,9 +32,6 @@
         placeInputValue = '';
         Birddoggo.address = {};
         Birddoggo.geocoder.geocode(geoCodeObj, function (results, status) {
-            if (Birddoggo.geocodeCallback) {
-                Birddoggo.geocodeCallback.apply();
-            }
             $.map( results[0].address_components, function(item) {
                 $.map(item.types, function(type) {
                     Birddoggo.address[type] = item.long_name;
@@ -54,6 +51,9 @@
                 });
 
             });
+            if (Birddoggo.geocodeCallback) {
+                Birddoggo.geocodeCallback.apply();
+            }
         });
     };
    
