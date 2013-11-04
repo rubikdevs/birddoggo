@@ -1,7 +1,10 @@
 <?php
 /* @var $this AdvertiserController */
-/* @var $model Advertiser */
+/* @var $id Advertiser */
 /* @var $keyword Keyword */
+$model = Advertiser::model()->findByPk($id);
+$keyword = new Keyword;
+
 
 $this->breadcrumbs=array(
 	'Advertisers'=>array('index'),
@@ -23,7 +26,7 @@ $this->menu=array(
 	$this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
 		'attributes'=>array(
-				'id',
+			'id',
 			'name',
 			'address',
 			'city',
@@ -35,11 +38,19 @@ $this->menu=array(
 			'long',
 			'description',
 		),
-	));
-	?>
+	));?>
 
-<br>
-<h1>Add Keywords</h1>
+
+
+<h1>Image</h1>
+
+<div id="images" class="clear">
+	<?php $this->renderPartial('_upload', array('advertiser'=>$model)); ?>
+</div>
+
+<p class="clear"><?php echo CHtml::link('Add Images', array('upload','id'=>$model->id));?></p>
+
+<h1 class="clear">Add Keywords</h1>
 	<div class="form">
 
 	<?php $form=$this->beginWidget('CActiveForm', array(

@@ -83,7 +83,7 @@ class SiteController extends Controller
 		// OPTIONS
 		$delimiter = ' '; 			// Keywords delimiter 
 		$refineByKeywords = 2;  	// Quantity of Keyword Matches to pass the filter
-		$noKeywordsGiven = 2;		// If $keywords=null, will disable the filter
+		$noKeywordsGiven = 1;		// If $keywords=null, will disable the filter
 		$similarity = 85.0;			// Minimun similarity for matching
 
 		// DECODE $location
@@ -126,7 +126,10 @@ class SiteController extends Controller
 				} else
 					// IF NO MATCHES, DISABLE FILTER
 					$match = $noKeywordsGiven;
-
+				// LOADS AND FORMATS IMAGE INTO ARRAY
+				$allImages = array();
+				foreach ($advertiser->images as $img)
+					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;	
 				// FILTER
 				if ($match >= $refineByKeywords)
 					$results[] = array(
@@ -139,7 +142,8 @@ class SiteController extends Controller
 						'website'=>$advertiser->website,
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,	
+						'description'=>$advertiser->description,
+						'images'=>$allImages
 						);
 			}
 		} elseif (!$address==null) // IF ZIP CODE IS NULL, USE ADDRESS
@@ -197,7 +201,10 @@ class SiteController extends Controller
 				} else
 					// IF NO MATCHES, DISABLE FILTER
 					$match = $noKeywordsGiven;
-
+				// LOADS AND FORMATS IMAGE INTO ARRAY
+				$allImages = array();
+				foreach ($advertiser->images as $img)
+					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;
 				// FILTER
 				if ($match >= $refineByKeywords)
 					$results[] = array(
@@ -210,7 +217,8 @@ class SiteController extends Controller
 						'website'=>$advertiser->website,
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,	
+						'description'=>$advertiser->description,
+						'images'=>$allImages
 						);
 			}
 
@@ -219,7 +227,7 @@ class SiteController extends Controller
 
 		else
 			$results = array();
-		echo json_encode($results, JSON_PRETTY_PRINT);
+		echo json_encode($results);
 	}
 
 	/**
