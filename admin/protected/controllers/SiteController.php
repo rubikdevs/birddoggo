@@ -82,7 +82,7 @@ class SiteController extends Controller
 	public function actionGetAdvertiser($location=null,$keywords=null){
 		// OPTIONS
 		$delimiter = ' '; 			// Keywords delimiter 
-		$refineByKeywords = 2;  	// Quantity of Keyword Matches to pass the filter
+		$refineByKeywords = 1;  	// Quantity of Keyword Matches to pass the filter
 		$noKeywordsGiven = 1;		// If $keywords=null, will disable the filter
 		$similarity = 85.0;			// Minimun similarity for matching
 
@@ -91,7 +91,10 @@ class SiteController extends Controller
 		$city=null;
 		$state=null;
 
-		if (isset($location->posta_code))
+		$location = json_decode($location);
+		//var_dump($location->locality);die;
+
+		if (isset($location->postal_code))
 			$zipcode = $location->postal_code;
 		if (isset($location->locality))
 			$city = $location->locality;
@@ -152,6 +155,7 @@ class SiteController extends Controller
 			}
 		} elseif ((isset($city)) or (isset($state)))// IF ZIP CODE IS NULL, USE ADDRESS
 		{
+
 			// LOAD ALL ADVERTISERS BY CITY AND STATE
 			$criteria = new CDbCriteria;
 			if (isset($city))
@@ -160,7 +164,6 @@ class SiteController extends Controller
 				$criteria->condition = 'state ="'.$state.'"';
 
 			$advCity = Advertiser::model()->findAll($criteria);
-
 			foreach($advCity as $advertiser)
 			{
 				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
