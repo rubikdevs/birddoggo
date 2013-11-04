@@ -83,16 +83,20 @@ class SiteController extends Controller
 		// OPTIONS
 		$delimiter = ' '; 			// Keywords delimiter 
 		$refineByKeywords = 2;  	// Quantity of Keyword Matches to pass the filter
-		$noKeywordsGiven = 2;		// If $keywords=null, will disable the filter
+		$noKeywordsGiven = 1;		// If $keywords=null, will disable the filter
 		$similarity = 85.0;			// Minimun similarity for matching
 
 		// DECODE $location
 		$zipcode=null;
-		$address=null;
-		if (is_numeric($location))
-			$zipcode=$location;
-		else
-			$address=$location;
+		$city=null;
+		$state=null;
+
+		if (isset($location->posta_code))
+			$zipcode = $location->postal_code;
+		if (isset($location->locality))
+			$city = $location->locality;
+		if (isset($location->administrative_area_level_1))
+			$state = $location->administrative_area_level_1;
 
 		// CODE
 		$results = array();
@@ -126,7 +130,10 @@ class SiteController extends Controller
 				} else
 					// IF NO MATCHES, DISABLE FILTER
 					$match = $noKeywordsGiven;
-
+				// LOADS AND FORMATS IMAGE INTO ARRAY
+				$allImages = array();
+				foreach ($advertiser->images as $img)
+					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;	
 				// FILTER
 				if ($match >= $refineByKeywords)
 					$results[] = array(
@@ -139,32 +146,15 @@ class SiteController extends Controller
 						'website'=>$advertiser->website,
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,	
+						'description'=>$advertiser->description,
+						'images'=>$allImages
 						);
 			}
-		} elseif (!$address==null) // IF ZIP CODE IS NULL, USE ADDRESS
+		} elseif ((isset($city)) or (isset($state)))// IF ZIP CODE IS NULL, USE ADDRESS
 		{
-			// DECODE $address String Using GEOCODE GOOGLE API
-			$jsonurl = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false";
-			$json = file_get_contents($jsonurl,0,null,null);
-			$json_output = json_decode($json);
-
-			if ('locality'!=$json_output->results[0]->address_components[0]->types[0])						// IF SEARCH IS STATE ONLY
-				$city = null;																				// USE ONLY STATE
-			else
-				$city = $json_output->results[0]->address_components[0]->long_name;
-
-
-			if (('administrative_area_level_2'==$json_output->results[0]->address_components[1]->types[0])) // IF SEARCH HAS COUNTY
-				$state = $json_output->results[0]->address_components[2]->long_name;
-			elseif ($city==null)																			// IF SEARCH IS STATE ONLY
-				$state = $json_output->results[0]->address_components[0]->long_name;	
-			else																		
-				$state = $json_output->results[0]->address_components[1]->long_name;
-
 			// LOAD ALL ADVERTISERS BY CITY AND STATE
 			$criteria = new CDbCriteria;
-			if (!$city==null)
+			if (isset($city))
 				$criteria->condition = 'city="'.$city.'" AND state ="'.$state.'"';
 			else
 				$criteria->condition = 'state ="'.$state.'"';
@@ -177,7 +167,7 @@ class SiteController extends Controller
 				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
 				$match = 0;
 
-				if (!$keywords==null)
+				if (isset($keywords))
 				{
 					$arrKWs = explode($delimiter, $keywords);
 					foreach($advKeys as $natKeyword)
@@ -197,7 +187,10 @@ class SiteController extends Controller
 				} else
 					// IF NO MATCHES, DISABLE FILTER
 					$match = $noKeywordsGiven;
-
+				// LOADS AND FORMATS IMAGE INTO ARRAY
+				$allImages = array();
+				foreach ($advertiser->images as $img)
+					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;
 				// FILTER
 				if ($match >= $refineByKeywords)
 					$results[] = array(
@@ -210,8 +203,9 @@ class SiteController extends Controller
 						'website'=>$advertiser->website,
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,	
-						);
+						'description'=>$advertiser->description,
+						'images'=>$allImages
+					);
 			}
 
 
@@ -219,7 +213,7 @@ class SiteController extends Controller
 
 		else
 			$results = array();
-		echo json_encode($results, JSON_PRETTY_PRINT);
+		echo json_encode($results);
 	}
 
 	/**

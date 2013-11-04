@@ -28,7 +28,7 @@ class AdvertiserController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','view','test','ajix','create','update','admin','delete'),
+				'actions'=>array('index','view','test','ajix','create','update','admin','delete','upload','deleteImage'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -36,6 +36,33 @@ class AdvertiserController extends Controller
 			),
 		);
 	}
+	public function actionDeleteImage($id)
+	{
+		$image = Image::model()->findByPk($id);
+		$image->delete();
+		$w = unlink(getcwd().'/images/'.$image->owner->id.'-'.$image->image_uri);
+		$this->redirect(array('view','id'=>$image->owner->id));
+	}
+	public function actionUpload($id){
+		$model = new Image;
+		$keyword = new Keyword;
+		$advertiser = Advertiser::model()->findByPk($id);
+		if (isset($_POST['Image']))
+		{
+			$model->advertiser_id = $id;
+			$model->attributes = $_POST['Image'];
+			$model->image_uri=CUploadedFile::getInstance($model,'image_uri');
+			if($model->save())
+            { 
+                $model->image_uri->saveAs('images/'.$id.'-'.$model->image_uri);  // PATH IMAGES
+                $this->redirect(array('view','id'=>$advertiser->id));
+			}
+		}
+		$this->render('upload',array(
+			'model'=>$model,
+		));
+	}
+
 	public function actionAjix(){
 		//var_dump('ss');die;
 		$advertiser;
@@ -84,10 +111,9 @@ class AdvertiserController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$keyword = new Keyword;
+
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'keyword'=>$keyword,
+			'id'=>$id,
 		));
 	}
 
