@@ -124,7 +124,7 @@ class SiteController extends Controller
 						foreach($arrKWs as $kw)
 						{
 							$percent = 0;
-							similar_text($keywordName[0]->name, $kw, $percent);
+							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
 							if ( $percent > $similarity)
 								$match++;
 						}
@@ -181,7 +181,7 @@ class SiteController extends Controller
 						foreach($arrKWs as $kw)
 						{
 							$percent = 0;
-							similar_text($keywordName[0]->name, $kw, $percent);
+							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
 							if ( $percent > $similarity)
 								$match++;
 						}
