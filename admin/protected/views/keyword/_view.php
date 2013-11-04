@@ -3,15 +3,14 @@
 /* @var $data Keyword */
 ?>
 
-<div class="view">
+<tr class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+	<td>
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+	</td>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
+	<td>
 	<?php echo CHtml::encode($data->name); ?>
-	<br />
+	</td>
 
-
-</div>
+</tr>
