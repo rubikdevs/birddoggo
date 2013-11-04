@@ -15,6 +15,7 @@
 				url: URL_FEATURED,
 				type: 'GET',
 				data: {
+					'keywords': params[0],
 					'location': JSON.stringify(Birddoggo.address)
 				},
 				success: function(response) {

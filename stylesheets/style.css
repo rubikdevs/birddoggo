@@ -365,8 +365,6 @@ div.businessinput{display: block;}
 	-o-transition: top 400ms ease ;
 	transition: top 400ms ease ;
 	background-color:rgba(230,230,230,.9);
-	top: 0;
-	height: 3000px;
 }
 
 
