@@ -65,7 +65,7 @@
 			    </ul>  
 			</div>
 			<div class="headerfields searchfields">
-				<div class="businessinput">
+				<div class="businessinput active">
 					<input type="text" placeholder="Category or name" id="bkeywords" />
 					<span>near</span>
 					<input type="text" placeholder="City, State or ZIP" class="place" />
@@ -176,23 +176,20 @@
 	</script>
 	<script type="text/html" id="noresults_tpl">
 		<div class="noresults">
-				<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
+			<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
 		</div>
 	</script>
 	<script type="text/html" id="weather_tpl">
 		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> </iframe>
 	</script>
-	<script type="text/html" id="theater_tpl">
-		
+	<script type="text/html" id="theater_tpl">	
 		<div class="movieresult">
 			<div class="movieheader">
 				<div class="movielocation">
 					Showtimes in <span> <%= theatersData[0].city %>, <%= theatersData[0].state %></span>
 				</div>
 			</div>
-			<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>
-          	
-        	
+			<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>      	
 			<div class="moviebody">
 				<div class="theatreresult">
 					<div class="theatredata">
@@ -279,7 +276,9 @@
     <script src="js/find.movie.js"></script>
     <script src="js/lookup.phone.js"></script>
     <script src="js/find.people.js"></script>
+    <script src="js/find.business.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/functions.js"></script>
 </body>
 </html>
+

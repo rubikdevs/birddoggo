@@ -26,16 +26,18 @@
 			'<i class="fa fa-film active"></i>',
 			'<i class="fa fa-sun-o  active"></i>'
 		];
-    Birddoggo.getAddress = function () {
 
-        var latlng = new google.maps.LatLng( birddoggo.coords.lat, birddoggo.coords.lon),
-            placeInputValue = '';
-        Birddoggo.address = {
-        };
-        Birddoggo.geocoder.geocode({ 'latLng': latlng, 'region': 'US' }, function (results, status) {
+
+    Birddoggo.getAddress = function (geoCodeObj) {
+        placeInputValue = '';
+        Birddoggo.address = {};
+        Birddoggo.geocoder.geocode(geoCodeObj, function (results, status) {
+            if (Birddoggo.geocodeCallback) {
+                Birddoggo.geocodeCallback.apply();
+            }
             $.map( results[0].address_components, function(item) {
                 $.map(item.types, function(type) {
-                    Birddoggo.address[type] = item.short_name;
+                    Birddoggo.address[type] = item.long_name;
                     return false;
                 });
                 if (Birddoggo.address.postal_code) {
@@ -43,7 +45,9 @@
                 } else if (Birddoggo.address.locality) {
                     placeInputValue = Birddoggo.address.locality + ', ' +
                                         Birddoggo.address.administrative_area_level_1 ; 
-                } 
+                } else if (Birddoggo.address.administrative_area_level_1) {
+                    placeInputValue = Birddoggo.address.administrative_area_level_1;
+                }
 
                 $('input.place').each(function(){
                     $(this).val(placeInputValue);
@@ -59,7 +63,9 @@
             lat: position.coords.latitude,
             lon: position.coords.longitude
         };
-         Birddoggo.getAddress(); 
+        var latlng = new google.maps.LatLng( birddoggo.coords.lat, birddoggo.coords.lon),
+        geoCodeObj = { 'latLng': latlng, 'region': 'US' };
+         Birddoggo.getAddress(geoCodeObj); 
     };
 
     Birddoggo.getLocation = function () {
@@ -95,6 +101,7 @@
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
+                  Birddoggo.findBusiness($('header .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'peopleinput':
                   Birddoggo.findPeople($('header .searchfields > div.active input').map(function(){return $(this).val();}));
