@@ -1,2 +1,6 @@
 .DS_STORE
 **/.DS_STORE
+admin/assets/
+admin/protected/runtime/
+admin/themes/classic/views/
+admin/protected/config/main.php

@@ -82,17 +82,24 @@ class SiteController extends Controller
 	public function actionGetAdvertiser($location=null,$keywords=null){
 		// OPTIONS
 		$delimiter = ' '; 			// Keywords delimiter 
-		$refineByKeywords = 2;  	// Quantity of Keyword Matches to pass the filter
+		$refineByKeywords = 1;  	// Quantity of Keyword Matches to pass the filter
 		$noKeywordsGiven = 1;		// If $keywords=null, will disable the filter
 		$similarity = 85.0;			// Minimun similarity for matching
 
 		// DECODE $location
 		$zipcode=null;
-		$address=null;
-		if (is_numeric($location))
-			$zipcode=$location;
-		else
-			$address=$location;
+		$city=null;
+		$state=null;
+
+		$location = json_decode($location);
+		//var_dump($location->locality);die;
+
+		if (isset($location->postal_code))
+			$zipcode = $location->postal_code;
+		if (isset($location->locality))
+			$city = $location->locality;
+		if (isset($location->administrative_area_level_1))
+			$state = $location->administrative_area_level_1;
 
 		// CODE
 		$results = array();
@@ -117,7 +124,7 @@ class SiteController extends Controller
 						foreach($arrKWs as $kw)
 						{
 							$percent = 0;
-							similar_text($keywordName[0]->name, $kw, $percent);
+							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
 							if ( $percent > $similarity)
 								$match++;
 						}
@@ -146,42 +153,24 @@ class SiteController extends Controller
 						'images'=>$allImages
 						);
 			}
-		} elseif (!$address==null) // IF ZIP CODE IS NULL, USE ADDRESS
+		} elseif ((isset($city)) or (isset($state)))// IF ZIP CODE IS NULL, USE ADDRESS
 		{
-			// DECODE $address String Using GEOCODE GOOGLE API
-			$jsonurl = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false";
-			$json = file_get_contents($jsonurl,0,null,null);
-			$json_output = json_decode($json);
-
-			if ('locality'!=$json_output->results[0]->address_components[0]->types[0])						// IF SEARCH IS STATE ONLY
-				$city = null;																				// USE ONLY STATE
-			else
-				$city = $json_output->results[0]->address_components[0]->long_name;
-
-
-			if (('administrative_area_level_2'==$json_output->results[0]->address_components[1]->types[0])) // IF SEARCH HAS COUNTY
-				$state = $json_output->results[0]->address_components[2]->long_name;
-			elseif ($city==null)																			// IF SEARCH IS STATE ONLY
-				$state = $json_output->results[0]->address_components[0]->long_name;	
-			else																		
-				$state = $json_output->results[0]->address_components[1]->long_name;
 
 			// LOAD ALL ADVERTISERS BY CITY AND STATE
 			$criteria = new CDbCriteria;
-			if (!$city==null)
+			if (isset($city))
 				$criteria->condition = 'city="'.$city.'" AND state ="'.$state.'"';
 			else
 				$criteria->condition = 'state ="'.$state.'"';
 
 			$advCity = Advertiser::model()->findAll($criteria);
-
 			foreach($advCity as $advertiser)
 			{
 				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
 				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
 				$match = 0;
 
-				if (!$keywords==null)
+				if (isset($keywords))
 				{
 					$arrKWs = explode($delimiter, $keywords);
 					foreach($advKeys as $natKeyword)
@@ -192,7 +181,7 @@ class SiteController extends Controller
 						foreach($arrKWs as $kw)
 						{
 							$percent = 0;
-							similar_text($keywordName[0]->name, $kw, $percent);
+							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
 							if ( $percent > $similarity)
 								$match++;
 						}
@@ -219,7 +208,7 @@ class SiteController extends Controller
 						'lng'=>$advertiser->long,
 						'description'=>$advertiser->description,
 						'images'=>$allImages
-						);
+					);
 			}
 
 
