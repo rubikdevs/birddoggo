@@ -4,31 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="resources/img/favicon.png">
-
     <title>Birddoggo</title>
-
     <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="resources/img/favicon.png">
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/style.css" />
     <link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="stylesheets/loading.css" />
-    
 	<script>
 	//<![CDATA[
 		for(var i=1;i<6;++i) {var a=new Image;a.src='resources/img/background'+i+'.jpg';}
 	//]]>
 	</script>
-<body class="business_background">
-
+	<body class="business_background">
+	<!-- header  -->
 
 	<header>
 		<span class="headerlogo">Birddoggo</span>
 		<div class="headercontent">
-			<span class="menuselection dropdown-toggle"  data-toggle="dropdown">
+			<span class="menuselection dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-building businessinput active"></i>
 			</span>
-			
 			<div class="dropdown-menu bdg-dropdown" role="menu">
 			    <div class="triangulito"></div>
 			    <ul class="dropoptions search_field">
@@ -67,8 +63,7 @@
 					    	<div class="dropdescription">City, State or ZIP</div>
 					    </span>
 				    </li>
-			    </ul>
-			    
+			    </ul>  
 			</div>
 			<div class="headerfields searchfields">
 				<div class="businessinput">
@@ -91,17 +86,13 @@
 				<div class="weather">
 					<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
 				</div>
-				
-				
-				
 			</div>
 			<div class="searchbutton"><i class="fa fa-search"></i></div>
 		</div>
 	</header>
-	
+	<!-- end header  -->
+	<!-- ======================== -->
 	<h1 class="title"><img src="resources/img/bdg_logo.png" alt="bdg_logo" width="500px" height="auto"></h1>
-	
-	
 	<div class="gettheapps">
 		<h3>Available on</h3>
 		<div>
@@ -109,28 +100,21 @@
 				<span>
 					<a href="https://itunes.apple.com/us/app/whitepages-yellowpages-birddoggo/id695162804?mt=8">
 						<span class="appstoreb"></span>
-					</a>
-					
+					</a>	
 				</span>
 				<span>
 					<a href="https://play.google.com/store/apps/details?id=com.choicedirectory.android.cdls">
-						<img alt="Android app on Google Play" style="height:47px;"
-							 src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+						<img alt="Android app on Google Play" style="height:47px;" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 					</a>
 				</span>
 			</span>
-			
 		</div>
 	</div>
-	
-	
+	<!--  searchbox  -->
+	<!-- ======================== -->
 	<div class="searcharea">
 		<div class="navback">
 			<ul class="search_field">
-				
-				
-				
-				
 				<li class="color_trans clickable active">
 					<i class="fa fa-building businessinput"></i>&nbsp;Business
 				</li>
@@ -148,7 +132,6 @@
 				</li>
 			</ul>
 		</div>
-		
 		<div class="transparent-white order">
 			<div class="bodyfields searchfields">
 				<div class="businessinput active">
@@ -174,8 +157,9 @@
 			</div>
 			<div class="searchbutton"><i class="fa fa-search"></i></div>
 		</div>
-		
 	</div>
+	<!--  end searchbox  -->
+	<!-- ======================== -->
 	<div class="resultarea">
 		<div class="featuredproducts">
 			<div class="featuredproduct">
@@ -276,8 +260,7 @@
 		</div>
 	</script>
 	<script type="text/html" id="people_tpl">
-			<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
-
+		<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
 			<div class="peopleelement">
 				<span class="resultname"><%= person.pname %></span>
 				<span class="resultcontact twolineresult rightresult">
@@ -289,7 +272,6 @@
 				</span>		
 			</div>
 		<% } %>
-
 	</script>
 	<!-- end templates -->
 
@@ -313,8 +295,5 @@
     <script src="js/find.people.js"></script>
     <script src="js/scroll.js"></script>
     <script src="js/functions.js"></script>
-
- 
 </body>
-
 </html>
