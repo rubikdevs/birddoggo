@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="stylesheets/loading.css" />
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<!-- Navbar -->
+			<nav class="navbar navbar-default" role="navigation">
+			  <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="#">Birddoggo</a>
+			  </div>
+			
+			  <!-- Collect the nav links, forms, and other content for toggling -->
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav">
+			      <li class="active"><a href="#">Link</a></li>
+			      <li><a href="#">Link</a></li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Action</a></li>
+			          <li><a href="#">Another action</a></li>
+			          <li><a href="#">Something else here</a></li>
+			          <li class="divider"></li>
+			          <li><a href="#">Separated link</a></li>
+			          <li class="divider"></li>
+			          <li><a href="#">One more separated link</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			    <form class="navbar-form navbar-left" role="search">
+			      <div class="form-group">
+			        <input type="text" class="form-control" placeholder="Search">
+			      </div>
+			      <button type="submit" class="btn btn-default">Submit</button>
+			    </form>
+			    <ul class="nav navbar-nav navbar-right">
+			      <li><a href="#">Link</a></li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Action</a></li>
+			          <li><a href="#">Another action</a></li>
+			          <li><a href="#">Something else here</a></li>
+			          <li class="divider"></li>
+			          <li><a href="#">Separated link</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			  </div><!-- /.navbar-collapse -->
+			</nav><!-- Navbar end -->
+			<div class="container">
+				<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h1><img src="resources/img/bdg_logo.png" alt="bdg_logo" class="img-responsive"></h1>
+				</div>
+			</div>
+			</div>
+			
+		</header><!-- Header end -->
+		
+		
+		<!-- Main -->
+		<main>
+			<!-- Search Section -->
+			<section class="searchsection container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="searcharea">
+							<div class="navback">
+								<ul class="search_field">
+									<li class="color_trans clickable active">
+										<i class="fa fa-building businessinput"></i>&nbsp;Business
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-user peopleinput"></i>&nbsp;People
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-phone reverselookup"></i>&nbsp;Reverse Lookup
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-film movieinput"></i>&nbsp;Movies
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-sun-o weather"></i>&nbsp;Weather
+									</li>
+								</ul>
+							</div>
+							<div class="transparent-white order">
+								<div class="bodyfields searchfields">
+									<div class="businessinput active">
+										<input type="text" placeholder="Category or name" id="bkeywords" />
+										<span>near</span>
+										<input type="text" placeholder="City, State or ZIP" class="place" />
+									</div>
+									<div class="peopleinput">
+										<input type="text" placeholder="First Name" id="firstname" />
+										<input type="text" placeholder="Last Name" id="lastname" />
+										<span>near</span>
+										<input type="text" placeholder="City, State or ZIP" class="place" />
+									</div>
+									<div class="reverselookup">
+										<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
+									</div>
+									<div class="movieinput">
+										<input type="text" class="singleinput place" placeholder="City, State or ZIP"  />
+									</div>
+									<div class="weather">
+										<input type="text" class="singleinput place" placeholder="City, State, Country" />
+									</div>
+								</div>
+								<div class="searchbutton"><i class="fa fa-search"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!-- Search Section end -->
+			
+			<section class="container standardresult weatherresult">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm12 wresult">
+						<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=-37.3178101&amp;lon=-59.15039060000004"> </iframe>
+					</div>
+				</div>
+			</section>
+			
+			<!-- PeopleResult Section -->
+			<section class="peopleresult standardresult container">
+				<article>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 result">
+							<div class="container">
+								<div class="row person_result">
+									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p>2053 Laprida St.</p>
+										<p>Mar Del Plata, Buenos Aires, AR'</p>
+									</div>
+									<div class="col-xs-12 col-sm-6  col-md-4"><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></div>								
+								</div>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg">
+								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+							</svg>
+						</div>
+					</div>
+				</article>
+				<article>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
+							<div class="container">
+								<div class="row person_result">
+									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p>2053 Laprida St.</p>
+										<p>Mar Del Plata, Buenos Aires, AR'</p>
+									</div>
+									<div class="col-xs-12 col-sm-6  col-md-4"><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></div>								
+								</div>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg">
+								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+							</svg>
+						</div>
+					</div>
+				</article>
+				<article>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
+							<div class="container">
+								<div class="row person_result">
+									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p>2053 Laprida St.</p>
+										<p>Mar Del Plata, Buenos Aires, AR'</p>
+									</div>
+									<div class="col-xs-12 col-sm-6  col-md-4"><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></div>								
+								</div>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg">
+								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+							</svg>
+						</div>
+					</div>
+				</article>
+			</section><!-- Results Section end -->
+			<section class="searchingsection standardresult container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
+						<div class="loading">
+							<span class="loading_title">Searching</span>
+							<span class="l-1"></span>
+							<span class="l-2"></span>
+							<span class="l-3"></span>
+							<span class="l-4"></span>
+							<span class="l-5"></span>
+							<span class="l-6"></span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="noresultsection standardresult container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
+						<div class="noresults">
+							<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="moviesection container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 movieheader">
+						<h1>Showtimes in <bold>Stowe,VT</bold></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 moviebody">
+						<article class="theatre">
+							<section class="theatreinformation">
+								<div class="row theatrename">
+									<div class="col-md-10 col-md-offset-1 col-sm-12">Paragon Grove 13</div>
+								</div>
+								<div class="row theatredetails">
+									<div class="col-md-7 col-md-offset-1 col-sm-12">
+										<i class="fa fa-location-arrow"></i>&nbsp;&nbsp;University of Miami - Memorial Bldg, Coral Gables, FL 33146
+									</div>
+									<div class="col-md-3 col-sm-12">
+										<i class="fa fa-phone"></i><a href="tel:3052844861">&nbsp;&nbsp;(305) 284-4861</a>
+									</div>
+								</div>
+								<div class="row theatrebuttons">
+									<div class="col-md-10 col-md-offset-1 col-sm 12">
+										<div class="moviebutton"><a href="#">Get Directions</a></div>
+									</div>
+								</div>
+							</section>
+							<section class="theatremovies">
+								<article class="movie">
+									
+								</article>
+							</section>
+						</article>
+					</div>
+				</div>
+			</section>
+		</main><!-- Main end -->
+		
+		<!-- Footer -->
+		<footer>
+			
+		</footer><!-- Footer end -->
+		<!-- Le Scripts -->
+		<script src="bootstrap/js/jquery.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		
+	</body>
+</html>

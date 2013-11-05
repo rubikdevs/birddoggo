@@ -390,17 +390,13 @@ div.businessinput{display: block;}
 .resultname{
 	font-size: 30px;
 	margin-top: 30px;
-	float:left;
 }
 
 .twolineresult{
-	margin-top:25px;
 	font-size: 15px;
 	text-align: center;
-	float:right;
 }
 .centerresult{
-	margin-right: 60px;
 }
 
 input[type=text].singleinput{
@@ -760,4 +756,8 @@ bold{
 	height: 200px;
 	width: 300px;
 	overflow: hidden;
+}
+
+.peopleelement > span{
+	display: block;
 }

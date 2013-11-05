@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Birddoggo</title>
@@ -247,13 +247,14 @@
 		<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
 			<div class="peopleelement">
 				<span class="resultname"><%= person.pname %></span>
-				<span class="resultcontact twolineresult rightresult">
-					<div class="resultphone"><%= person.phone %></div>
-				</span>
 				<span class="resultaddress twolineresult centerresult">
 					<div class="resultstreet"><%= person.address.fullstreet %></div>
 					<div class="resultcity"><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></div>
-				</span>		
+				</span>	
+				<span class="resultcontact twolineresult rightresult">
+					<div class="resultphone"><%= person.phone %></div>
+				</span>
+					
 			</div>
 		<% } %>
 	</script>
