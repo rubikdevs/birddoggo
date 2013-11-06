@@ -197,29 +197,30 @@
 				</div>
 			</section><!-- Search Section end -->
 			
-			<section class="container standardresult weatherresult">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1 col-sm12 wresult">
-						<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=-37.3178101&amp;lon=-59.15039060000004"> </iframe>
-					</div>
-				</div>
-			</section>
 			
-			<!-- PeopleResult Section -->
-			<section class="peopleresult standardresult container">
+			
+		<div class="resultarea"></div>			
+			
+		</main><!-- Main end -->
+		<!-- TEMPLATES -->
+		<!-- ====================================================== -->
+		
+		<script type="text/html" id="people_tpl">
+			<section class="standardresult container">
+				<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
 				<article>
 					<div class="row">
 						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
 							<div class="container">
 								<div class="row person_result">
-									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
+									<div class="col-xs-12 col-sm-12 col-md-4"><%= person.pname %></div>
 									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p>2053 Laprida St.</p>
-										<p>Mar Del Plata, Buenos Aires, AR'</p>
+										<p>2<%= person.address.fullstreet %></p>
+										<p><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></p>
 									</div>
 									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></p>
-										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="#">View on WhitePages.com</a></p>
+										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:<%= person.phone %>"><%= person.phone %></a></p>
+										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="<%= person.wplink  %>">View on WhitePages.com</a></p>
 									</div>								
 								</div>
 							</div>
@@ -229,60 +230,12 @@
 						</div>
 					</div>
 				</article>
-				
-			</section><!-- PeopleResult Section end -->
-			<!-- ReverseLookup Section -->
-			<section class="reverselookup standardresult container">
-				<article>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
-							<div class="container">
-								<div class="row person_result">
-									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
-									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p>2053 Laprida St.</p>
-										<p>Mar Del Plata, Buenos Aires, AR'</p>
-									</div>
-									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></p>
-										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="#">View on WhitePages.com</a></p>
-									</div>								
-								</div>
-							</div>
-							<svg xmlns="http://www.w3.org/2000/svg">
-								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
-							</svg>
-						</div>
-					</div>
-				</article>
-				
-			</section><!-- ReverseLookup Section end -->
-			<!-- BusinessResult Section -->
-			<section class="businessresult standardresult container">
-				<article>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
-							<div class="container">
-								<div class="row person_result">
-									<div class="col-xs-12 col-sm-12 col-md-4">Nicolas Nistal</div>
-									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p>2053 Laprida St.</p>
-										<p>Mar Del Plata, Buenos Aires, AR'</p>
-									</div>
-									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2121234321">212 123 4321</a></p>
-										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="#">View on WhitePages.com</a></p>
-									</div>								
-								</div>
-							</div>
-							<svg xmlns="http://www.w3.org/2000/svg">
-								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
-							</svg>
-						</div>
-					</div>
-				</article>
-				
-			</section><!-- BusinessResult Section end -->
+				<% } %>
+			</section>
+		</script>
+
+		<!-- Seaching tpl -->
+		<script type="text/html" id="loading_tpl">
 			<section class="searchingsection standardresult container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
@@ -298,6 +251,8 @@
 					</div>
 				</div>
 			</section>
+		</script>
+		<script type="text/html" id="noresults_tpl">
 			<section class="noresultsection standardresult container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
@@ -307,94 +262,97 @@
 					</div>
 				</div>
 			</section>
+		</script>
+
+		<script type="text/html" id="theater_tpl">
 			<section class="moviesection container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 col-sm-12 movieheader">
-						<h1>Showtimes in <bold>Stowe,VT</bold></h1>
+						<h1>Showtimes in <bold><%= theatersData[0].city %>, <%= theatersData[0].state %></bold></h1>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 col-sm-12 moviebody">
+						<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>
 						<article class="theatre">
 							<section class="theatreinformation">
 								<div class="row theatrename">
-									<div class="col-sm-10 col-sm-offset-1 col-xs-12">Paragon Grove 13</div>
+									<div class="col-sm-10 col-sm-offset-1 col-xs-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<%= 'collapse' + i%>"><%= theater.tname %></a>
+									</div>					
 								</div>
 								<div class="row theatredetails">
 									<div class="col-sm-7 col-sm-offset-1 col-xs-12">
-										<i class="fa fa-location-arrow"></i>&nbsp;&nbsp;University of Miami - Memorial Bldg, Coral Gables, FL 33146
+										<i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>
 									</div>
 									<div class="col-sm-3 col-xs-12">
-										<i class="fa fa-phone"></i><a href="tel:3052844861">&nbsp;&nbsp;(305) 284-4861</a>
+										<i class="fa fa-phone"></i><a href="tel:<%= theater.phone || ''%>">&nbsp;&nbsp;<%= theater.phone || ''%></a>
 									</div>
 								</div>
 								<div class="row theatrebuttons">
 									<div class="col-sm-10 col-sm-offset-1 col-xs-12">
-										<div class="moviebutton"><a href="#">Get Directions</a></div>
+										<div class="moviebutton"><a href="https://maps.google.co.uk/maps?q=<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>" target="_blank">Get Directions</a></div>
 									</div>
 								</div>
 							</section>
-							<section class="theatremovies">
-								<article class="movie">
-									<div class="row">
-										<div class="col-sm-2 col-xs-12 movieimg"><img src="http://placehold.it/75x110" alt="" /></div>
-										<div class="col-sm-10 col-xs-12 movieinfo">
-											<ul>
-												<li class="moviename">Gravity in 3D</li>
-												<li>
-													<span class="movierate">PG-13</span>
-													<span class="movieduration"> 90 min</span>
-												</li>
-												<li class="moviefunctions">
-													<span class="moviefunction">10:30</span>
-													<span class="functionseparator">&nbsp;|&nbsp;</span>
-													<span class="moviefunction">15:25</span>
-													<span class="functionseparator">&nbsp;|&nbsp;</span>
-													<span class="moviefunction">20:40</span>
-												</li>
-												<li class="moviebuttons">
-													<div class="moviebutton"><a href="#">Watch Trailer</a></div>
-													<div class="moviebutton"><a href="#">Get Reviews</a></div>
-													<div class="moviebutton"><a href="#">Text Showtime</a></div>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</article>
-								<article class="movie">
-									<div class="row">
-										<div class="col-sm-2 col-xs-12 movieimg"><img src="http://placehold.it/75x110" alt="" /></div>
-										<div class="col-sm-10 col-xs-12 movieinfo">
-											<ul>
-												<li class="moviename">Gravity in 3D</li>
-												<li>
-													<span class="movierate">PG-13</span>
-													<span class="movieduration"> 90 min</span>
-												</li>
-												<li class="moviefunctions">
-													<span class="moviefunction">10:30</span>
-													<span class="functionseparator">&nbsp;|&nbsp;</span>
-													<span class="moviefunction">15:25</span>
-													<span class="functionseparator">&nbsp;|&nbsp;</span>
-													<span class="moviefunction">20:40</span>
-												</li>
-												<li class="moviebuttons">
-													<div class="moviebutton"><a href="#">Watch Trailer</a></div>
-													<div class="moviebutton"><a href="#">Get Reviews</a></div>
-													<div class="moviebutton"><a href="#">Text Showtime</a></div>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</article>
-								
-							</section>
+							<div id="<%= 'collapse' + i %>"class="panel-collapse collapse">
+				      			<div class="panel-body">
+				      				<%= theater.moviesList %>
+						      	</div>
+						    </div>
 						</article>
+						<% } %>
 					</div>
 				</div>
 			</section>
-		</main><!-- Main end -->
-		
+		</script>
+		<script type="text/html" id="movie_tpl">
+			<section class="theatremovies">
+				<% for ( var i = 0; i < movies.length; i++ ) { %>
+				<article class="movie">
+					<div class="row">
+						<div class="col-sm-2 col-xs-12 movieimg"><img  class="poster<%= movies[i].movieId %>"  /></div>
+						<div class="col-sm-10 col-xs-12 movieinfo">
+							<ul>
+								<li class="moviename"> <%= movies[i].mtitle %> </li>
+								<li>
+									<span class="movierate"><%= movies[i].rating %></span>
+									<span class="movieduration"> <%= movies[i].duration %> min</span>
+								</li>
+								<li class="moviefunctions">
+								<% 	
+									var showings = movies[i].showings;
+									if (_.isArray(showings)) { 
+										var showingCount = showings.length;
+										for( var j = 0 ; j < showingCount ; ++j) { %>
+											<span class="moviefunction"><%= showings[j] %></span>
+											<span class="functionseparator">&nbsp;|&nbsp;</span>
+										<% } %>
+									<% } else { %>
+										<span class="moviefunction"><%= showings %></span>
+								<%  } %>
+								</li>
+								<li class="moviebuttons">
+									<i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a target="_blank" href="<%= movies[i].url %>">View on MoviePhone.com</a> 
+								</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<% } %>						
+			</section>
+		</script>
+		<script type="text/html" id="weather_tpl">
+			<section class="container standardresult weatherresult">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm12 wresult">
+						<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> </iframe>
+					</div>
+				</div>
+			</section>
+		</script>
+
+		<!-- ====================================================== -->
+		<!-- END TEMPLATES -->
 		<!-- Footer -->
 		<footer>
 			
@@ -403,6 +361,22 @@
 		<!-- Le Scripts -->
 		<script src="bootstrap/js/jquery.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
+    	<script src="js/underscore.js"></script>
+    	<script type="text/javascript"
+      		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNQHzUh6u92HRnNkAQTrfZrT2PlXVedU&amp;sensor=false">
+    	</script>
+    	<script src="bootstrap/js/holder.js"></script>
+		<script>//<![CDATA[
+ 			window.birddoggo={cache:{}}
+ 		//]]> 	
+	 	</script>
+	    <script src="js/find.weather.js"></script>
+	    <script src="js/find.movie.js"></script>
+	    <script src="js/lookup.phone.js"></script>
+	    <script src="js/find.people.js"></script>
+	    <script src="js/find.business.js"></script>
+	    <script src="js/scroll.js"></script>
+	    <script src="js/functions.js"></script>
 		
 	</body>
 </html>

@@ -1,10 +1,10 @@
  
 
 (function(Birddoggo) {
-	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
 	Birddoggo.cache.weatherTPL = Birddoggo.cache.weatherTPL || $('#weather_tpl').html();
-	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
-	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 
 
  	Birddoggo.findWeather = function(field) {
@@ -14,15 +14,16 @@
 		
 	 	Birddoggo.geocoder.geocode({ 'address':field}, function(results, status) {
 			try {	
-					var weatherHTML;
+				var weatherHTML;
 	        	if (status == google.maps.GeocoderStatus.OK) {
 	            	Birddoggo.coords = { 
 	                	lat: results[0].geometry.location.lb,
 	                	lon: results[0].geometry.location.mb
 	            	};
+	            	debugger;
 	           		weatherHTML = Birddoggo.cache.weatherTPL
-	           					.replace('{lat}', results[0].geometry.location.lb)
-	           					.replace('{lon}', results[0].geometry.location.mb);
+	           					.replace('{lat}', results[0].geometry.location.ob)
+	           					.replace('{lon}', results[0].geometry.location.nb);
 	            	$resultArea.html(weatherHTML);
 					$resultArea.css('top','0');
 	 			} else {

@@ -1,9 +1,9 @@
 ( function(Birddoggo) {
 
-	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
 	Birddoggo.cache.personTPL = Birddoggo.cache.personTPL || $('#people_tpl').html();
-	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
-	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 	var $resultArea = Birddoggo.cache.resultArea;
 	var URL = 'services/people-service.php'
 
