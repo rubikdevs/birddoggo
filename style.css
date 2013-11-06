@@ -247,7 +247,7 @@ text-align: center;
 	font-family: latobold;
 	
 }
-.peopleresult>article:last-child svg{
+.peopleresult>article:last-child svg,.reverselookup>article:last-child svg,.businessresult>article:last-child svg{
 	opacity:0;
 	-webkit-moz-op: 0;
 	-moz-moz-op: 0;
