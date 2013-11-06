@@ -78,7 +78,6 @@
 			}
 
 			if (theaterRespObj.showings.showing && theaterRespObj.showings.showing.movieTitle) {
-				debugger;
 				renderShow(theaterRespObj.showings.showing,showingsData, theaterRespObj.theaterLink);
 			}
 
