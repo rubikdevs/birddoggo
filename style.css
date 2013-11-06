@@ -346,6 +346,126 @@ bold{
 .navbar-collapse{
 	margin:0 auto;
 }
+
+.headercontent{
+	width: 650px;
+	margin:0 auto;
+	height: 100%;
+	background: url('resources/img/background_headermiddle.png') repeat-x;
+	position: relative;
+	height: 73px;
+}
+
+.headerlogo{
+	color: white;
+	font-family: latolight;
+	font-size: 35px;
+	float: left;
+	margin-top: 13px;
+	margin-left: 18px;
+}
+
+.menuselection{
+	cursor: pointer;
+	float: left;
+	font-size: 30px;
+	margin-top: 18px;
+	margin-left: 15px;
+}
+
+header input[type=text]{
+	height: 35px;
+	outline: 0;
+}
+
+header .searchfields div{
+	position: relative;
+	top:15px;
+}
+
+header .searchbutton{
+	top:16px;
+	right: 15px;
+}
+
+header .searchfields span {
+margin-left: 2px;
+top: -3px;
+}
+header .searchfields{
+	margin-left: 55px;
+}
+
+.bdg-dropdown{
+	width: 209px;
+	border:2px solid #212121;
+	background: #2a2926;
+	padding: 0px;
+	-webkit-box-shadow: 2px 2px 10px black;
+	-moz-box-shadow: 2px 2px 10px black;
+	box-shadow: 2px 2px 10px black
+}
+.triangulito{
+	background: url('resources/img/dropdown_triangle.png') no-repeat;
+	width: 30px;
+	height: 13px;
+	top: -13px;
+	left: 13px;
+	position: absolute;
+	
+}
+.dropdown-menu{
+	margin: 10px 0 0 !important;
+}
+.dropicon{
+	color: white;
+	font-size: 30px;
+}
+.dropoption span{
+	float: left;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+.dropoptions{
+	padding: 0;
+	margin-bottom: 2px;
+}
+.dropoption{
+	clear:left;
+	height: 52px;
+	background: url('resources/img/background_dropoption.png') no-repeat;
+	width: 205px;
+	cursor: pointer;
+}
+.droptitle{
+	font-family:latobold;
+	font-size: 16px;
+	color: white;
+}
+span.dropinfo div.dropdescription{
+	font-family: latobold;
+	font-size: 14px;
+	color: gray
+}
+span.menuselection i{
+	display: none;
+}
+span.menuselection i.active{
+	display: block;
+}
+div.searchbutton:hover{
+	background: #3c3c3c;
+}
+.navbar-inverse{
+	background: url(resources/img/background_header.png) repeat-x;
+	background-color: transparent;
+	border: none;
+}
+.titlesection{
+	padding-top: 70px;
+}
+
+/** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
 /* Styles */
@@ -355,4 +475,45 @@ and (max-width : 768px) {
 	.movieimg,.movieinfo{
 		text-align: center;
 	}
+	.navbar-collapse{
+		display: none;
+	}
+	.navbar-inverse{
+		background: #222222;
+	}
 }
+
+.mobileinput{
+	width: 90%;
+	margin-bottom: 5px;
+	display: none;
+}
+#mobilemenu ul{
+	margin-left: 15px;
+}
+.peoplefield{
+	display: block;
+}
+@media only screen 
+and (max-width : 970px) and (min-width : 768px ) {
+	div.headercontent{
+		width: 100% ;
+	}
+	.navbar-collapse{
+		padding: 0;
+	}
+	.navbar-header{
+		display: none;
+	}
+	.navbar-inverse{
+		background: url(resources/img/background_headermiddle.png) repeat-x;
+	}
+	.aligner{
+		width: 650px;
+		margin: 0 auto;
+		position: relative;
+	}
+}
+
+/** End of Media Queries **/
+

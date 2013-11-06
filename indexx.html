@@ -1,49 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		
+		<!--Le Stylesheets -->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" >
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="stylesheets/loading.css" />
+		
 	</head>
+	
 	<body>
+	
 		<!-- Header -->
 		<header>
 			<!-- Navbar -->
-			<nav class="navbar navbar-inverse" role="navigation">
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <!-- Brand and toggle get grouped for better mobile display -->
 			  <div class="navbar-header">
-			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobilemenu">
 			      <span class="sr-only">Toggle navigation</span>
 			      <i class="fa fa-search"></i>
 			    </button>
 			    <a class="navbar-brand" href="#">Birddoggo</a>
 			  </div>
-			
+			  <div class="collapse" id="mobilemenu">
+				<ul class="nav navbar-nav">
+					<li class="firstline">
+						<input type="text" class="form-control mobileinput peoplefield" placeholder="First Name" />
+						<input type="text" class="form-control mobileinput businessfield" placeholder="Category or Name" />
+						<input type="text" class="form-control mobileinput reversefield" placeholder="Telephone Number" />
+						<input type="text" class="form-control mobileinput moviesfield weatherfield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="secondline">
+						<input type="text" class="form-control mobileinput peoplefield" placeholder="Last Name" />
+						<input type="text" class="form-control mobileinput moviesfield businessfield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="thirdline">
+						<input type="text" class="form-control mobileinput moviesfield peoplefield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				          <li><a href="#"><i class="fa fa-building"></i>&nbsp;&nbsp;Business</a></li>
+				          <li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;People</a></li>
+				          <li><a href="#"><i class="fa fa-phone"></i>&nbsp;&nbsp;Reverse Lookup</a></li>
+				          <li><a href="#"><i class="fa fa-film"></i>&nbsp;&nbsp;Movies</a></li>
+				          <li><a href="#"><i class="fa fa-sun-o"></i>&nbsp;&nbsp;Weather</a></li>
+				        </ul>
+					</li>
+					<li><button type="button" class="btn btn-inverse navbar-btn searchbtn"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button></li>
+				</ul>
+			</div>
 			  <!-- Collect the nav links, forms, and other content for toggling -->
-			  <div class="collapse navbar-center navbar-collapse" id="bs-example-navbar-collapse-1">
-			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="#">Link</a></li>
-			      <li><a href="#">Link</a></li>
-			      <li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="#">Action</a></li>
-			          <li><a href="#">Another action</a></li>
-			          <li><a href="#">Something else here</a></li>
-			          <li class="divider"></li>
-			          <li><a href="#">Separated link</a></li>
-			          <li class="divider"></li>
-			          <li><a href="#">One more separated link</a></li>
-			        </ul>
-			      </li>
-			    </ul>
+			  <div class="navbar-center navbar-collapse">
+			    	<div class="headercontent">
+			    		<div class="aligner">
+				    		<span class="menuselection dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-building businessinput active"></i>
+							</span>
+							<div class="dropdown-menu bdg-dropdown" role="menu">
+							    <div class="triangulito"></div>
+							    <ul class="dropoptions search_field">
+							    	<li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-building"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Business</div>
+									    	<div class="dropdescription">Category or Name</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-user"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">People</div>
+									    	<div class="dropdescription">First & Last Name</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-phone"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Reverse Lookup</div>
+									    	<div class="dropdescription">Telephone Number</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-film"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Movies</div>
+									    	<div class="dropdescription">City, State or ZIP</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-sun-o"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Weather</div>
+									    	<div class="dropdescription">City, State or ZIP</div>
+									    </span>
+								    </li>
+							    </ul>  
+							</div>
+							<div class="headerfields searchfields">
+								<div class="businessinput active">
+									<input type="text" placeholder="Category or name" id="bkeywords" />
+									<span>near</span>
+									<input type="text" placeholder="City, State or ZIP" class="place" />
+								</div>
+								<div class="peopleinput">
+									<input type="text" placeholder="First Name" id="firstname" />
+									<input type="text" placeholder="Last Name" id="lastname" />
+									<span>near</span>
+									<input type="text" placeholder="City, State or ZIP" class="place" />
+								</div>
+								<div class="reverselookup">
+									<input type="text" class="singleinput" placeholder="Phone number" id="telephone"/>
+								</div>
+								<div class="movieinput">
+									<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
+								</div>
+								<div class="weather">
+									<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
+								</div>
+							</div>
+							<div class="searchbutton"><i class="fa fa-search"></i></div>
+			    		</div>
+						
+					</div>
 			  </div><!-- /.navbar-collapse -->
 			</nav><!-- Navbar end -->
 			<div class="container">
 				<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-8 col-md-offset-2 titlesection">
 					<h1><img src="resources/img/bdg_logo.png" alt="bdg_logo" class="img-responsive"></h1>
 				</div>
 			</div>
@@ -310,6 +399,7 @@
 		<footer>
 			
 		</footer><!-- Footer end -->
+		
 		<!-- Le Scripts -->
 		<script src="bootstrap/js/jquery.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
