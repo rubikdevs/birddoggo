@@ -299,16 +299,60 @@ bold{
 	cursor: pointer;
 	width: 120px;
 	vertical-align: bottom;
+	display: inline-block;
+	margin-bottom: 5px;
 }
-
+.movie{
+	background: #262527;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin:0 5%;
+	border-bottom: #2b2c2c 2px solid;
+}
 .moviebutton a, .moviebutton a:active, .moviebutton a:hover, .moviebutton a:visited{color:white;}
 .theatrebuttons{
 	padding-bottom: 20px;
+}
+.movieimg{
+	text-align: right;
+}
+.movieimg img{
+	width: 75px;
+	height: 110px;
+}
+.movieinfo ul{
+	list-style: none;
+	padding: 0;
+}
+.movieinfo li{
+	margin-bottom: 7px;
+}
+.movieinfo{
+	color: white;
+	padding: 0;
+}
+.moviename{
+	font-family: latobold;
+	font-size: 16px;
+}
+.navbar-toggle i{
+	color: #bebebe;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.noliststyle{
+	list-style: none;
+}
+.navbar-collapse{
+	margin:0 auto;
 }
 @media only screen 
 and (max-width : 768px) {
 /* Styles */
 	.searchsection{
 		display: none;
+	}
+	.movieimg,.movieinfo{
+		text-align: center;
 	}
 }
