@@ -6,9 +6,9 @@
 	var templateCache = [];
 
 	
-	Birddoggo.cache.resultArea = birddoggo.cache.resultarea || $('.resultarea');
-	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
-	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
+	Birddoggo.cache.resultArea = birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 
 	var $resultArea = birddoggo.cache.resultArea;
 	

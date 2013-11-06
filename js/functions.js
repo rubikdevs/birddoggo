@@ -91,13 +91,12 @@
         $('.navback .search_field li').eq($el.index()).addClass('active');
         $body[0].className = bodyBackgroundsClasses[$el.index()];
         $('.searchfields > div').css('display','none').removeClass('active');
-        $(searchFields[$el.index()]).css('display','inline').addClass('active');
+        $('.searchsection ' + searchFields[$el.index()]).css('display','inline').addClass('active');
         $('.menuselection').html(icons[$el.index()]);      
 			
 	});
 
     Birddoggo.search = function() {
-
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
@@ -107,13 +106,13 @@
                   Birddoggo.findPeople($('header .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'reverselookup':
-                  Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
             case 'movieinput':
-                  Birddoggo.findMovie($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.findMovie($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
             case 'weather' :
-                  Birddoggo.findWeather($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.findWeather($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
         }
     } ;
