@@ -464,7 +464,21 @@ div.searchbutton:hover{
 .titlesection{
 	padding-top: 70px;
 }
-
+.mobileinput{
+	width: 90%;
+	margin-bottom: 5px;
+	display: none;
+}
+#mobilemenu ul{
+	margin-left: 15px;
+}
+.peoplefield{
+	display: block;
+}
+.sbutton{
+	text-align: center;
+	padding-right: 25px;
+}
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
@@ -483,21 +497,20 @@ and (max-width : 768px) {
 	}
 }
 
-.mobileinput{
-	width: 90%;
-	margin-bottom: 5px;
-	display: none;
+@media only screen
+and ( min-width : 768px){
+	#mobilemenu{
+		display: none;
+	}
 }
-#mobilemenu ul{
-	margin-left: 15px;
-}
-.peoplefield{
-	display: block;
-}
+
 @media only screen 
 and (max-width : 970px) and (min-width : 768px ) {
 	div.headercontent{
 		width: 100% ;
+	}
+	div.headercontent .dropdown-menu{
+		top:150%;
 	}
 	.navbar-collapse{
 		padding: 0;
