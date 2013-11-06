@@ -103,7 +103,7 @@
                   Birddoggo.findBusiness($('header .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'peopleinput':
-                  Birddoggo.findPeople($('header .searchfields > div.active input').map(function(){return $(this).val();}));
+                  Birddoggo.findPeople($('.searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'reverselookup':
                   Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
