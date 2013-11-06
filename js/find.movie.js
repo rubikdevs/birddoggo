@@ -13,12 +13,14 @@
 	var $resultArea = birddoggo.cache.resultArea;
 	
 
-	var renderShow = function(currentShowing, showingsData) {
+	var renderShow = function(currentShowing, showingsData, url) {
 		var moviesshow = {};
 		moviesshow.mtitle = currentShowing.movieTitle;
 		moviesshow.rating = currentShowing.movieRating;
 		moviesshow.duration = currentShowing.runtime;
 		moviesshow.movieId = currentShowing.movieId;
+		moviesshow.showings = currentShowing.showTimes && currentShowing.showTimes && currentShowing.showTimes.showTime;
+		moviesshow.url = 'http://www.moviephone.com' + url || '';
 		var movieImg ;
 		$.ajax({
 			async:true,
@@ -72,11 +74,12 @@
 				showingCount = theaterRespObj.showings.showing && theaterRespObj.showings.showing.length;
 			for( ; showingIndex <  showingCount ; ++showingIndex ) {
 				var currentShowing = theaterRespObj.showings.showing[showingIndex];
-				renderShow(currentShowing,showingsData);
+				renderShow(currentShowing, showingsData, theaterRespObj.theaterLink);
 			}
 
 			if (theaterRespObj.showings.showing && theaterRespObj.showings.showing.movieTitle) {
-				renderShow(theaterRespObj.showings.showing,showingsData);
+				debugger;
+				renderShow(theaterRespObj.showings.showing,showingsData, theaterRespObj.theaterLink);
 			}
 
 			showingsHTML = _.template(templateCache['movie_tpl'], {movies: showingsData});

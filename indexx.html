@@ -230,14 +230,20 @@
 									<span class="movieduration"> <%= movies[i].duration %> min</span>
 								</li>
 								<li class="moviefunctions">
-									<span class="moviefunction">10:30</span>
-									<span class="functionseparator">&nbsp;|&nbsp;</span>
-									<span class="moviefunction">15:25</span>
-									<span class="functionseparator">&nbsp;|&nbsp;</span>
-									<span class="moviefunction">20:40</span>
+								<% 	
+									var showings = movies[i].showings;
+									if (_.isArray(showings)) { 
+										var showingCount = showings.length;
+										for( var j = 0 ; j < showingCount ; ++j) { %>
+											<span class="moviefunction"><%= showings[j] %></span>
+											<span class="functionseparator">&nbsp;|&nbsp;</span>
+										<% } %>
+									<% } else { %>
+										<span class="moviefunction"><%= showings %></span>
+								<%  } %>
 								</li>
 								<li class="moviebuttons">
-									<i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="#">View on MoviePhone.com</a> 
+									<i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a target="_blank" href="<%= movies[i].url %>">View on MoviePhone.com</a> 
 								</li>
 							</ul>
 						</div>
