@@ -139,7 +139,7 @@ bold{font-family: latobold;}
 .searcharea{
 	margin: 0 auto;
 	width: 600px;
-	margin-top: 75px;
+	margin-top: 50px;
 	margin-bottom: 70px;
 	-webkit-transition: opacity 100ms linear;
 	   -moz-transition: opacity 100ms ease ;
@@ -488,6 +488,30 @@ input[type=text]{padding-left: 5px;}
 
 .singleinput{width: 520px !important;}
 
+.appstoreb{
+	background: url('resources/img/badge_appstore.svg') no-repeat;
+	height: 40px;
+	width: 135px;
+}
+header h2{
+	color: white;
+	text-align: center;
+	font-size: 25px;
+	font-family: latoregular;
+
+}
+.bdg{
+	display: inline-block;
+	margin:0 10px;
+}
+.badges > div{
+	text-align: center;
+	visibility: top;
+}
+.badges > div > div {
+	vertical-align: top;
+}
+
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
@@ -504,6 +528,18 @@ and (max-width : 768px) {
 	.navbar-inverse{
 		background: #222222;
 	}
+		.bdg{
+		display: block;
+		margin-bottom:10px;
+	}
+	.appstoreb{
+		margin:0 auto;
+	}
+	img.andbadge{
+		height: 47px !important;
+	}
+	
+
 }
 
 @media only screen
@@ -512,8 +548,13 @@ and ( min-width : 768px){
 	#mobilemenu{
 		display: none;
 	}
-}
 
+}
+@media only screen
+and (max-width : 970px ){
+	
+
+}
 @media only screen 
 and (max-width : 970px)
 and (min-width : 768px ) {
