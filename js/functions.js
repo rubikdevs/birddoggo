@@ -100,19 +100,19 @@
         var className = $('.searchfields').find('.active')[0].className.replace('active',' ').trim();
         switch (className) {
             case 'businessinput':
-                  Birddoggo.findBusiness($('header .searchfields > div.active input').map(function(){return $(this).val();}));
+                  Birddoggo.findBusiness($('main .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'peopleinput':
-                  Birddoggo.findPeople($('.searchfields > div.active input').map(function(){return $(this).val();}));
+                  Birddoggo.findPeople($('main .searchfields > div.active input').map(function(){return $(this).val();}));
                   break;  
             case 'reverselookup':
-                  Birddoggo.lookupPhone($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.lookupPhone($('main .searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
             case 'movieinput':
-                  Birddoggo.findMovie($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.findMovie($('main .searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
             case 'weather' :
-                  Birddoggo.findWeather($('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
+                  Birddoggo.findWeather($('main .searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val());
                   break;  
         }
     } ;

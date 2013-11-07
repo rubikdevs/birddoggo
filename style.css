@@ -47,7 +47,8 @@ body{
 	background-size: cover;
 	background-size: -moz-cover;
 	background-size: -webkit-cover;
-	
+	min-height: 500px;
+	min-width: 320px;
 	
 }
 
@@ -269,6 +270,8 @@ bold{
 	font-family: latolight;
 	font-size: 30px;
 	text-align: center;
+	padding: 20px;
+	margin: 0;
 }
 .moviebody{
 	background-color: #2b2c2c;
