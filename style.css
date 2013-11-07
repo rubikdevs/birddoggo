@@ -482,7 +482,7 @@ div.searchbutton:hover{background: #3c3c3c;}
 
 input[type=text]{padding-left: 5px;}
 
-.singleinput{width: 520px;}
+.singleinput{width: 520px !important;}
 
 /** Media Queries **/
 @media only screen 
