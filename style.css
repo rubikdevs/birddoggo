@@ -1,5 +1,4 @@
-
-
+/**Custom Fonts **/
 @font-face {
     font-family: 'latoregular';
     src: url('resources/fonts/LatoFont/lato-regular-webfont.eot');
@@ -9,12 +8,7 @@
          url('resources/fonts/LatoFont/lato-regular-webfont.svg#latoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-
-
-
-
 @font-face {
     font-family: 'latolight';
     src: url('resources/fonts/LatoFont/lato-light-webfont.eot');
@@ -24,12 +18,7 @@
          url('resources/fonts/LatoFont/lato-light-webfont.svg#latolight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-
-
-
-
 @font-face {
     font-family: 'latobold';
     src: url('resources/fonts/LatoFont/lato-bold-webfont.eot');
@@ -39,17 +28,17 @@
          url('resources/fonts/LatoFont/lato-bold-webfont.svg#latobold') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+/**Custom Fonts End **/
 
 body{
 	background: url(resources/img/background1.jpg) no-repeat center center fixed;
 	background-size: cover;
 	background-size: -moz-cover;
-	background-size: -webkit-cover;
-	
-	
+	background-size: -webkit-cover;	
 }
+
+bold{font-family: latobold;}
 
 .order {
 	width: 100%;
@@ -60,7 +49,6 @@ body{
 	background: url('resources/img/background_searchbox.png') repeat-x;
 	height: 55px;
 	position: relative;
-
 }
 
 .searchbutton{
@@ -84,8 +72,8 @@ body{
 	-webkit-box-shadow: 1px 1px 2px #555;
 	-moz-box-shadow: 1px 1px 2px #555;
 	box-shadow:1px 1px 2px #555;
-
 }
+
 .order input {
 	width: 72%;
 	height: 55px;
@@ -114,14 +102,13 @@ body{
 	top: 10px;
 	padding: 0;
 }
+
 .searcharea li{
 	display:inline;
 	margin-right: 10px;
 }
 
-.searcharea li.active{
-	color: white;
-}
+.searcharea li.active{color: white;}
 
 .searcharea .searchbox{
 	background: url('resources/img/white_background.png');
@@ -145,7 +132,6 @@ body{
 	   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
 	     -o-transition: border linear 0.2s, box-shadow linear 0.2s;
 	        transition: border linear 0.2s, box-shadow linear 0.2s;
-
 }
 
 .searcharea{
@@ -158,7 +144,6 @@ body{
 	    -ms-transition:  opacity 100ms ease;
 	     -o-transition: opacity 100ms ease ;
 	        transition: opacity 100ms ease ;
-	
 }
 
 .clickable {cursor: pointer;}
@@ -180,11 +165,9 @@ body{
 
 .searchfields div {display: none;}
 
-
 div.searchbutton:hover{
 	background: #3c3c3c;
 }
-
 
 .navback{
 	background: url('resources/img/background_options.png') repeat-x;
@@ -194,17 +177,15 @@ div.searchbutton:hover{
 	-webkit-box-shadow: 1px 1px 2px #555;
 	-moz-box-shadow: 1px 1px 2px #555;
 	box-shadow:1px 1px 2px #555;
-
 }
 
-.searchfields > div.active{
-	display: block;
-}
+.searchfields > div.active{display: block;}
+
 #bkeywords , #mkeywords{width: 313px;}
 .whitebackground,.wresult,.result{
 	background:url(resources/img/background_search.png);
-
 }
+
 svg{
 	height: 1px;
 }
@@ -219,9 +200,11 @@ svg{
 	color:#494949;
 	font-family: latolight;
 }
+
 .person_result>div{
 	font-size: 15px;
 }
+
 .person_result>div:first-child{
 	font-size: 25px;
 }
@@ -231,22 +214,23 @@ svg{
 	padding: 0;
 	line-height: 20px;
 }
-.person_result a,.person_result a:active, .person_result a:visited, .person_result a:hover{
-	color:#494949;
-}
+
+.person_result a,.person_result a:active, .person_result a:visited, .person_result a:hover{color:#494949;}
+
 .noresults {
-font-size: 16px;
-font-family: latobold;
-margin-left: 25px;
-padding-top: 40px;
-height: 100px;
-text-align: center;
-}
-.searching_title{
 	font-size: 16px;
 	font-family: latobold;
-	
+	margin-left: 25px;
+	padding-top: 40px;
+	height: 100px;
+	text-align: center;
 }
+
+.searching_title{
+	font-size: 16px;
+	font-family: latobold;	
+}
+
 .peopleresult>article:last-child svg,.reverselookup>article:last-child svg,.businessresult>article:last-child svg{
 	opacity:0;
 	-webkit-moz-op: 0;
@@ -254,9 +238,7 @@ text-align: center;
 	-ms-moz-op: 0;
 	-o-moz-op: 0;
 }
-bold{
-	font-family: latobold;
-}
+
 .movieheader{
 	color:white;
 	background-color: #129be2;
@@ -265,14 +247,17 @@ bold{
 	-moz-box-shadow: 1px 1px 2px black;
 	box-shadow:1px 1px 2px black;
 }
+
 .movieheader h1{
 	font-family: latolight;
 	font-size: 30px;
 	text-align: center;
 }
+
 .moviebody{
 	background-color: #2b2c2c;
 }
+
 .theatrename{
 	font-family: latobold;
 	color: white;
@@ -280,6 +265,7 @@ bold{
 	padding-top: 20px;
 	margin-bottom: 20px;
 }
+
 .theatredetails a, .theatredetails a:active, .theatredetails a:hover, .theatredetails a:visited{color: #b4b1ac;}
 
 .theatredetails{
@@ -288,6 +274,7 @@ bold{
 	font-size: 16px;
 	font-family: latoregular;
 }
+
 .moviebutton {
 	border: solid 1px black;
 	background: url('resources/img/tile_moviebutton.png') repeat-x;
@@ -302,6 +289,7 @@ bold{
 	display: inline-block;
 	margin-bottom: 5px;
 }
+
 .movie{
 	background: #262527;
 	padding-bottom: 15px;
@@ -309,40 +297,47 @@ bold{
 	margin:0 5%;
 	border-bottom: #2b2c2c 2px solid;
 }
+
 .moviebutton a, .moviebutton a:active, .moviebutton a:hover, .moviebutton a:visited{color:white;}
-.theatrebuttons{
-	padding-bottom: 20px;
-}
-.movieimg{
-	text-align: right;
-}
+
+.theatrebuttons{padding-bottom: 20px;}
+
+.movieimg{text-align: right;}
+
 .movieimg img{
 	width: 75px;
 	height: 110px;
 }
+
 .movieinfo ul{
 	list-style: none;
 	padding: 0;
 }
+
 .movieinfo li{
 	margin-bottom: 7px;
 }
+
 .movieinfo{
 	color: white;
 	padding: 0;
 }
+
 .moviename{
 	font-family: latobold;
 	font-size: 16px;
 }
+
 .navbar-toggle i{
 	color: #bebebe;
 	margin-left: 5px;
 	margin-right: 5px;
 }
+
 .noliststyle{
 	list-style: none;
 }
+
 .navbar-collapse{
 	margin:0 auto;
 }
@@ -389,9 +384,10 @@ header .searchbutton{
 }
 
 header .searchfields span {
-margin-left: 2px;
-top: -3px;
+	margin-left: 2px;
+	top: -3px;
 }
+
 header .searchfields{
 	margin-left: 55px;
 }
@@ -405,31 +401,36 @@ header .searchfields{
 	-moz-box-shadow: 2px 2px 10px black;
 	box-shadow: 2px 2px 10px black
 }
+
 .triangulito{
 	background: url('resources/img/dropdown_triangle.png') no-repeat;
 	width: 30px;
 	height: 13px;
 	top: -13px;
 	left: 13px;
-	position: absolute;
-	
+	position: absolute;	
 }
+
 .dropdown-menu{
 	margin: 10px 0 0 !important;
 }
+
 .dropicon{
 	color: white;
 	font-size: 30px;
 }
+
 .dropoption span{
 	float: left;
 	margin-top: 10px;
 	margin-left: 15px;
 }
+
 .dropoptions{
 	padding: 0;
 	margin-bottom: 2px;
 }
+
 .dropoption{
 	clear:left;
 	height: 52px;
@@ -437,52 +438,56 @@ header .searchfields{
 	width: 205px;
 	cursor: pointer;
 }
+
 .droptitle{
 	font-family:latobold;
 	font-size: 16px;
 	color: white;
 }
+
 span.dropinfo div.dropdescription{
 	font-family: latobold;
 	font-size: 14px;
 	color: gray
 }
-span.menuselection i{
-	display: none;
-}
-span.menuselection i.active{
-	display: block;
-}
-div.searchbutton:hover{
-	background: #3c3c3c;
-}
+
+span.menuselection i{display: none;}
+
+span.menuselection i.active{display: block;}
+
+div.searchbutton:hover{background: #3c3c3c;}
+
 .navbar-inverse{
-	background: url(resources/img/background_header.png) repeat-x;
+	background: url('resources/img/background_header.png') repeat-x;
 	background-color: transparent;
 	border: none;
 }
-.titlesection{
-	padding-top: 70px;
-}
+
+.titlesection{padding-top: 70px;}
+
 .mobileinput{
 	width: 90%;
 	margin-bottom: 5px;
 	display: none;
 }
-#mobilemenu ul{
-	margin-left: 15px;
-}
-.peoplefield{
-	display: block;
-}
+
+#mobilemenu ul{margin-left: 15px;}
+
+.peoplefield{display: block;}
+
 .sbutton{
 	text-align: center;
 	padding-right: 25px;
 }
+
+input[type=text]{padding-left: 5px;}
+
+.singleinput{width: 520px;}
+
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
-/* Styles */
+
 	.searchsection{
 		display: none;
 	}
@@ -499,13 +504,16 @@ and (max-width : 768px) {
 
 @media only screen
 and ( min-width : 768px){
+
 	#mobilemenu{
 		display: none;
 	}
 }
 
 @media only screen 
-and (max-width : 970px) and (min-width : 768px ) {
+and (max-width : 970px)
+and (min-width : 768px ) {
+
 	div.headercontent{
 		width: 100% ;
 	}
@@ -519,7 +527,7 @@ and (max-width : 970px) and (min-width : 768px ) {
 		display: none;
 	}
 	.navbar-inverse{
-		background: url(resources/img/background_headermiddle.png) repeat-x;
+		background: url('resources/img/background_headermiddle.png') repeat-x;
 	}
 	.aligner{
 		width: 650px;
