@@ -138,7 +138,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h2>Get Birddoggo on your device!</h2>
+						<h2>Get the app now!</h2>
 					</div>
 				</div>
 				<div class="row badges">
@@ -219,7 +219,42 @@
 				</div>
 			</section><!-- Search Section end -->
 			
-			<div class="resultarea"></div>			
+			<div class="resultarea">
+				<section class="standardresult container">
+				<article>
+					<section class="promotedbasic">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
+								<div class="container">
+									<div class="row person_result">
+										<div class="col-xs-12 col-sm-12 col-md-4">Apple Store</div>
+										<div class="col-xs-12 col-sm-6  col-md-4">
+											<p>256 First Av.</p>
+											<p>New York, NY, US</p>
+										</div>
+										<div class="col-xs-12 col-sm-6  col-md-4">
+											<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:2124531234">212 376 5829</a></p>
+											<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="<%= person.wplink  %>">View on WhitePages.com</a></p>
+										</div>								
+									</div>
+								</div>
+								<svg xmlns="http://www.w3.org/2000/svg">
+									<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+								</svg>
+							</div>
+						</div>
+					</section>
+					<section class="promotedextra">
+						<div class="row">
+							<div class="col-xs-12">
+								<iframe src="https://mapsengine.google.com/map/embed?mid=zOk-KsrMW4Kw.ku6bIG06n6SA&output=embed" width="100%" height="200px"></iframe>
+							</div>
+						</div>
+					</section>
+					
+				</article>
+			</section>
+			</div>			
 			
 		</main><!-- Main end -->
 		<!-- TEMPLATES -->
@@ -235,7 +270,7 @@
 								<div class="row person_result">
 									<div class="col-xs-12 col-sm-12 col-md-4"><%= person.pname %></div>
 									<div class="col-xs-12 col-sm-6  col-md-4">
-										<p>2<%= person.address.fullstreet %></p>
+										<p><%= person.address.fullstreet %></p>
 										<p><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></p>
 									</div>
 									<div class="col-xs-12 col-sm-6  col-md-4">
