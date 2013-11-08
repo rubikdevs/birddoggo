@@ -512,6 +512,12 @@ header h2{
 .badges > div > div {
 	vertical-align: top;
 }
+.promotedmap{
+	padding: 20px;
+}
+.promotedextra > .row > div{
+	background: #ebebeb;
+}
 
 /** Media Queries **/
 @media only screen 
