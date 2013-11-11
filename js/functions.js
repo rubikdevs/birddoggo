@@ -25,7 +25,21 @@
 			'fa-phone',
 			'fa-film',
 			'fa-sun-o'
-		];
+		],
+        textitosDelMenu = [
+            'Business',
+            'People',
+            'Reverse Lookup',
+            'Movies',
+            'Weather'
+        ],
+        clasesistasDeMarian = [
+            '.businessfield',
+            '.peoplefield',
+            '.reversefield',
+            '.moviesfield',
+            '.weatherfield'
+        ];
 
 
     Birddoggo.getAddress = function (geoCodeObj) {
@@ -89,6 +103,43 @@
     Birddoggo.geocoder = new google.maps.Geocoder();
     var prevIndex = 0;
     $body[0].className = bodyBackgroundsClasses[0];
+    $('#mobilemenu .dropdown li').on('click touchend', function(){
+        if ($(this).hasClass('active')){
+            return;
+        }
+        var $prevLi = $('#mobilemenu .dropdown li.active');
+        $('#mobilemenu').find(clasesistasDeMarian[$prevLi.index()]).css('display','none');
+
+        $prevLi.removeClass('active');
+        $(this).addClass('active');
+        
+        $('#mobilemenu .dropdown em').html(textitosDelMenu[$(this).index()]);
+        $('#mobilemenu').find(clasesistasDeMarian[$(this).index()]).css('display','block');
+    });
+
+    $('#mobilemenu .searchbtn').on('click touchend', function(){
+        var i = $('#mobilemenu .dropdown li.active').index(),
+            className = clasesistasDeMarian[i];
+        
+        switch (i) {
+            case 0:
+                  Birddoggo.findBusiness($(className).map(function(){return $(this).val();}));
+                  break;  
+            case 1:
+                  Birddoggo.findPeople($(className).map(function(){return $(this).val();}));
+                  break;  
+            case 2:
+                 Birddoggo.lookupPhone($(className).eq(0).val());
+                 break;
+            case 3:
+                 Birddoggo.findMovie($(className).eq(0).val());
+                 break;
+            case 4:
+                  Birddoggo.findWeather($(className).eq(0).val());
+                  break;  
+        }
+    });
+    //DESKTOP MENUS;
 	$('.search_field li').on('click', function(){
         $el = $(this);
         if ($el.hasClass('active') || $('.menuselection i').hasClass(icons[$el.index()])) {
