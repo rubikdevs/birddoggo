@@ -628,15 +628,10 @@ footer a, footer a:hover, footer a:visited, footer a:active{
 @media only screen 
 and (max-width : 768px) {
 
-	.searchsection{
-		display: none;
-	}
 	.movieimg,.movieinfo{
 		text-align: center;
 	}
-	.navbar-collapse{
-		display: none;
-	}
+
 	.navbar-inverse{
 		background: #222222;
 	}
@@ -650,8 +645,16 @@ and (max-width : 768px) {
 	img.andbadge{
 		height: 47px !important;
 	}
-	
 
+}
+@media only screen
+and (max-width : 767px){
+	.searchsection{
+		display: none;
+	}
+	.navbar-collapse{
+		display: none;
+	}
 }
 @media only screen
 and ( max-width : 970px){
