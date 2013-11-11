@@ -26,7 +26,11 @@
 						person.address = listings[i].address;
 						person.pname = listings[i].displayname;
 						person.wplink = listings[i].listingmeta.moreinfolinks.viewdetails.url || '#';
-						person.phone =  $('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val();
+						try {
+							person.phone = listings[i].phonenumbers[0].fullphone;
+						} catch (ex) {
+							person.phone = '';
+						}
 				        persons.push(person);
 				}
 			} else if(JSON.parse(response).errors.length) {

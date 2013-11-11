@@ -119,12 +119,6 @@ input, button, select, textarea{
 	font-family: 'latoregular';
 }
 
-.business_background{background: url('../resources/img/background1.jpg')no-repeat center center fixed;}
-.people_background{background: url('../resources/img/background2.jpg')no-repeat center center fixed;}
-.reverse_background{background: url('../resources/img/background3.jpg')no-repeat center center fixed;}
-.movies_background{background: url('../resources/img/background4.jpg')no-repeat center center fixed;}
-.weather_background{background: url('../resources/img/background5.jpg')no-repeat center center fixed;}
-
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
 	display: inline-block;
@@ -288,6 +282,7 @@ h1.title{
 	width: 100%;
 	box-shadow: 1px 1px 1px rgba(135,135,135,0.8);
 	position: fixed;
+	top: -80px;
 }
 
 .header_order{

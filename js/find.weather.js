@@ -17,13 +17,12 @@
 				var weatherHTML;
 	        	if (status == google.maps.GeocoderStatus.OK) {
 	            	Birddoggo.coords = { 
-	                	lat: results[0].geometry.location.lb,
-	                	lon: results[0].geometry.location.mb
+	                	lat: results[0].geometry.location.nb,
+	                	lon: results[0].geometry.location.ob
 	            	};
-	            	debugger;
 	           		weatherHTML = Birddoggo.cache.weatherTPL
-	           					.replace('{lat}', results[0].geometry.location.ob)
-	           					.replace('{lon}', results[0].geometry.location.nb);
+	           					.replace('{lat}', Birddoggo.coords.lat)
+	           					.replace('{lon}', Birddoggo.coords.lon);
 	            	$resultArea.html(weatherHTML);
 					$resultArea.css('top','0');
 	 			} else {
