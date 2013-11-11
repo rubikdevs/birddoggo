@@ -192,32 +192,35 @@ svg{
 	height: 1px;
 }
 
-.person_result {
+.person_result, .featured_result {
 	text-align: center;
 	line-height: 30px;
 	margin-top: 20px;
 }
 
-.person_result{
+.person_result,{
 	color:#494949;
 	font-family: latolight;
 }
-
-.person_result>div{
+.featured_result{
+	font-family: latolight;
+	color:black;
+}
+.person_result>div, .featured_result>div{
 	font-size: 15px;
 }
 
-.person_result>div:first-child{
+.person_result>div:first-child, .featured_result>div:first-child{
 	font-size: 25px;
 }
 
-.person_result p{
+.person_result p, .featured_result p{
 	margin:0;
 	padding: 0;
 	line-height: 20px;
 }
 
-.person_result a,.person_result a:active, .person_result a:visited, .person_result a:hover{color:#494949;}
+.person_result a,.person_result a:active, .person_result a:visited, .person_result a:hover, .featured_result a, .featured_result a:hover, .featured_result a:visited, .featured_result a:active{color:#494949;}
 
 .noresults {
 	font-size: 16px;
@@ -501,22 +504,79 @@ header h2{
 	text-shadow: 1px 1px 2px gray;
 	
 }
+
 .bdg{
 	display: inline-block;
 	margin:0 10px;
 }
+
 .badges > div{
 	text-align: center;
 	visibility: top;
 }
+
 .badges > div > div {
 	vertical-align: top;
 }
+
 .promotedmap{
 	padding: 20px;
 }
+
 .promotedextra > .row > div{
 	background: #ebebeb;
+}
+
+.featuredbox{
+	background: #e1a300 ;
+}
+
+.seemore,.seeless{
+	top:14px;
+	color:#494949;
+	cursor: pointer;
+	text-align: right;
+	padding-right: 5%;
+}
+.featuredmoreinfo{
+	display: none;
+}
+.opened .featuredmoreinfo{
+	display: block;
+}
+.moreinfoback{
+	background: #414141;
+}
+.featuredmoreinfo p{
+	text-align: justify;
+	color: white;
+}
+.opened svg{
+	visibility: hidden;
+}
+.moreinfoback>.row>div{
+	margin-top:20px;
+}
+.moreinfoback{
+	padding-bottom: 15px;
+}
+.featuredmap{
+	height: 200px;
+	width: 100%;
+}
+.featuredthumb{
+	width: 50px;
+	height: 50px;
+	margin-right: 5px;
+}
+.seeless{
+	display: none;
+}
+.opened .seemore{
+	display: none;
+}
+.opened .seeless{
+	display: block;
 }
 
 /** Media Queries **/
