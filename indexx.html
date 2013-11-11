@@ -9,9 +9,7 @@
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" >
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="stylesheets/loading.css" />
-		<link rel="stylesheet" href="stylesheets/colorbox.css" />
-		
+		<link rel="stylesheet" href="stylesheets/loading.css" />	
 		
 	</head>
 	
@@ -383,6 +381,30 @@
 						</section>
 					</article>
 				</section>
+				<section class="standardresult container">
+				<article>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
+							<div class="container">
+								<div class="row person_result">
+									<div class="col-xs-12 col-sm-12 col-md-4"><%= person.pname %></div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p><%= person.address.fullstreet %></p>
+										<p><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></p>
+									</div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:<%= person.phone %>"><%= person.phone %></a></p>
+										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="<%= person.wplink  %>">View on WhitePages.com</a></p>
+									</div>								
+								</div>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg">
+								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+							</svg>
+						</div>
+					</div>
+				</article>
+			</section>
 			</div>			
 			
 		</main><!-- Main end -->
@@ -562,12 +584,5 @@
 	    <script src="js/find.business.js"></script>
 	    <script src="js/scroll.js"></script>
 	    <script src="js/functions.js"></script>
-	    <script src="js/jquery.colorbox-min.js"></script>
-	    <script>
-	    	$(document).ready(function(){
-		    	 $(".glink").colorbox({rel:'gallerylink', transition:"fade"});
-	    	});
-	    </script>
-		
 	</body>
 </html>

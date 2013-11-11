@@ -587,7 +587,12 @@ header h2{
 .opened .seeless{
 	display: block;
 }
-
+.standardresult>article:last-child svg,.featuredbusiness>article:last-child svg{
+	visibility: hidden;
+}
+.featuredbusiness{
+	margin-bottom: 20px;
+}
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
