@@ -547,12 +547,8 @@ header h2{
 	text-align: right;
 	padding-right: 5%;
 }
-.featuredmoreinfo{
-	display: none;
-}
-.opened .featuredmoreinfo{
-	display: block;
-}
+
+
 .moreinfoback{
 	background: #414141;
 }
