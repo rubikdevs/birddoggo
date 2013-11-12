@@ -655,12 +655,16 @@ and (max-width : 767px){
 	.navbar-collapse{
 		display: none;
 	}
+
 }
 @media only screen
 and ( max-width : 970px){
 
 	.navbar {
 		top: -80px;
+	}
+	footer, footer .advert{
+		text-align: center;
 	}
 }
 
