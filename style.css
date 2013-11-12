@@ -642,22 +642,29 @@ and (max-width : 768px) {
 	img.andbadge{
 		height: 47px !important;
 	}
+	
+		.searchsection{
+		display: none;
+	}
+
 
 }
 @media only screen
 and (max-width : 767px){
-	.searchsection{
+
+			.navbar-collapse{
 		display: none;
 	}
-	.navbar-collapse{
-		display: none;
-	}
+
 }
 @media only screen
 and ( max-width : 970px){
 
 	.navbar {
 		top: -80px;
+	}
+	footer, footer .advert{
+		text-align: center;
 	}
 }
 
