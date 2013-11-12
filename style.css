@@ -641,14 +641,17 @@ and (max-width : 768px) {
 	img.andbadge{
 		height: 47px !important;
 	}
+	
+		.searchsection{
+		display: none;
+	}
+
 
 }
 @media only screen
 and (max-width : 767px){
-	.searchsection{
-		display: none;
-	}
-	.navbar-collapse{
+
+			.navbar-collapse{
 		display: none;
 	}
 
