@@ -17,8 +17,8 @@
 				var weatherHTML;
 	        	if (status == google.maps.GeocoderStatus.OK) {
 	            	Birddoggo.coords = { 
-	                	lat: results[0].geometry.location.nb,
-	                	lon: results[0].geometry.location.ob
+	                	lat: results[0].geometry.location.lat(),
+	                	lon: results[0].geometry.location.lng()
 	            	};
 	           		weatherHTML = Birddoggo.cache.weatherTPL
 	           					.replace('{lat}', Birddoggo.coords.lat)
