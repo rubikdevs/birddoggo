@@ -139,7 +139,7 @@ class SiteController extends Controller
 					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;	
 				// FILTER
 				if ($match >= $refineByKeywords)
-					$results[] = array(
+					$results[$advertiser->importance] = array(
 						'name'=>$advertiser->name,
 						'address'=>$advertiser->address,
 						'city'=>$advertiser->city,
@@ -150,8 +150,11 @@ class SiteController extends Controller
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
 						'description'=>$advertiser->description,
-						'images'=>$allImages
-						);
+						'images'=>$allImages,
+						'facebook'=>$advertiser->facebook,
+						'twitter'=>$advertiser->twitter,
+						'mobile'=>$advertiser->mobile,
+					);
 			}
 		} elseif ((isset($city)) or (isset($state)))// IF ZIP CODE IS NULL, USE ADDRESS
 		{
@@ -188,15 +191,15 @@ class SiteController extends Controller
 					}
 							
 				} else
-					// IF NO MATCHES, DISABLE FILTER
-					$match = $noKeywordsGiven;
+				// IF NO MATCHES, DISABLE FILTER
+				$match = $noKeywordsGiven;
 				// LOADS AND FORMATS IMAGE INTO ARRAY
 				$allImages = array();
 				foreach ($advertiser->images as $img)
 					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;
 				// FILTER
 				if ($match >= $refineByKeywords)
-					$results[] = array(
+					$results[$advertiser->importance] = array(
 						'name'=>$advertiser->name,
 						'address'=>$advertiser->address,
 						'city'=>$advertiser->city,
@@ -207,7 +210,10 @@ class SiteController extends Controller
 						'lat'=>$advertiser->lat,
 						'lng'=>$advertiser->long,
 						'description'=>$advertiser->description,
-						'images'=>$allImages
+						'images'=>$allImages,
+						'facebook'=>$advertiser->facebook,
+						'twitter'=>$advertiser->twitter,
+						'mobile'=>$advertiser->mobile,
 					);
 			}
 
@@ -216,6 +222,7 @@ class SiteController extends Controller
 
 		else
 			$results = array();
+		krsort($results);
 		echo json_encode($results);
 	}
 

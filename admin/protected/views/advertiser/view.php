@@ -37,6 +37,10 @@ $this->menu=array(
 			'lat',
 			'long',
 			'description',
+			'facebook',
+			'twitter',
+			'mobile',
+			'importance',
 		),
 	));?>
 

@@ -66,6 +66,31 @@
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'facebook'); ?>
+		<?php echo $form->textField($model,'facebook',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'facebook'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'twitter'); ?>
+		<?php echo $form->textField($model,'twitter',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'twitter'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'mobile'); ?>
+		<?php echo $form->textField($model,'mobile',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'mobile'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'importance'); ?>
+		<?php echo $form->textField($model,'importance',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'importance'); ?>
+	</div>
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

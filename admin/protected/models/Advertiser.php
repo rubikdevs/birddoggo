@@ -37,12 +37,12 @@ class Advertiser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, address, city, state, zip_code, phone, description', 'required'),
+			array('name, address, city, state, zip_code, phone, description, importance', 'required'),
 			array('zip_code', 'numerical', 'integerOnly'=>true),
-			array('name, address, city, state, phone, website, lat, long', 'length', 'max'=>255),
+			array('name, address, city, state, phone, website, lat, long, facebook, twitter, mobile', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, address, city, state, zip_code, phone, website, lat, long, description', 'safe', 'on'=>'search'),
+			array('id, name, address, city, state, zip_code, phone, website, lat, long, description, importance, facebook, twitter, mobile', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +76,10 @@ class Advertiser extends CActiveRecord
 			'lat' => 'Lat',
 			'long' => 'Long',
 			'description' => 'Description',
+			'facebook' => 'Facebook',
+			'twitter' => 'Twitter',
+			'mobile' => 'Mobile',
+			'importance' => 'Importance'
 		);
 	}
 
@@ -108,6 +112,10 @@ class Advertiser extends CActiveRecord
 		$criteria->compare('lat',$this->lat,true);
 		$criteria->compare('long',$this->long,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('facebook',$this->facebook,true);
+		$criteria->compare('twitter',$this->twitter,true);
+		$criteria->compare('mobile',$this->mobile,true);
+		$criteria->compare('importance',$this->importance,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
