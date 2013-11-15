@@ -5,24 +5,15 @@ function copy_inputs(from,to){
 }
 (function() {
     var updatePosition = function() {
-        var top = document.body.scrollTop||document.documentElement.scrollTop,
-            style = {},getstyle = {};
-        if (top > 245 ) {
-            style.top = 0;
-            getstyle.top = '50px';
-            
-        } else {
-            style.top = '-73px';
-            getstyle.top = 0;
-            $('.headercontent').removeClass('open');
-        }
-        $('header').css(style);
-        $('.gettheapps').css(getstyle);
+        var top = document.body.scrollTop||document.documentElement.scrollTop;
+        $('.navbar').css('top', top > 440? '0': '-75px');
     }
     var throttled = _.throttle(updatePosition, 100);
     $(window).scroll(throttled);
+    
+
     var $bodyfields = $('.bodyfields');
-    var $headerfields = $('.headerfields');
+    var $headerfields = $('#desktop-navbar');
 	$bodyfields.on('keyup', 'input[type=text]',function(){
 		copy_inputs($bodyfields,$headerfields);
 	});

@@ -1,8 +1,10 @@
 <?
-    if (isset($_GET['name']) && isset($_GET['lastname']) && isset($_GET['zip'])) {
+    if (isset($_GET['name']) && isset($_GET['lastname'])) {
         $name   = $_GET['name'];
         $lastname =  $_GET['lastname'];
         $zip = $_GET['zip'];
+        $city = $_GET['city'];
+        $state = $_GET['state'];
         $curlDefault = array(
             CURLOPT_PORT => 80, //ignore explicit setting of port 80
             CURLOPT_RETURNTRANSFER => TRUE,
@@ -20,10 +22,22 @@
             ),
             CURLOPT_VERBOSE => TRUE // TRUE to output verbose information. Writes output to STDERR, or the file specified using CURLOPT_STDERR.
         );
-        $url = 'http://api.whitepages.com/find_person/1.0/?firstname={firstname};lastname={lastname};zip={zip};api_key=cff1348c711ae868da404a163d6568e0;outputtype=JSON';
-        $url = str_replace('{firstname}', $name, $url);
-        $url = str_replace('{lastname}', $lastname, $url);
-        $url = str_replace('{zip}', $zip, $url);
+
+        $paremeters = array(
+            'firstname'=> $name,
+            'lastname'=> $lastname,
+            'zip'=>$zip,
+            'state'=>$state,
+            'city'=>$city,
+            'api_key'=>'cff1348c711ae868da404a163d6568e0',
+            'outputtype'=>'JSON'
+        );
+
+        $paremeters = array_filter($paremeters, 'strlen');
+        $paremeters = http_build_query($paremeters,'',';');
+        $url = 'http://api.whitepages.com/find_person/1.0/?'.$paremeters;
+        
+
         $ch = curl_init($url);
 
         curl_setopt_array($ch, $curlDefault);

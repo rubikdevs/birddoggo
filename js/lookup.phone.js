@@ -6,10 +6,10 @@
 	var templateCache = [];
 
 	
-	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
+	Birddoggo.cache.resultArea = Birddoggo.cache.resultarea || $('.resultarea');
 	Birddoggo.cache.personTPL = Birddoggo.cache.personTPL || $('#people_tpl').html();
-	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
-	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
+	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
+	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 	var $resultArea = Birddoggo.cache.resultArea;
 
 	$(document).on('ajaxError',function() {
@@ -25,7 +25,12 @@
 					var person = {};  
 						person.address = listings[i].address;
 						person.pname = listings[i].displayname;
-						person.phone =  $('.searchfields > div.active input').eq(0).val() || $('.searchfields > div.active input').eq(1).val();
+						person.wplink = listings[i].listingmeta.moreinfolinks.viewdetails.url || '#';
+						try {
+							person.phone = listings[i].phonenumbers[0].fullphone;
+						} catch (ex) {
+							person.phone = '';
+						}
 				        persons.push(person);
 				}
 			} else if(JSON.parse(response).errors.length) {

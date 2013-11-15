@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!--Le Stylesheets -->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" >
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="bootstrap/fontawesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="stylesheets/loading.css" />
+		<link rel="stylesheet" href="bootstrap/css/blueimp-gallery.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-image-gallery.min.css">	
+		
+	</head>
+	
+	<body>
+	
+		<!-- Header -->
+		<header>
+			<!-- Navbar -->
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			  <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobilemenu">
+			      <span class="sr-only">Toggle navigation</span>
+			      <i class="fa fa-search"></i>
+			    </button>
+			    <a class="navbar-brand" href="#">Birddoggo</a>
+			  </div>
+			  <div class="collapse md-invisible" id="mobilemenu">
+				<ul class="nav navbar-nav">
+					<li class="firstline">
+						<input type="text" class="form-control mobileinput businessfield" placeholder="Category or Name" />
+						<input type="text" class="form-control mobileinput peoplefield" placeholder="First Name" />
+						<input type="text" class="form-control mobileinput reversefield" placeholder="Telephone Number" />
+						<input type="text" class="form-control mobileinput moviesfield weatherfield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="secondline">
+						<input type="text" class="form-control mobileinput peoplefield" placeholder="Last Name" />
+						<input type="text" class="form-control mobileinput  businessfield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="thirdline">
+						<input type="text" class="form-control mobileinput  peoplefield" placeholder="City, State or ZIP" />
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><em>Business</em> <b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				          <li class="active"><a href="#"><i class="fa fa-building"></i>&nbsp;&nbsp;Business</a></li>
+				          <li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;People</a></li>
+				          <li><a href="#"><i class="fa fa-phone"></i>&nbsp;&nbsp;Reverse Lookup</a></li>
+				          <li><a href="#"><i class="fa fa-film"></i>&nbsp;&nbsp;Movies</a></li>
+				          <li><a href="#"><i class="fa fa-sun-o"></i>&nbsp;&nbsp;Weather</a></li>
+				        </ul>
+					</li>
+					<li class="sbutton"><button type="button" class="btn btn-default navbar-btn searchbtn"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button></li>
+				</ul>
+			</div>
+			  <!-- Collect the nav links, forms, and other content for toggling -->
+			  <div class="navbar-center navbar-collapse" id="desktop-navbar">
+			    	<div class="headercontent">
+			    		<div class="aligner">
+				    		<span class="menuselection dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-building businessinput active"></i>
+							</span>
+							<div class="dropdown-menu bdg-dropdown" role="menu">
+							    <div class="triangulito"></div>
+							    <ul class="dropoptions search_field">
+							    	<li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-building"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Business</div>
+									    	<div class="dropdescription">Category or Name</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-user"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">People</div>
+									    	<div class="dropdescription">First & Last Name</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-phone"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Reverse Lookup</div>
+									    	<div class="dropdescription">Telephone Number</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-film"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Movies</div>
+									    	<div class="dropdescription">City, State or ZIP</div>
+									    </span>
+								    </li>
+								    <li class="dropoption">
+									    <span class="dropicon"><i class="fa fa-sun-o"></i></span>
+									    <span class="dropinfo">
+									    	<div class="droptitle">Weather</div>
+									    	<div class="dropdescription">City, State or ZIP</div>
+									    </span>
+								    </li>
+							    </ul>  
+							</div>
+							<div class="headerfields searchfields">
+								<div class="businessinput active">
+									<input type="text" placeholder="Category or name" id="bkeywords" />
+									<span>near</span>
+									<input type="text" placeholder="City, State or ZIP" class="place" />
+								</div>
+								<div class="peopleinput">
+									<input type="text" placeholder="First Name" id="firstname" />
+									<input type="text" placeholder="Last Name" id="lastname" />
+									<span>near</span>
+									<input type="text" placeholder="City, State or ZIP" class="place" />
+								</div>
+								<div class="reverselookup">
+									<input type="text" class="singleinput" placeholder="Phone number" id="telephone"/>
+								</div>
+								<div class="movieinput">
+									<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
+								</div>
+								<div class="weather">
+									<input type="text" class="singleinput place" placeholder="City, State or ZIP"/>
+								</div>
+							</div>
+							<div class="searchbutton"><i class="fa fa-search"></i></div>
+			    		</div>
+						
+					</div>
+			  </div><!-- /.navbar-collapse -->
+			</nav><!-- Navbar end -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 titlesection">
+						<h1><img src="resources/img/bdg_logo.png" alt="bdg_logo" class="img-responsive"></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<h2>Get the app now!</h2>
+					</div>
+				</div>
+				<div class="row badges">
+					<div class="col-sm-12">
+						<div class="bdg">
+							<a href="https://itunes.apple.com/us/app/whitepages-yellowpages-birddoggo/id695162804?mt=8">
+								<div class="appstoreb"></div>
+							</a>	
+						</div>
+						<div class="bdg">
+							<a href="https://play.google.com/store/apps/details?id=com.choicedirectory.android.cdls">
+								<img alt="Android app on Google Play" class="andbadge" style="height:40px;" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+
+			
+			</div>
+			
+		</header><!-- Header end -->
+		
+		
+		<!-- Main -->
+		<main>
+			<!-- Search Section -->
+			<section class="searchsection container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="searcharea">
+							<div class="navback">
+								<ul class="search_field">
+									<li class="color_trans clickable active">
+										<i class="fa fa-building businessinput"></i>&nbsp;Business
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-user peopleinput"></i>&nbsp;People
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-phone reverselookup"></i>&nbsp;Reverse Lookup
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-film movieinput"></i>&nbsp;Movies
+									</li>
+									<li class="color_trans clickable">
+										<i class="fa fa-sun-o weather"></i>&nbsp;Weather
+									</li>
+								</ul>
+							</div>
+							<div class="transparent-white order">
+								<div class="bodyfields searchfields">
+									<div class="businessinput active">
+										<input type="text" placeholder="Category or name" id="bkeywords" />
+										<span>near</span>
+										<input type="text" placeholder="City, State or ZIP" class="place" />
+									</div>
+									<div class="peopleinput">
+										<input type="text" placeholder="First Name" id="firstname" />
+										<input type="text" placeholder="Last Name" id="lastname" />
+										<span>near</span>
+										<input type="text" placeholder="City, State or ZIP" class="place" />
+									</div>
+									<div class="reverselookup">
+										<input type="text" class="singleinput" placeholder="Phone number" id="telephone" />
+									</div>
+									<div class="movieinput">
+										<input type="text" class="singleinput place" placeholder="City, State or ZIP"  />
+									</div>
+									<div class="weather">
+										<input type="text" class="singleinput place" placeholder="City, State, Country" />
+									</div>
+								</div>
+								<div class="searchbutton"><i class="fa fa-search"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!-- Search Section end -->
+			
+			<div class="resultarea"></div>			
+			
+		</main><!-- Main end -->
+		<footer>
+			<div class="footerseparator"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-4 col-md-offset-2">
+						Copyright &copy; 2013. All Rights Reserved.
+					</div>
+					<div class="col-xs-12 col-md-4 advert">
+						<a href="mailto:contact@birddoggo.com">Advertise with us</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Gallery HTML -->
+		<div id="blueimp-gallery" class="blueimp-gallery">
+   		 <!-- The container for the modal slides -->
+    		<div class="slides"></div>
+    		<!-- Controls for the borderless lightbox -->
+		    <h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="close">×</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+    		<!-- The modal dialog, which will be used to wrap the lightbox content -->
+    		<div class="modal fade">
+        		<div class="modal-dialog">
+            		<div class="modal-content">
+                		<div class="modal-header">
+                    		<button type="button" class="close" aria-hidden="true">&times;</button>
+                    		<h4 class="modal-title"></h4>
+                		</div>
+                		<div class="modal-body next"></div>
+                		<div class="modal-footer">
+                    		<button type="button" class="btn btn-default pull-left prev">
+                        		<i class="glyphicon glyphicon-chevron-left"></i>
+                        		Previous
+                    		</button>
+                    		<button type="button" class="btn btn-primary next">
+                        		Next
+                        		<i class="glyphicon glyphicon-chevron-right"></i>
+                    		</button>
+                		</div>
+            		</div>
+        		</div>
+    		</div>
+		</div>
+		<!-- TEMPLATES -->
+		<!-- ====================================================== -->
+		<script type="text/html" id="business_tpl">
+			<section class="featuredbusiness container">
+				<%  var bussCount = responseArr.length,
+					    bussIndex = 0;
+					birddoggo.maps = [];
+					for(;bussIndex < bussCount; ++bussIndex)  { buss = responseArr[bussIndex] %>
+				<article class="featured opened">
+					<section class="featuredinfo">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1 col-sm-12 featuredbox inner-border">
+								<div class="container">
+									<div class="row featured_result">
+										<div class="col-xs-12 col-sm-12 col-md-4"><%= buss.name %> </div>
+										<div class="col-xs-12 col-sm-6  col-md-4">
+											<p><%= buss.address %></p>
+											<p><%= buss.city %>, <%= buss.state %> </p>
+										</div>	
+										<div class="col-xs-12 col-sm-6  col-md-4">
+											<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:<%= buss.phone %>"><%= buss.phone %></a></p>
+											<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a target="_blank" href="<%= '//' +buss.website %>"><%= buss.website %></a></p>
+										</div>								
+									</div>
+									<div class="row">
+										<div class="col-sm-3 col-sm-offset-9 seemore">
+											See more&nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
+										</div>
+										<div class="col-sm-3 col-sm-offset-9 seeless" data-toggle="collapse" data-target="#info-featured<%=bussIndex%>">
+											Hide&nbsp;&nbsp;<i class="fa fa-chevron-up"></i>
+										</div>
+									</div>
+								</div>
+								<svg xmlns="http://www.w3.org/2000/svg">
+									<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"></line>
+								</svg>
+							</div>
+						</div>
+					</section>
+					<section id="info-featured<%=bussIndex%>"class="panel-collapse collapse in featuredmoreinfo">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1 col-sm-12 moreinfoback">
+								<div class="row">
+									<div class="col-md-6 infocontainer">
+										<p><%= buss.description %></p>
+										 <div id="links">
+										 <% for( var j = 0; j < buss.images.length; ++j) { %>
+										 	<a href=<%= buss.images[j] %> data-gallery><img width="64px" src="<%= buss.images[j] %>"/></a>
+										 <% } %>
+										 </div>
+									</div>
+									<% mapid = _.uniqueId('map-canvas');
+									   birddoggo.maps.push({
+									   		mapid: mapid,
+									   		latlong:  new google.maps.LatLng(buss.lat,buss.lng)
+									   });
+									%>
+									<div class="col-md-6 mapcontainer">
+										<div id="<%= mapid %>" style="width:100%;height:100%;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</article>
+				<% } %>
+			</section>
+		</script>
+		<script type="text/html" id="people_tpl">
+			<section class="standardresult container">
+				<% for ( var i = 0; i < persons.length; i++ ) { var person = persons[i] %>
+				<article>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 result inner-border">
+							<div class="container">
+								<div class="row person_result">
+									<div class="col-xs-12 col-sm-12 col-md-4"><%= person.pname %></div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p><%= person.address.fullstreet %></p>
+										<p><%= person.address.city %>, <%= person.address.state %>, <%= person.address.country %></p>
+									</div>
+									<div class="col-xs-12 col-sm-6  col-md-4">
+										<p><i class="fa fa-phone reverselookup"></i>&nbsp;&nbsp;<a href="tel:<%= person.phone %>"><%= person.phone %></a></p>
+										<p><i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a href="<%= person.wplink  %>">View on WhitePages.com</a></p>
+									</div>								
+								</div>
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg">
+								<line x1="5%" y1="0" x2="95%" y2="0" stroke-width="2" stroke="#494949"/>
+							</svg>
+						</div>
+					</div>
+				</article>
+				<% } %>
+			</section>
+		</script>
+
+		<!-- Seaching tpl -->
+		<script type="text/html" id="loading_tpl">
+			<section class="searchingsection standardresult container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
+						<div class="loading">
+							<span class="loading_title">Searching</span>
+							<span class="l-1"></span>
+							<span class="l-2"></span>
+							<span class="l-3"></span>
+							<span class="l-4"></span>
+							<span class="l-5"></span>
+							<span class="l-6"></span>
+						</div>
+					</div>
+				</div>
+			</section>
+		</script>
+		<script type="text/html" id="noresults_tpl">
+			<section class="noresultsection standardresult container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 whitebackground">
+						<div class="noresults">
+							<i class="fa fa-exclamation-circle"></i>&nbsp;Sorry, no results where found for your query
+						</div>
+					</div>
+				</div>
+			</section>
+		</script>
+
+		<script type="text/html" id="theater_tpl">
+			<section class="moviesection container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 movieheader">
+						<h1>Showtimes in <bold><%= theatersData[0].city %>, <%= theatersData[0].state %></bold></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 moviebody">
+						<% for ( var i = 0; i < theatersData.length; i++ ) { var theater = theatersData[i] %>
+						<article class="theatre">
+							<section class="theatreinformation">
+								<div class="row theatrename">
+									<div class="col-sm-10 col-sm-offset-1 col-xs-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<%= 'collapse' + i%>"><%= theater.tname %></a>
+									</div>					
+								</div>
+								<div class="row theatredetails">
+									<div class="col-sm-7 col-sm-offset-1 col-xs-12">
+										<i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>
+									</div>
+									<div class="col-sm-3 col-xs-12">
+										<i class="fa fa-phone"></i><a href="tel:<%= theater.phone || ''%>">&nbsp;&nbsp;<%= theater.phone || ''%></a>
+									</div>
+								</div>
+								<div class="row theatrebuttons">
+									<div class="col-sm-10 col-sm-offset-1 col-xs-12">
+										<div class="moviebutton"><a href="https://maps.google.co.uk/maps?q=<%= theater.address %>, <%= theater.city %>, <%= theater.state %> <%= theater.zip %>" target="_blank">Get Directions</a></div>
+									</div>
+								</div>
+							</section>
+							<div id="<%= 'collapse' + i %>"class="panel-collapse collapse">
+				      			<div class="panel-body">
+				      				<%= theater.moviesList %>
+						      	</div>
+						    </div>
+						</article>
+						<% } %>
+					</div>
+				</div>
+			</section>
+		</script>
+		<script type="text/html" id="movie_tpl">
+			<section class="theatremovies">
+				<% for ( var i = 0; i < movies.length; i++ ) { %>
+				<article class="movie">
+					<div class="row">
+						<div class="col-sm-2 col-xs-12 movieimg"><img  class="poster<%= movies[i].movieId %>"  /></div>
+						<div class="col-sm-10 col-xs-12 movieinfo">
+							<ul>
+								<li class="moviename"> <%= movies[i].mtitle %> </li>
+								<li>
+									<span class="movierate"><%= movies[i].rating %></span>
+									<span class="movieduration"> <%= movies[i].duration %> min</span>
+								</li>
+								<li class="moviefunctions">
+								<% 	
+									var showings = movies[i].showings;
+									if (_.isArray(showings)) { 
+										var showingCount = showings.length;
+										for( var j = 0 ; j < showingCount ; ++j) { %>
+											<span class="moviefunction"><%= showings[j] %></span>
+											<span class="functionseparator">&nbsp;|&nbsp;</span>
+										<% } %>
+									<% } else { %>
+										<span class="moviefunction"><%= showings %></span>
+								<%  } %>
+								</li>
+								<li class="moviebuttons">
+									<i class="fa fa-external-link wplink"></i>&nbsp;&nbsp;<a target="_blank" href="<%= movies[i].url %>">View on MoviePhone.com</a> 
+								</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<% } %>						
+			</section>
+		</script>
+		<script type="text/html" id="weather_tpl">
+			<section class="container standardresult weatherresult">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm12 wresult">
+						<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat={lat}&lon={lon}"> 
+						</iframe>
+					</div>
+				</div>
+			</section>
+		</script>
+
+		<!-- ====================================================== -->
+		<!-- END TEMPLATES -->
+		<!-- Footer -->
+		<footer>
+			
+		</footer><!-- Footer end -->
+		
+		<!-- Le Scripts -->
+		<script src="bootstrap/js/jquery.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+    	<script src="js/underscore.js"></script>
+    	<script type="text/javascript"
+      		src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyASNQHzUh6u92HRnNkAQTrfZrT2PlXVedU&amp;sensor=false">
+    	</script>
+    	
+    	<script src="bootstrap/js/holder.js"></script>
+		<script>//<![CDATA[
+ 			window.birddoggo={cache:{}}
+ 		//]]> 	
+	 	</script>
+	    <script src="js/find.weather.js"></script>
+	    <script src="js/find.movie.js"></script>
+	    <script src="js/lookup.phone.js"></script>
+	    <script src="js/find.people.js"></script>
+	    <script src="js/find.business.js"></script>
+	    <script src="js/scroll.js"></script>
+	    <script src="js/functions.js"></script>
+	    <script src="bootstrap/js/jquery.blueimp-gallery.min.js"></script>
+	    <script src="bootstrap/js/bootstrap-image-gallery.min.js"></script>
+	    <script>
+  
+
+	    function initialize() {
+	    				}
+	    		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	</body>
+</html>
