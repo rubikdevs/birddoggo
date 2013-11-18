@@ -36,8 +36,14 @@ body{
 	background-size: cover;
 	background-size: -moz-cover;
 	background-size: -webkit-cover;
-	min-height: 500px;
+	min-height: 100%;
 	min-width: 320px;
+
+}
+
+main{
+	height: 100%;
+	padding-bottom: 60px;
 }
 
 .business_background{background: url('resources/img/background1.jpg')no-repeat center center fixed;}
@@ -556,9 +562,11 @@ header h2{
 	text-align: justify;
 	color: white;
 }
+
 .opened svg{
 	visibility: hidden;
 }
+
 .moreinfoback>.row>div{
 	margin-top:20px;
 	margin-bottom: 20px;
@@ -568,11 +576,13 @@ header h2{
 	height: 100%;
 	width: 100%;
 }
+
 .mapcontainer{
 	padding: 0;
 	margin: 0 !important;
 	height: 300px;
 }
+
 .featuredthumb{
 	width: 50px;
 	height: 50px;
@@ -587,15 +597,19 @@ header h2{
 .seeless{
 	display: none;
 }
+
 .opened .seemore{
 	display: none;
 }
+
 .opened .seeless{
 	display: block;
 }
+
 .standardresult>article:last-child svg,.featuredbusiness>article:last-child svg{
 	visibility: hidden;
 }
+
 .featuredbusiness{
 	margin-bottom: 20px;
 }
@@ -607,20 +621,26 @@ footer .footerseparator{
 	width: 90%;
 	border-top: 1px solid #e1e1e1;
 	opacity: 0.7;
-	margin-bottom: 20px;
-	
+	margin-bottom: 20px;	
 }
 
 footer .advert{
 	text-align: right;
 }
+
 footer{
 	padding-bottom: 10px;
 	font-family: latobold;
+	color: #e1e1e1;
+	position: relative;
+	bottom: 0;
+	width: 100%;
 }
+
 footer a, footer a:hover, footer a:visited, footer a:active{
-	color: black;
+	color: #e1e1e1;
 }
+
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
