@@ -641,6 +641,21 @@ footer a, footer a:hover, footer a:visited, footer a:active{
 	color: #e1e1e1;
 }
 
+.featured-links{
+	list-style: none;
+	padding: 0;
+	color: white;
+}
+
+.featured-links li{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.featured-links a, .featured-links a:visited, .featured-links a:hover, .featured-links a:active{
+	color:white;
+}
+
 /** Media Queries **/
 @media only screen 
 and (max-width : 768px) {
