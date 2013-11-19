@@ -315,6 +315,20 @@
 							<div class="col-md-10 col-md-offset-1 col-sm-12 moreinfoback">
 								<div class="row">
 									<div class="col-md-6 infocontainer">
+										<p>
+											<ul>
+												<% if (buss.mobile){ %> 
+													<li><a href="<%= buss.mobile %>"><i class="fa fa-mobile"></i>&nbsp;&nbsp;Mobile Website</a></li>
+												<% } %>
+												<% if (buss.facebook){ %> 
+												<li><a href="<%= buss.facebook %>"><i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Like Us</a></li>
+												<% } %>
+												<% if (buss.twitter){ %> 
+												<li><a href="<%= buss.twitter %>"><i class="fa fa-twitter-square"></i>&nbsp;&nbsp;Follow us</a></li>
+												<% } %>
+											
+											</ul>
+										</p>
 										<p><%= buss.description %></p>
 										 <div id="links">
 										 <% for( var j = 0; j < buss.images.length; ++j) { %>
