@@ -91,140 +91,103 @@ class SiteController extends Controller
 		$city=null;
 		$state=null;
 
+
 		$location = json_decode($location);
 		//var_dump($location->locality);die;
 
-		if (isset($location->postal_code))
+		if (isset($location->postal_code)) {
 			$zipcode = $location->postal_code;
-		if (isset($location->locality))
+		}
+		if (isset($location->locality)) {
 			$city = $location->locality;
-		if (isset($location->administrative_area_level_1))
+		}
+		if (isset($location->administrative_area_level_1)) {
 			$state = $location->administrative_area_level_1;
+		}
 
 		// CODE
 		$results = array();
-		if (!$zipcode==null) // IF ZIPCODE, IGNORE ADDRESS
+		$advArray = array();
+
+		if ($zipcode!=null) // IF ZIPCODE, IGNORE ADDRESS
 		{
 			// LOAD ALL ADVERTISERS BY ZIP CODE
-			$advZipCode = Advertiser::model()->findAll('zip_code='.$zipcode);
-			
-			foreach($advZipCode as $advertiser)
-			{
-				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
-				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
-				$match = 0;
-
-				if (!$keywords==null)
-				{
-					$arrKWs = explode($delimiter, $keywords);
-					foreach($advKeys as $natKeyword)
-					{
-						// LOAD THE KEYWORD AND COMPARE IT
-						$keywordName = Keyword::model()->findAll('id='.$natKeyword->keyword_id);
-						foreach($arrKWs as $kw)
-						{
-							$percent = 0;
-							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
-							if ( $percent > $similarity)
-								$match++;
-						}
-					}
-							
-				} else
-					// IF NO MATCHES, DISABLE FILTER
-					$match = $noKeywordsGiven;
-				// LOADS AND FORMATS IMAGE INTO ARRAY
-				$allImages = array();
-				foreach ($advertiser->images as $img)
-					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;	
-				// FILTER
-				if ($match >= $refineByKeywords)
-					$results[$advertiser->importance] = array(
-						'name'=>$advertiser->name,
-						'address'=>$advertiser->address,
-						'city'=>$advertiser->city,
-						'state'=>$advertiser->state,
-						'zip_code'=>$advertiser->zip_code,
-						'phone'=>$advertiser->phone,
-						'website'=>$advertiser->website,
-						'lat'=>$advertiser->lat,
-						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,
-						'images'=>$allImages,
-						'facebook'=>$advertiser->facebook,
-						'twitter'=>$advertiser->twitter,
-						'mobile'=>$advertiser->mobile,
-					);
-			}
-		} elseif ((isset($city)) or (isset($state)))// IF ZIP CODE IS NULL, USE ADDRESS
-		{
-
+			$advArray = Advertiser::model()->findAll(
+				array(
+					'condition'=>'zip_code=:zipcode',
+					'order'=> 'importance DESC',
+					'params'=> array(':zipcode'=>$zipcode)
+				)
+			);
+		} elseif ((isset($city)) or (isset($state))) {
 			// LOAD ALL ADVERTISERS BY CITY AND STATE
 			$criteria = new CDbCriteria;
-			if (isset($city))
+			if (isset($city)) {
 				$criteria->condition = 'city="'.$city.'" AND state ="'.$state.'"';
-			else
-				$criteria->condition = 'state ="'.$state.'"';
-
-			$advCity = Advertiser::model()->findAll($criteria);
-			foreach($advCity as $advertiser)
-			{
-				// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
-				$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
-				$match = 0;
-
-				if (isset($keywords))
-				{
-					$arrKWs = explode($delimiter, $keywords);
-					foreach($advKeys as $natKeyword)
-					{
-						// LOAD THE KEYWORD AND COMPARE IT
-						$keywordName = Keyword::model()->findAll('id='.$natKeyword->keyword_id);
-
-						foreach($arrKWs as $kw)
-						{
-							$percent = 0;
-							similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
-							if ( $percent > $similarity)
-								$match++;
-						}
-					}
-							
-				} else
-				// IF NO MATCHES, DISABLE FILTER
-				$match = $noKeywordsGiven;
-				// LOADS AND FORMATS IMAGE INTO ARRAY
-				$allImages = array();
-				foreach ($advertiser->images as $img)
-					$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;
-				// FILTER
-				if ($match >= $refineByKeywords)
-					$results[$advertiser->importance] = array(
-						'name'=>$advertiser->name,
-						'address'=>$advertiser->address,
-						'city'=>$advertiser->city,
-						'state'=>$advertiser->state,
-						'zip_code'=>$advertiser->zip_code,
-						'phone'=>$advertiser->phone,
-						'website'=>$advertiser->website,
-						'lat'=>$advertiser->lat,
-						'lng'=>$advertiser->long,
-						'description'=>$advertiser->description,
-						'images'=>$allImages,
-						'facebook'=>$advertiser->facebook,
-						'twitter'=>$advertiser->twitter,
-						'mobile'=>$advertiser->mobile,
-					);
 			}
-
+			else {
+				$criteria->condition = 'state ="'.$state.'"';
+			}
+			$criteria->order = 'importance DESC';
+			$advArray = Advertiser::model()->findAll($criteria);
 
 		}
+		
+		foreach($advArray as $advertiser)
+		{
+			// LOAD ALL KEYWORDS RELATIONS FOR THIS ADVERTISER
+			$advKeys = AdvertiserKeyword::model()->findAll('advertiser_id='.$advertiser->id);
+			$match = 0;
 
-		else
-			$results = array();
-		krsort($results);
+			if (!$keywords==null)
+			{
+				$arrKWs = explode($delimiter, $keywords);
+				foreach($advKeys as $natKeyword)
+				{
+					// LOAD THE KEYWORD AND COMPARE IT
+					$keywordName = Keyword::model()->findAll('id='.$natKeyword->keyword_id);
+					foreach($arrKWs as $kw)
+					{
+						$percent = 0;
+						similar_text(strtolower($keywordName[0]->name), strtolower($kw), $percent);
+						if ( $percent > $similarity)
+							$match++;
+					}
+				}
+						
+			} else {
+				// IF NO MATCHES, DISABLE FILTER
+				$match = $noKeywordsGiven;
+			}
+			// LOADS AND FORMATS IMAGE INTO ARRAY
+			$allImages = array();
+			foreach ($advertiser->images as $img) {
+				$allImages[] = Yii::app()->baseUrl.'/images/'.$advertiser->id.'-'.$img->image_uri;	
+			}
+			// FILTER
+			if ($match >= $refineByKeywords) {
+				$results[] = array(
+					'name'=>$advertiser->name,
+					'address'=>$advertiser->address,
+					'city'=>$advertiser->city,
+					'state'=>$advertiser->state,
+					'zip_code'=>$advertiser->zip_code,
+					'phone'=>$advertiser->phone,
+					'website'=>$advertiser->website,
+					'lat'=>$advertiser->lat,
+					'lng'=>$advertiser->long,
+					'description'=>$advertiser->description,
+					'images'=>$allImages,
+					'facebook'=>$advertiser->facebook,
+					'twitter'=>$advertiser->twitter,
+					'mobile'=>$advertiser->mobile,
+				);
+			}
+		}
 		echo json_encode($results);
 	}
+
+	
 
 	/**
 	 * Logs out the current user and redirect to homepage.
