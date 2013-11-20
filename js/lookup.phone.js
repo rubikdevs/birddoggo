@@ -38,14 +38,14 @@
 				return;
 			}
 			var resulthtml = _.template(Birddoggo.cache.personTPL, {persons:persons});
-			if (!dontClearResultArea) {
+			if (dontClearResultArea !== true) {
 				$resultArea.html(resulthtml || Birddoggo.cache.noresultsHTML);
 			} else {
 				$resultArea.append(resulthtml);
 			}
 			$resultArea.css('top','0');
 		} catch(e) {
-			if (!dontClearResultArea) {
+			if (dontClearResultArea !== true) {
 				$resultArea.html(Birddoggo.cache.noresultsHTML);
 			}
 		}
