@@ -45,7 +45,9 @@
 			}
 			$resultArea.css('top','0');
 		} catch(e) {
-			$resultArea.html(Birddoggo.cache.noresultsHTML);
+			if (!dontClearResultArea) {
+				$resultArea.html(Birddoggo.cache.noresultsHTML);
+			}
 		}
 	};
 	Birddoggo.lookupPhone = function(params) {
