@@ -192,6 +192,11 @@
             Birddoggo.search();
         }
     });
+    
+    $('.resultarea').on('click', 'article.featured .whatelse', function(event){
+        $(event.target).closest('article.featured').toggleClass('opened');
+
+    });
 
 
     $body.addClass('business_background');

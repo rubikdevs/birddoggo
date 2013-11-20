@@ -594,7 +594,7 @@ header h2{
 	padding: 0 40px;
 }
 
-.seeless{
+span.seeless{
 	display: none;
 }
 
@@ -603,7 +603,7 @@ header h2{
 }
 
 .opened .seeless{
-	display: block;
+	display: inline-block;
 }
 
 .standardresult>article:last-child svg,.featuredbusiness>article:last-child svg{
@@ -650,6 +650,13 @@ footer a, footer a:hover, footer a:visited, footer a:active{
 .featured-links li{
 	display: inline-block;
 	margin-right: 5px;
+}
+
+.whatever{
+	text-align: left;
+	display: inline-block;
+	width: 62px;
+	padding: 0;
 }
 
 .featured-links a, .featured-links a:visited, .featured-links a:hover, .featured-links a:active{
@@ -751,6 +758,34 @@ and (min-width : 768px ) {
 		position: relative;
 	}
 }
+
+.opened .flechita-rotadora {
+	-webkit-transform: rotate(180deg);
+	   -moz-transform: rotate(180deg);
+	   	-ms-transform: rotate(180deg);
+	   	 -o-transform: rotate(180deg);
+	   	 
+}
+.whatelse {
+	cursor: pointer;
+}
+ .flechita-rotadora {
+	 -webkit-transform:rotate(0deg);
+	   -moz-transform: rotate(0deg);
+	   	-ms-transform: rotate(0deg);
+	   	 -o-transform: rotate(0deg);
+	   	 -webkit-transform-origin: 50% 50%;
+	   	 -moz-transform-origin: 50% 50%;
+	   	 -ms-transform-origin: 50% 50%;
+	   	 -o-transform-origin: 50% 50%;
+	   	  transform-origin: 50% 50%;
+	   	 -webkit-transition: -webkit-transform 300ms ease;
+	   	 -moz-transition: -moz-webkit 300ms ease;
+	   	 -ms-transition: -ms-webkit 300ms ease;
+	   	 -o-transition: -o-webkit 300ms ease;
+ }
+
+
 
 /** End of Media Queries **/
 
