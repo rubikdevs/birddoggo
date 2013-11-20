@@ -5,7 +5,7 @@
 	Birddoggo.cache.loadingHTML = Birddoggo.cache.loadingHTML  || $('#loading_tpl').html();
 	Birddoggo.cache.noresultsHTML = Birddoggo.cache.noresultsHTML  || $('#noresults_tpl').html();
 	var $resultArea = Birddoggo.cache.resultArea;
-	var URL = 'services/business-service.php';
+	var URL_WP = 'services/business-service.php';
 	var URL_FEATURED = 'admin/index.php?r=site/getadvertiser';
 
 	Birddoggo.createMaps = function() {
@@ -29,6 +29,7 @@
 
 	Birddoggo.findBusiness = function(params) {
 		Birddoggo.geocodeCallback = function() {
+			Birddoggo.geocodeCallback = $.noop;
 			$.ajax({
 				url: URL_FEATURED,
 				type: 'GET',
@@ -40,6 +41,25 @@
 					var html = _.template(Birddoggo.cache.businessTPL, {responseArr: JSON.parse(response)});
 					Birddoggo.cache.resultArea.html(html);
 					Birddoggo.createMaps();
+					$.ajax({
+						url: URL_WP,
+						type: 'GET',
+						dataType : 'JSON',
+						data: {
+							category: params[0],
+							city: Birddoggo.address.localitys,
+							state: Birddoggo.address.administrative_area_level_1s,
+							zip: Birddoggo.address.postal_code
+						},
+						success: function(response) {
+							var dontClearResultArea = true;
+							Birddoggo.renderPerson(response, dontClearResultArea);
+						},
+						error: function(error) {
+							console.log(error);
+						}
+
+					});
 				}
 			});
 		}

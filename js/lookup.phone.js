@@ -16,7 +16,7 @@
 		$resultArea.html(Birddoggo.cache.noresultsHTML);
 	});
 
-	Birddoggo.renderPerson = function(response) {
+	Birddoggo.renderPerson = function(response,dontClearResultArea) {
 		try {
 			var listings = JSON.parse(response).listings,
 				persons = [];
@@ -33,15 +33,21 @@
 						}
 				        persons.push(person);
 				}
-			} else if(JSON.parse(response).errors.length) {
+			} else if(JSON.parse(response).errors.length && !dontClearResultArea) {
 				$resultArea.html(Birddoggo.cache.noresultsHTML);
 				return;
 			}
 			var resulthtml = _.template(Birddoggo.cache.personTPL, {persons:persons});
-			$resultArea.html(resulthtml || Birddoggo.cache.noresultsHTML);
+			if (dontClearResultArea !== true) {
+				$resultArea.html(resulthtml || Birddoggo.cache.noresultsHTML);
+			} else {
+				$resultArea.append(resulthtml);
+			}
 			$resultArea.css('top','0');
 		} catch(e) {
-			$resultArea.html(Birddoggo.cache.noresultsHTML);
+			if (dontClearResultArea !== true) {
+				$resultArea.html(Birddoggo.cache.noresultsHTML);
+			}
 		}
 	};
 	Birddoggo.lookupPhone = function(params) {
