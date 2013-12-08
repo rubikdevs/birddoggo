@@ -27,7 +27,9 @@
 	    	
 	};
 
+	hasResults = false;
 	Birddoggo.findBusiness = function(params) {
+		$resultArea.html(Birddoggo.cache.loadingHTML);
 		Birddoggo.geocodeCallback = function() {
 			Birddoggo.geocodeCallback = $.noop;
 			$.ajax({
@@ -38,32 +40,43 @@
 					'location': JSON.stringify(Birddoggo.address)
 				},
 				success: function(response) {
-					var html = _.template(Birddoggo.cache.businessTPL, {responseArr: JSON.parse(response)});
-					Birddoggo.cache.resultArea.html(html);
-					Birddoggo.createMaps();
-					$.ajax({
-						url: URL_WP,
-						type: 'GET',
-						dataType : 'JSON',
-						data: {
-							category: params[0],
-							city: Birddoggo.address.localitys,
-							state: Birddoggo.address.administrative_area_level_1s,
-							zip: Birddoggo.address.postal_code
-						},
-						success: function(response) {
-							var dontClearResultArea = true;
-							Birddoggo.renderPerson(response, dontClearResultArea);
-						},
-						error: function(error) {
-							console.log(error);
-						}
+					try {
+						var html = _.template(Birddoggo.cache.businessTPL, {responseArr: JSON.parse(response)});
+						Birddoggo.cache.resultArea.html(html);
+						hasResults = $(html).children().length !== 0;
 
-					});
+						Birddoggo.createMaps();
+						$.ajax({
+							url: URL_WP,
+							type: 'GET',
+							dataType : 'JSON',
+							data: {
+								category: params[0],
+								city: Birddoggo.address.localitys,
+								state: Birddoggo.address.administrative_area_level_1s,
+								zip: Birddoggo.address.postal_code
+							},
+							success: function(response) {
+								Birddoggo.renderPerson(response, hasResults);
+								
+							},
+							error: function(error) {
+								console.log(error);
+							}
+
+						});
+					} catch(e) {
+						$resultArea.html(Birddoggo.cache.noresultsHTML);
+					}	
 				}
 			});
+		}	
+		try {
+			Birddoggo.getAddress({address:params[1]});
 		}
-		Birddoggo.getAddress({address:params[1]});
+		catch(e) {
+			$resultArea.html(Birddoggo.cache.noresultsHTML);
+		}
 
 	};
 
