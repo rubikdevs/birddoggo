@@ -28,7 +28,7 @@ class AdvertiserController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','view','test','ajix','create','update','admin','delete','upload','deleteImage'),
+				'actions'=>array('index','view','test','ajix','create','update','admin','delete','upload','deleteImage','viewed'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -62,7 +62,13 @@ class AdvertiserController extends Controller
 			'model'=>$model,
 		));
 	}
-
+	public function actionViewed(){
+		$dataProvider=new CActiveDataProvider('Advertiser');
+		$dataProvider->sort->defaultOrder='views DESC';
+		$this->render('mostViewed',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
 	public function actionAjix(){
 		//var_dump('ss');die;
 		$advertiser;
@@ -136,9 +142,14 @@ class AdvertiserController extends Controller
 			$json = file_get_contents($jsonurl,0,null,null);
 			$json_output = json_decode($json);
 
-			$model->lat = $json_output->results[0]->geometry->location->lat;
-			$model->long = $json_output->results[0]->geometry->location->lng;
-
+			if (sizeof($json_output->results) > 0)
+			{	
+				$model->lat = $json_output->results[0]->geometry->location->lat;
+				$model->long = $json_output->results[0]->geometry->location->lng;
+			} else {
+				$model->lat = 0;
+				$model->long = 0;
+			}
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

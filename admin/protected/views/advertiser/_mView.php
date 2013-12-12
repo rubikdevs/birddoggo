@@ -14,21 +14,6 @@
 	</td>
 
 	<td>
-	<?php echo CHtml::encode($data->address); ?>
-	</td>
-
-	<td>
-	<?php echo CHtml::encode($data->city); ?>
-	</td>
-
-	<td>
-	<?php echo CHtml::encode($data->state); ?>
-	</td>
-
-	<td>
-	<?php echo CHtml::encode($data->zip_code); ?>
-	</td>
-	<td>
 	<?php echo CHtml::encode($data->views); ?>
 	</td>
 

@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Advertiser', 'url'=>array('index')),
 	array('label'=>'Create Advertiser', 'url'=>array('create')),
+	array('label'=>'Most Viewed', 'url'=>array('viewed')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

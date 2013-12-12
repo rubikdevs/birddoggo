@@ -7,29 +7,26 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>'List Advertisers', 'url'=>array('index')),
 	array('label'=>'Create Advertiser', 'url'=>array('create')),
 	array('label'=>'Manage Advertiser', 'url'=>array('admin')),
-	array('label'=>'Most Viewed', 'url'=>array('viewed')),
+
 );
 ?>
 
-<h1>Advertisers</h1>
+<h1>Advertisers by Views</h1>
 
 
 <table>
 	<thead>
 		<th>ID</th>
 		<th>Name</th>
-		<th>Address</th>
-		<th>City</th>
-		<th>State</th>
-		<th>Zip Code</th>
 		<th>Views</th>
 	</thead>
 	<tbody>
 		<?php $this->widget('zii.widgets.CListView', array(
 			'dataProvider'=>$dataProvider,
-			'itemView'=>'_view',
+			'itemView'=>'_mView',
 		)); ?>
 	</tbody>
 </table>

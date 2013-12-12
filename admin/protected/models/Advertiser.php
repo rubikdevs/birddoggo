@@ -42,7 +42,7 @@ class Advertiser extends CActiveRecord
 			array('name, address, city, state, phone, website, lat, long, facebook, twitter, mobile', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, address, city, state, zip_code, phone, website, lat, long, description, importance, facebook, twitter, mobile', 'safe', 'on'=>'search'),
+			array('id, name, address, city, state, zip_code, phone, website, lat, long, description, importance, facebook, twitter, mobile, views', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,7 +79,8 @@ class Advertiser extends CActiveRecord
 			'facebook' => 'Facebook',
 			'twitter' => 'Twitter',
 			'mobile' => 'Mobile',
-			'importance' => 'Importance'
+			'importance' => 'Importance',
+			'views' => 'Views',
 		);
 	}
 
@@ -116,6 +117,7 @@ class Advertiser extends CActiveRecord
 		$criteria->compare('twitter',$this->twitter,true);
 		$criteria->compare('mobile',$this->mobile,true);
 		$criteria->compare('importance',$this->importance,true);
+		$criteria->compare('views',$this->importance,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

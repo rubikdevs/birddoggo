@@ -82,7 +82,7 @@ class SiteController extends Controller
 	public function actionGetAdvertiser($location=null,$keywords=null){
 		// OPTIONS
 		$delimiter = ' '; 			// Keywords delimiter 
-		$refineByKeywords = 1;  	// Quantity of Keyword Matches to pass the filter
+		$refineByKeywords = 0;  	// Quantity of Keyword Matches to pass the filter
 		$noKeywordsGiven = 1;		// If $keywords=null, will disable the filter
 		$similarity = 85.0;			// Minimun similarity for matching
 
@@ -182,6 +182,8 @@ class SiteController extends Controller
 					'twitter'=>$advertiser->twitter,
 					'mobile'=>$advertiser->mobile,
 				);
+				$advertiser->views++;
+				$advertiser->save();
 			}
 		}
 		echo json_encode($results);
