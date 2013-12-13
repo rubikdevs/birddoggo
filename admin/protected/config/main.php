@@ -56,12 +56,12 @@ return array(
             //These variable values come from your hosting account.
            
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=bdgadmin',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'brychan',
-			'charset' => 'utf8',
-		),
+                        'connectionString' => 'mysql:host=bdgadmin.db.10874828.hostedresource.com;dbname=bdgadmin',
+                        'emulatePrepare' => true,
+                        'username' => 'bdgadmin',
+                        'password' => 'Stevenpjobs1!',
+                        'charset' => 'utf8',
+        ),
 	
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
