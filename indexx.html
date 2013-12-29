@@ -448,7 +448,7 @@
 									</div>
 								</div>
 							</section>
-							<div id="<%= 'collapse' + i %>"class="panel-collapse collapse">
+							<div id="<%= 'collapse' + i %>"class="panel-collapse collapse in">
 				      			<div class="panel-body">
 				      				<%= theater.moviesList %>
 						      	</div>
@@ -541,6 +541,23 @@
 	    function initialize() {
 	    				}
 	    		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		<script>
+			function resizeMainBlock(){
+				var headerHeight = $('header').outerHeight(true);
+				var footerHeight = $('footer').outerHeight(true);
+				var windowHeight = $(window).height();
+				var mainExtra = $('main').outerHeight(true) - $('main').height();
+				var mainHeight = windowHeight - headerHeight - footerHeight - mainExtra;
+				
+				$('main').css('min-height',mainHeight);
+			}
+			$(document).ready(function(){
+				resizeMainBlock();
+			});
+			$(window).resize(function(){
+				resizeMainBlock();
+			});
 		</script>
 	</body>
 </html>
